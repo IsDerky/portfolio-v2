@@ -24,28 +24,7 @@ interface Experience {
 }
 
 const WorkExperience = () => {
-  const experiences: Experience[] = [
-    {
-      id: '2',
-      company: 'NTT Data',
-      position: 'Network Engineer',
-      startDate: 'Feb 2025',
-      endDate: 'Present',
-      current: true,
-      description: 'Working on enterprise network infrastructure and cloud solutions for global clients, managing network performance, security, and collaborating with international teams on large-scale projects.',
-      logo: '/logos/NTT.svg'
-    },
-    {
-      id: '1',
-      company: 'Life Informática',
-      position: 'Web Developer & IT Support',
-      startDate: 'Jan 2022',
-      endDate: 'May 2022',
-      current: false,
-      description: 'Full-stack development and IT infrastructure management for local businesses, providing custom web solutions and system administration services.',
-      logo: '/logos/life-logo.png'
-    }
-  ];
+  const experiences: Experience[] = [];
 
   return (
     <Section className="py-6 md:py-8">

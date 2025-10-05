@@ -101,7 +101,7 @@ const Hero = () => {
           <div className="absolute top-[35%] md:top-[32%] left-[8%] md:left-[7%] transform -translate-y-1/2 rotate-[-2deg] md:rotate-[-3deg] origin-left">
             <TextType
               text="Derkyu"
-              typingSpeed={800}
+              typingSpeed={400}
               pauseDuration={2000}
               showCursor={true}
               cursorCharacter="|"
