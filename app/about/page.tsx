@@ -3,7 +3,6 @@ import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import Aboutme from "@/components/sections/about/Aboutme";
 import GitContributions from "@/components/sections/about/GitContributions";
-import WorkExperience from "@/components/sections/about/WorkExperience";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
@@ -18,7 +17,6 @@ export default function AboutPage() {
       <Hero />
       <Aboutme />
       <GitContributions />
-      <WorkExperience />
       <Footer />
     </main>
   );
