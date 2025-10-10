@@ -46,11 +46,11 @@ const GitHubContributions = () => {
 
   return (
     <Section className="py-6 md:py-8">
-      <FadeInElement delay={0.3}>
+      <FadeInElement delay={1.1}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
           className="bg-[#212121] rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300"
         >
           <div className="flex items-center justify-between mb-6 flex-wrap gap-4">

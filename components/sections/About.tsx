@@ -15,7 +15,7 @@ const poppins = Poppins({
 const About = () => {
   return (
     <Section className="py-6 md:py-8">
-      <FadeInElement delay={0.6}>
+      <FadeInElement delay={0.5}>
         <div className="grid grid-cols-1">
           <div className="bg-[#212121] rounded-2xl p-6 md:p-16 relative overflow-hidden">
             {/* Particles - Responsive sizing */}

@@ -52,7 +52,7 @@ const FeaturedProjects = () => {
 
   return (
     <Section className="py-6 md:py-8">
-      <FadeInElement delay={0.3} className="mb-6">
+      <FadeInElement delay={0.7} className="mb-6">
         <div className="flex items-center gap-3 mb-6">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
           <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-white`}>
@@ -64,7 +64,7 @@ const FeaturedProjects = () => {
 
       <div className="space-y-6">
         {featuredProjects.map((project, index) => (
-          <FadeInElement key={project.id} delay={0.4 + (index * 0.1)}>
+          <FadeInElement key={project.id} delay={0.8 + (index * 0.1)}>
             <motion.div
               whileHover={{ scale: 1.01, y: -4 }}
               className="bg-[#212121] rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group relative"
@@ -79,21 +79,13 @@ const FeaturedProjects = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#212121] via-transparent to-transparent opacity-60 z-10"></div>
 
                   {project.image ? (
-                    <>
-                      <Image
-                        src={project.image}
-                        alt={`${project.title} project preview`}
-                        fill
-                        className="object-contain transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                      {/* Featured badge */}
-                      <div className="absolute top-4 left-4 z-20 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
-                        <span className={`${poppins.className} text-xs text-white uppercase tracking-wider font-medium`}>
-                          Featured
-                        </span>
-                      </div>
-                    </>
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} project preview`}
+                      fill
+                      className="object-contain transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   ) : (
                     <>
                       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50"></div>

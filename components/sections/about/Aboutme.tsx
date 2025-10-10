@@ -74,7 +74,7 @@ const WorksHeader = () => {
 
   return (
     <Section className="py-6 md:py-8">
-      <FadeInElement delay={0.1} className="mb-6 md:mb-8">
+      <FadeInElement delay={0.5} className="mb-6 md:mb-8">
         <h2 className={`${poppins.className} text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-3 md:mb-4`}>
           About Me
         </h2>
@@ -83,7 +83,7 @@ const WorksHeader = () => {
       {/* Mobile Layout (< md) - Single Column */}
       <div className="md:hidden space-y-3">
         {/* Specialization */}
-        <FadeInElement delay={0.2}>
+        <FadeInElement delay={0.6}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-[#212121] rounded-xl p-4 border border-white/10 transition-all duration-300"
@@ -96,7 +96,7 @@ const WorksHeader = () => {
         </FadeInElement>
 
         {/* Total Experience */}
-        <FadeInElement delay={0.25}>
+        <FadeInElement delay={0.65}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-[#212121] rounded-xl p-4 border border-white/10 transition-all duration-300"
@@ -110,7 +110,7 @@ const WorksHeader = () => {
         </FadeInElement>
 
         {/* Core Technologies */}
-        <FadeInElement delay={0.3}>
+        <FadeInElement delay={0.7}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-[#212121] rounded-xl p-4 border border-white/10 transition-all duration-300"
@@ -138,7 +138,7 @@ const WorksHeader = () => {
         </FadeInElement>
 
         {/* Developer Stats */}
-        <FadeInElement delay={0.35}>
+        <FadeInElement delay={0.75}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-[#212121] rounded-xl p-4 border border-white/10 transition-all duration-300"
@@ -173,7 +173,7 @@ const WorksHeader = () => {
         </FadeInElement>
 
         {/* Spotify */}
-        <FadeInElement delay={0.4}>
+        <FadeInElement delay={0.8}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-[#212121] rounded-xl border border-white/10 transition-all duration-300 cursor-pointer group overflow-hidden"
@@ -191,7 +191,7 @@ const WorksHeader = () => {
         </FadeInElement>
 
         {/* Featured Project - Derkyu Hosting */}
-        <FadeInElement delay={0.45}>
+        <FadeInElement delay={0.85}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-[#212121] rounded-xl border border-white/10 transition-all duration-300 cursor-pointer group"
@@ -236,7 +236,7 @@ const WorksHeader = () => {
         <div className="grid grid-cols-3 grid-rows-3 gap-3 h-[400px]">
           
           {/* Row 1: Specialization (col-span-2) + Total Experience (col-span-1) */}
-          <FadeInElement delay={0.2} className="col-span-2">
+          <FadeInElement delay={0.6} className="col-span-2">
             <motion.div
               whileHover={{ scale: 1.01 }}
               className="bg-[#212121] rounded-xl p-5 border border-white/10 transition-all duration-300 h-full flex flex-col justify-start"
@@ -248,7 +248,7 @@ const WorksHeader = () => {
             </motion.div>
           </FadeInElement>
 
-          <FadeInElement delay={0.3} className="col-span-1">
+          <FadeInElement delay={0.65} className="col-span-1">
             <motion.div
               whileHover={{ scale: 1.01 }}
               className="bg-[#212121] rounded-xl p-5 h-full border border-white/10 transition-all duration-300 flex flex-col justify-start items-start text-left"
@@ -260,8 +260,8 @@ const WorksHeader = () => {
           </FadeInElement>
 
           {/* Row 2: Core Technologies (row-span-2) + Two small projects */}
-          <FadeInElement 
-            delay={0.4} 
+          <FadeInElement
+            delay={0.7}
             className={`col-span-1 row-span-2 transition-opacity duration-300 ${expandedSection && expandedSection !== 'technologies' ? 'opacity-30' : 'opacity-100'}`}
           >
             <motion.div
@@ -292,9 +292,9 @@ const WorksHeader = () => {
           </FadeInElement>
 
           {smallProjects.map((project, index) => (
-            <FadeInElement 
-              key={project.title} 
-              delay={0.5 + (index * 0.1)} 
+            <FadeInElement
+              key={project.title}
+              delay={0.75 + (index * 0.1)}
               className={`col-span-1 transition-opacity duration-300 ${expandedSection && expandedSection !== 'projects' ? 'opacity-30' : 'opacity-100'}`}
             >
               {project.type === 'dual-stat' ? (
@@ -350,7 +350,7 @@ const WorksHeader = () => {
           ))}
 
           {/* Row 3: Featured Project (col-span-2) - Derkyu Hosting */}
-          <FadeInElement delay={0.7} className="col-span-2 relative">
+          <FadeInElement delay={0.95} className="col-span-2 relative">
             <motion.div
               className={`absolute bottom-0 left-0 right-0 ${expandedSection === 'featured' ? 'z-50' : 'z-10'}`}
               onHoverStart={() => setExpandedSection('featured')}

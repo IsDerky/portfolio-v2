@@ -14,7 +14,7 @@ const poppins = Poppins({
 const WorksIntro = () => {
   return (
     <Section className="py-6 md:py-8">
-      <FadeInElement delay={0.2}>
+      <FadeInElement delay={0.5}>
         <div className="grid grid-cols-1">
           <div className="bg-[#212121] rounded-2xl p-6 md:p-16 relative overflow-hidden border border-white/10">
             {/* Decorative lines */}
@@ -27,7 +27,7 @@ const WorksIntro = () => {
               </h2>
 
               <p className={`${poppins.className} text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed font-light max-w-none md:max-w-4xl`}>
-                A collection of projects I&apos;ve worked on, ranging from web applications to network solutions.
+                A collection of projects I&apos;ve worked on.
                 Each project represents a unique challenge and learning opportunity in my development journey.
               </p>
             </div>
