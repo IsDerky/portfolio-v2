@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Header from "@/components/sections/Header";
-import Hero from "@/components/sections/Hero";
 import WorksIntro from "@/components/sections/works/WorksIntro";
 import FeaturedProjects from "@/components/sections/works/FeaturedProjects";
-// import AllProjects from "@/components/sections/works/AllProjects";
+import AllProjects from "@/components/sections/works/AllProjects";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
@@ -13,13 +11,11 @@ export const metadata: Metadata = {
 
 export default function WorksPage() {
   return (
-    <main>
-      <Header />
-      <Hero />
+    <>
       <WorksIntro />
       <FeaturedProjects />
-      {/* <AllProjects /> */}
+      <AllProjects />
       <Footer />
-    </main>
+    </>
   );
 }

@@ -2,17 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Poppins } from 'next/font/google';
+import { poppins } from "@/lib/fonts";
 import { Github } from 'lucide-react';
 import { ActivityCalendar } from 'react-activity-calendar';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
-
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600'],
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 interface GitHubActivity {
   date: string;
@@ -22,12 +16,12 @@ interface GitHubActivity {
 
 const GitHubContributions = () => {
   const githubUsername = 'isderky';
+  const currentYear = new Date().getFullYear();
   const [data, setData] = useState<GitHubActivity[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch GitHub contributions data for last year
-    fetch(`https://github-contributions-api.jogruber.de/v4/${githubUsername}?y=2025`)
+    fetch(`https://github-contributions-api.jogruber.de/v4/${githubUsername}?y=${currentYear}`)
       .then(res => res.json())
       .then(res => {
         setData(res.contributions);
@@ -37,7 +31,7 @@ const GitHubContributions = () => {
         console.error('Error fetching GitHub data:', err);
         setLoading(false);
       });
-  }, []);
+  }, [currentYear]);
 
   const explicitTheme = {
     light: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
@@ -58,7 +52,7 @@ const GitHubContributions = () => {
               <Github size={24} className="text-white" />
               Contribution Graph
             </h3>
-            
+
             <a
               href={`https://github.com/${githubUsername}`}
               target="_blank"
@@ -69,7 +63,7 @@ const GitHubContributions = () => {
               View Profile
             </a>
           </div>
-          
+
           <div className="w-full pb-4">
             {loading ? (
               <div className={`${poppins.className} text-gray-400 text-center py-8`}>

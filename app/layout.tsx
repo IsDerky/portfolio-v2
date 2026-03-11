@@ -1,19 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AnimationProvider } from "@/components/providers/AnimationProvider";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { geistSans, geistMono } from "@/lib/fonts";
+import Header from "@/components/sections/Header";
+import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
   title: "Derkyu - Portfolio",
@@ -31,7 +23,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black min-h-screen`}
       >
         <AnimationProvider>
-          {children}
+          <Header />
+          <main>
+            <Hero />
+            {children}
+          </main>
         </AnimationProvider>
         <Analytics />
         <SpeedInsights />
