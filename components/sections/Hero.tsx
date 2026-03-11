@@ -6,7 +6,6 @@ import TextType from "@/components/TextType";
 import RotatingText from "@/components/RotatingText";
 import ModelViewer from "@/components/ModelViewer";
 import Section from "@/components/layout/Section";
-import { FadeInElement } from "@/components/animations/ContentAnimation";
 
 const ResponsiveShape = ({ className = "" }) => (
   <div className={className}>
@@ -49,8 +48,7 @@ const ModelFallback = () => (
 const Hero = () => {
   return (
     <Section className="pt-20 pb-8 md:pt-24">
-      <FadeInElement delay={0.3}>
-        <div className="relative">
+      <div className="relative">
           <ResponsiveShape />
 
           <div className="absolute top-[18%] md:top-[15%] left-[8%] md:left-[7%] transform -translate-y-1/2">
@@ -115,7 +113,6 @@ const Hero = () => {
             />
           </div>
         </div>
-      </FadeInElement>
     </Section>
   );
 };
