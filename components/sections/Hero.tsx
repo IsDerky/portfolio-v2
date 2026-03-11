@@ -80,7 +80,6 @@ const Hero = () => {
                 maxZoomDistance={6}
                 autoRotate={true}
                 autoRotateSpeed={0.8}
-                onModelLoaded={() => console.log('Modelo 3D cargado correctamente')}
               />
             </Suspense>
           </div>

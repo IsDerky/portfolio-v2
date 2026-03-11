@@ -44,7 +44,12 @@ interface ModelProps {
 
 const Model: FC<ModelProps> = ({ url, autoRotate, autoRotateSpeed, onLoaded }) => {
   const groupRef = useRef<THREE.Group>(null);
+  const onLoadedRef = useRef(onLoaded);
   const { scene } = useGLTF(url);
+
+  useLayoutEffect(() => {
+    onLoadedRef.current = onLoaded;
+  });
 
   useLayoutEffect(() => {
     if (!scene || !groupRef.current) return;
@@ -85,9 +90,8 @@ const Model: FC<ModelProps> = ({ url, autoRotate, autoRotateSpeed, onLoaded }) =
       }
     });
 
-    console.log('Modelo cargado');
-    onLoaded?.();
-  }, [scene, onLoaded]);
+    onLoadedRef.current?.();
+  }, [scene]);
 
   useFrame((state) => {
     if (!groupRef.current || !autoRotate) return;
