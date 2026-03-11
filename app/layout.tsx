@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AnimationProvider } from "@/components/providers/AnimationProvider";
 import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { geistSans, geistMono } from "@/lib/fonts";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
@@ -30,7 +29,6 @@ export default function RootLayout({
           </main>
         </AnimationProvider>
         <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
