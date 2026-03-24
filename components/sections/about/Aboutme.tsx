@@ -60,7 +60,7 @@ const WorksHeader = () => {
     { 
       title: "Developer Stats",
       stats: [
-        { label: "Lines of Code", value: "10K+", icon: "code" },
+        { label: "Lines of Code", value: "60K+", icon: "code" },
         { label: "Coffee Cups", value: "∞", icon: "coffee" }
       ],
       type: "dual-stat"
