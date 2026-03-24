@@ -121,7 +121,7 @@ const GitHubContributions = () => {
     return React.cloneElement(block, {
       'data-tooltip-id': 'contributions-tooltip',
       'data-tooltip-content': label,
-    });
+    } as Record<string, string>);
   }, []);
 
   return (
