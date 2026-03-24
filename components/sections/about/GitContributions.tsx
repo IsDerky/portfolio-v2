@@ -106,7 +106,7 @@ const GitHubContributions = () => {
     dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
   };
 
-  const renderBlock = useCallback((block: React.ReactElement, activity: GitHubActivity) => {
+  const renderBlock = useCallback((block: React.ReactElement, activity: { date: string; count: number; level: number }) => {
     const date = new Date(activity.date + 'T00:00:00');
     const formatted = date.toLocaleDateString('en-US', {
       weekday: 'long',
