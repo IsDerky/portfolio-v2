@@ -133,7 +133,7 @@ const AllProjects = () => {
                         <span className={`${poppins.className} text-xs text-gray-500 uppercase tracking-wide`}>
                           {project.year}
                         </span>
-                        <span className="text-gray-600">•</span>
+
                         <div className="flex items-center gap-1.5">
                           <CategoryIcon size={12} className="text-gray-500" />
                           <span className={`${poppins.className} text-xs text-gray-500 capitalize`}>
