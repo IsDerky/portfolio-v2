@@ -1,6 +1,7 @@
 'use client';
 
 import React from "react";
+import Link from "next/link";
 import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
@@ -26,12 +27,12 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex justify-center space-x-6">
-            <a href="/works" className={`${poppins.className} text-sm text-gray-400 hover:text-white transition-colors duration-300 font-light`}>
+            <Link href="/works" className={`${poppins.className} text-sm text-gray-400 hover:text-white transition-colors duration-300 font-light`}>
               Works
-            </a>
-            <a href="/about" className={`${poppins.className} text-sm text-gray-400 hover:text-white transition-colors duration-300 font-light`}>
+            </Link>
+            <Link href="/about" className={`${poppins.className} text-sm text-gray-400 hover:text-white transition-colors duration-300 font-light`}>
               About
-            </a>
+            </Link>
           </div>
           <div>
             <p className={`${poppins.className} text-sm text-gray-400 font-light`}>Barcelona, Spain</p>

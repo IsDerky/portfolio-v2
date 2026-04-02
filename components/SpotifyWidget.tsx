@@ -41,12 +41,6 @@ const SoundBars = ({ progressPercent }: { progressPercent: number }) => (
         );
       })}
     </div>
-    <style>{`
-      @keyframes natemoo-sound {
-        0%   { opacity: 0.35; height: 3px; }
-        100% { opacity: 1;    height: 6px; }
-      }
-    `}</style>
   </div>
 );
 
@@ -100,7 +94,7 @@ export default function SpotifyWidget() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Fetch inicial y cada 30s
+  // Fetch inicial y cada 5s
   useEffect(() => {
     fetchData();
     const fetchInterval = setInterval(fetchData, 5000);
@@ -197,10 +191,10 @@ export default function SpotifyWidget() {
                     </p>
                   )}
                   <p className={`${poppins.className} text-sm font-semibold text-white truncate leading-snug mb-0.5`}>
-                    {data?.artist ?? '—'}
+                    {data?.title ?? 'Not playing'}
                   </p>
                   <p className={`${poppins.className} text-sm text-gray-300 truncate ${data?.isPlaying ? 'mb-4' : ''}`}>
-                    {data?.title ?? 'Not playing'}
+                    {data?.artist ?? '—'}
                   </p>
 
                   {data?.isPlaying && (

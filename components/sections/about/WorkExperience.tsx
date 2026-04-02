@@ -2,15 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Poppins } from 'next/font/google';
+import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
-
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600'],
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 interface Experience {
   id: string;

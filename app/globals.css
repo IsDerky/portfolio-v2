@@ -120,3 +120,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes natemoo-sound {
+  0%   { opacity: 0.35; height: 3px; }
+  100% { opacity: 1;    height: 6px; }
+}

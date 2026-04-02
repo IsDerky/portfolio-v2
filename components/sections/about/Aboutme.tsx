@@ -2,22 +2,16 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Poppins } from 'next/font/google';
 import {
   ExternalLink,
   Code2,
   Coffee,
   Infinity
 } from 'lucide-react';
+import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 import SpotifyWidget from "@/components/SpotifyWidget";
-
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600'],
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 const WorksHeader = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);

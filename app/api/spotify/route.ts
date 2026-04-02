@@ -28,6 +28,10 @@ async function getAccessToken(): Promise<string> {
 
   const data = await response.json();
 
+  if (!data.access_token) {
+    throw new Error('Spotify token refresh failed');
+  }
+
   cachedToken = {
     value: data.access_token,
     expiresAt: Date.now() + (data.expires_in ?? 3600) * 1000 - 120_000,
