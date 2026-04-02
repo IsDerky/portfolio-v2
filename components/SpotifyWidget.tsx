@@ -130,7 +130,19 @@ export default function SpotifyWidget() {
         className="bg-[#212121] rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer h-full overflow-hidden flex flex-col no-underline"
       >
         <div className={`${poppins.className} text-xs text-gray-400 px-4 pt-4 pb-3`}>
-          {!loading && (data?.isPlaying ? 'Currently Listening' : 'Currently Offline')}
+          <AnimatePresence mode="wait">
+            {!loading && (
+              <motion.span
+                key={data?.isPlaying ? 'listening' : 'offline'}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {data?.isPlaying ? 'Currently Listening' : 'Currently Offline'}
+              </motion.span>
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="flex-1 flex flex-col px-4 pb-4">
@@ -150,7 +162,7 @@ export default function SpotifyWidget() {
           ) : (
             <AnimatePresence mode="wait">
               <motion.div
-                key={data?.title ?? 'empty'}
+                key={`${data?.isPlaying ? 'playing' : 'offline'}-${data?.title ?? 'empty'}`}
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
