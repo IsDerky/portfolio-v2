@@ -6,7 +6,13 @@ const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN!;
 
 const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
+let cachedToken: { value: string; expiresAt: number } | null = null;
+
 async function getAccessToken(): Promise<string> {
+  if (cachedToken && Date.now() < cachedToken.expiresAt) {
+    return cachedToken.value;
+  }
+
   const response = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
@@ -21,6 +27,12 @@ async function getAccessToken(): Promise<string> {
   });
 
   const data = await response.json();
+
+  cachedToken = {
+    value: data.access_token,
+    expiresAt: Date.now() + (data.expires_in ?? 3600) * 1000 - 120_000,
+  };
+
   return data.access_token;
 }
 

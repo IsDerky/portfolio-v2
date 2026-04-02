@@ -5,7 +5,7 @@ export interface Project {
   longDescription: string;
   image?: string;
   tags: string[];
-  category: 'web' | 'network' | 'tools' | 'other';
+  category: 'web' | 'service' | 'network' | 'tools';
   liveUrl?: string;
   githubUrl?: string;
   year: string;
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     longDescription: 'A comprehensive hosting solution offering optimized performance, intuitive management tools, and 24/7 support with strategic server locations across Europe and South America.',
     image: '/logos/derkyu-hosting.png',
     tags: ['Shadcn', 'Next.js', 'TypeScript', 'PNPM'],
-    category: 'web',
+    category: 'service',
     liveUrl: 'https://hosting.derkyu.lol',
     year: '2025',
     featured: true,
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     description: 'Free browser-based body camera overlay tool for FiveM and GTA Roleplay streamers.',
     longDescription: 'Configure professional bodycam overlays for OBS — no installation required. Built for the FiveM and GTA Roleplay streaming community.',
     tags: ['Next.js', 'React', 'OBS'],
-    category: 'web',
+    category: 'tools',
     liveUrl: 'https://bodycamrp.org',
     year: '2026',
     featured: false,

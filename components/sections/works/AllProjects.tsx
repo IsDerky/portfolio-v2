@@ -2,17 +2,18 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Code2, Network, Wrench, Sparkles } from 'lucide-react';
+import { ExternalLink, Code2, Network, Wrench, Server, LayoutGrid } from 'lucide-react';
 import { poppins } from "@/lib/fonts";
 import { projects, type Project } from '@/lib/projects';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 
 const categoryIcons = {
+  all: LayoutGrid,
   web: Code2,
+  service: Server,
   network: Network,
   tools: Wrench,
-  other: Sparkles,
 };
 
 interface AllProjectsProps {
@@ -22,7 +23,7 @@ interface AllProjectsProps {
 const AllProjects = ({ onProjectClick }: AllProjectsProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const categories = ['all', 'web', 'network', 'tools', 'other'];
+  const categories = ['all', 'web', 'service', 'network', 'tools'];
 
   const filteredProjects = selectedCategory === 'all'
     ? projects
@@ -41,7 +42,7 @@ const AllProjects = ({ onProjectClick }: AllProjectsProps) => {
 
           <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide" role="tablist" aria-label="Filter projects by category">
             {categories.map((category) => {
-              const Icon = categoryIcons[category as keyof typeof categoryIcons] || Sparkles;
+              const Icon = categoryIcons[category as keyof typeof categoryIcons] || LayoutGrid;
               return (
                 <button
                   key={category}
@@ -71,7 +72,7 @@ const AllProjects = ({ onProjectClick }: AllProjectsProps) => {
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr" id="projects-grid" role="tabpanel" aria-label="Project list">
         <AnimatePresence mode="sync">
           {filteredProjects.map((project) => {
-            const CategoryIcon = categoryIcons[project.category as keyof typeof categoryIcons] || Sparkles;
+            const CategoryIcon = categoryIcons[project.category as keyof typeof categoryIcons] || LayoutGrid;
             return (
               <motion.div
                 key={project.id}
@@ -151,7 +152,7 @@ const AllProjects = ({ onProjectClick }: AllProjectsProps) => {
           <div className="text-center py-12 bg-[#212121] rounded-xl border border-white/10">
             <div className="flex justify-center mb-3">
               <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
-                <Sparkles size={20} className="text-gray-500" />
+                <LayoutGrid size={20} className="text-gray-500" />
               </div>
             </div>
             <p className={`${poppins.className} text-gray-400 font-light`}>
