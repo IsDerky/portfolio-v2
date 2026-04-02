@@ -3,52 +3,18 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Poppins } from 'next/font/google';
 import { ExternalLink, Github } from 'lucide-react';
+import { poppins } from '@/lib/fonts';
+import { getFeaturedProjects, type Project } from '@/lib/projects';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600'],
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-interface FeaturedProject {
-  id: string;
-  title: string;
-  description: string;
-  longDescription: string;
-  image: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  featured: boolean;
+interface FeaturedProjectsProps {
+  onProjectClick: (project: Project) => void;
 }
 
-const FeaturedProjects = () => {
-  const featuredProjects: FeaturedProject[] = [
-    {
-      id: 'derkyu-hosting',
-      title: 'Derkyu Hosting',
-      description: 'Specialized hosting platform for game servers, Discord bots, and custom software',
-      longDescription: 'A comprehensive hosting solution offering optimized performance, intuitive management tools, and 24/7 support with strategic server locations across Europe and South America.',
-      image: '/logos/derkyu-hosting.png',
-      tags: ['Shadcn', 'Next.js', 'TypeScript', 'PNPM'],
-      liveUrl: 'https://hosting.derkyu.lol',
-      featured: true
-    },
-    {
-      id: 'ronin-fc',
-      title: 'Ronin FC',
-      description: 'Website for Ronin FC, the football club founded by Ibai Llanos',
-      longDescription: 'Community-built website for Ronin FC football club. This is a fan-made project and is not officially affiliated with or endorsed by Ibai Llanos or Ronin FC organization.',
-      image: '/logos/ronin-logo.png',
-      tags: ['Next.js', 'TypeScript', 'PNPM', 'API'],
-      liveUrl: 'https://roninfc.digital',
-      featured: true
-    }
-  ];
+const FeaturedProjects = ({ onProjectClick }: FeaturedProjectsProps) => {
+  const featuredProjects = getFeaturedProjects();
 
   return (
     <Section className="py-6 md:py-8">
@@ -67,15 +33,14 @@ const FeaturedProjects = () => {
           <FadeInElement key={project.id} delay={0.8 + (index * 0.1)}>
             <motion.div
               whileHover={{ scale: 1.01, y: -4 }}
-              className="bg-[#212121] rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group relative"
+              onClick={() => onProjectClick(project)}
+              className="bg-[#212121] rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group relative cursor-pointer"
             >
-              {/* Decorative gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                 {/* Image Section */}
                 <div className="relative h-64 md:h-auto bg-[#212121] flex items-center justify-center overflow-hidden">
-                  {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#212121] via-transparent to-transparent opacity-60 z-10"></div>
 
                   {project.image ? (
@@ -111,7 +76,6 @@ const FeaturedProjects = () => {
                       {project.longDescription}
                     </p>
 
-                    {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag) => (
                         <span
@@ -124,13 +88,13 @@ const FeaturedProjects = () => {
                     </div>
                   </div>
 
-                  {/* Links */}
                   <div className="flex gap-3 mt-4">
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
                         className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-all text-sm text-gray-200 font-medium group/link shadow-lg shadow-white/5`}
                         aria-label={`Visit ${project.title}`}
                       >
@@ -143,6 +107,7 @@ const FeaturedProjects = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
                         className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all text-sm text-gray-400 hover:text-gray-300 font-medium`}
                         aria-label={`View source code for ${project.title} on GitHub`}
                       >

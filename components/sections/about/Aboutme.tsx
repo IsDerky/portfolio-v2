@@ -3,16 +3,15 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Poppins } from 'next/font/google';
-import { 
-  Github, 
-  ExternalLink, 
-  Calendar,
+import {
+  ExternalLink,
   Code2,
   Coffee,
   Infinity
 } from 'lucide-react';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
+import SpotifyWidget from "@/components/SpotifyWidget";
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '600'],
@@ -22,30 +21,6 @@ const poppins = Poppins({
 
 const WorksHeader = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
-
-  // Frameworks favoritos
-  const frameworks = [
-    { 
-      name: "Next.js", 
-      logo: "/logos/nextjs.svg", 
-      color: "bg-white/90"
-    },
-    { 
-      name: "React", 
-      logo: "/logos/react.svg", 
-      color: "bg-gray-100/90"
-    },
-    { 
-      name: "Astro", 
-      logo: "/logos/astro.svg", 
-      color: "bg-gray-200/90"
-    },
-    { 
-      name: "Express.js", 
-      logo: "/logos/expressjs.svg", 
-      color: "bg-white/80"
-    }
-  ];
 
   // Tecnologías que dominas
   const masterTechnologies = [
@@ -174,20 +149,7 @@ const WorksHeader = () => {
 
         {/* Spotify */}
         <FadeInElement delay={0.8}>
-          <motion.div
-            whileHover={{ scale: 1.01 }}
-            className="bg-[#212121] rounded-xl border border-white/10 transition-all duration-300 cursor-pointer group overflow-hidden"
-            onClick={() => window.open('https://open.spotify.com', '_blank')}
-          >
-            <div className={`${poppins.className} text-xs text-gray-400 mb-2 px-4 pt-4`}>Currently Listening</div>
-            <div className="px-3 pb-3">
-              <img 
-                src={`https://spotify-github-profile.kittinanx.com/api/view.svg?uid=darkqwew&cover_image=true&theme=natemoo-re&show_offline=false&background_color=121212&interchange=true&bar_color=ffffff&bar_color_cover=false`}
-                alt="Spotify Now Playing"
-                className="w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity"
-              />
-            </div>
-          </motion.div>
+          <SpotifyWidget />
         </FadeInElement>
 
         {/* Featured Project - Derkyu Hosting */}
@@ -331,20 +293,7 @@ const WorksHeader = () => {
                   </div>
                 </motion.div>
               ) : project.type === 'spotify' ? (
-                <motion.div
-                  whileHover={{ scale: 1.01 }}
-                  className="bg-[#212121] rounded-xl border border-white/10 transition-all duration-300 cursor-pointer group h-full overflow-hidden flex flex-col"
-                  onClick={() => window.open('https://open.spotify.com', '_blank')}
-                >
-                  <div className={`${poppins.className} text-xs text-gray-400 mb-2 px-4 pt-4`}>Currently Listening</div>
-                  <div className="flex-1 flex items-center justify-center px-3 pb-3">
-                    <img 
-                      src={`https://spotify-github-profile.kittinanx.com/api/view.svg?uid=${project.spotifyUser}&cover_image=true&theme=natemoo-re&show_offline=false&background_color=121212&interchange=true&bar_color=ffffff&bar_color_cover=false`}
-                      alt="Spotify Now Playing"
-                      className="w-full h-auto max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity"
-                    />
-                  </div>
-                </motion.div>
+                <SpotifyWidget />
               ) : null}
             </FadeInElement>
           ))}

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Code2, Network, Wrench, Sparkles } from 'lucide-react';
 import { poppins } from "@/lib/fonts";
+import { projects, type Project } from '@/lib/projects';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 
@@ -14,51 +15,14 @@ const categoryIcons = {
   other: Sparkles,
 };
 
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  year: string;
+interface AllProjectsProps {
+  onProjectClick: (project: Project) => void;
 }
 
-const AllProjects = () => {
+const AllProjects = ({ onProjectClick }: AllProjectsProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = ['all', 'web', 'network', 'tools', 'other'];
-
-  const projects: Project[] = [
-    {
-      id: 'derkyu-hosting',
-      title: 'Derkyu Hosting',
-      description: 'Specialized hosting platform for game servers, Discord bots, and custom software.',
-      category: 'web',
-      tags: ['Shadcn', 'Next.js', 'TypeScript', 'PNPM'],
-      liveUrl: 'https://hosting.derkyu.lol',
-      year: '2025'
-    },
-    {
-      id: 'ronin-fc',
-      title: 'Ronin FC',
-      description: 'Community-built website for Ronin FC, the football club founded by Ibai Llanos.',
-      category: 'web',
-      tags: ['Next.js', 'TypeScript', 'PNPM', 'API'],
-      liveUrl: 'https://roninfc.digital',
-      year: '2025'
-    },
-    {
-      id: 'bodycamrp',
-      title: 'Bodycam RP',
-      description: 'Free browser-based body camera overlay tool for FiveM and GTA Roleplay streamers. Configure professional bodycam overlays for OBS — no installation required.',
-      category: 'web',
-      tags: ['Next.js', 'React', 'OBS'],
-      liveUrl: 'https://bodycamrp.org',
-      year: '2026'
-    }
-  ];
 
   const filteredProjects = selectedCategory === 'all'
     ? projects
@@ -120,7 +84,8 @@ const AllProjects = () => {
               >
                 <motion.div
                   whileHover={{ y: -4 }}
-                  className="bg-[#212121] rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col group relative overflow-hidden"
+                  onClick={() => onProjectClick(project)}
+                  className="bg-[#212121] rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col group relative overflow-hidden cursor-pointer"
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -165,6 +130,7 @@ const AllProjects = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
                         className={`${poppins.className} flex items-center gap-1.5 px-3 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-all text-xs text-gray-300 hover:text-white font-medium shadow-lg shadow-white/5`}
                         aria-label={`Visit ${project.title}`}
                       >
