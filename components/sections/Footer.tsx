@@ -24,14 +24,6 @@ const Footer = () => {
               Developer & Network Technician
             </p>
           </div>
-          <div className="flex justify-center space-x-6">
-            <Link href="/works" className={`${poppins.className} text-sm text-gray-400 hover:text-white transition-colors duration-300 font-light`}>
-              Works
-            </Link>
-            <Link href="/about" className={`${poppins.className} text-sm text-gray-400 hover:text-white transition-colors duration-300 font-light`}>
-              About
-            </Link>
-          </div>
           <div>
             <p className={`${poppins.className} text-sm text-gray-400 font-light`}>Barcelona, Spain</p>
             <p className={`${poppins.className} text-xs text-gray-500 font-light mt-1`}>Available for work</p>
