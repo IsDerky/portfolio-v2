@@ -1,6 +1,5 @@
-'use client';
-
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -19,7 +18,7 @@ const Section = ({
 }: SectionProps) => {
   return (
     <Component 
-      className={`w-full py-8 px-8 ${className}`}
+      className={cn('w-full py-8 px-8', className)}
       style={{ backgroundColor }}
     >
       {includeContainer ? (
