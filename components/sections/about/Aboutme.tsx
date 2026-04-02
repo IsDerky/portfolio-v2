@@ -9,11 +9,14 @@ import {
   Infinity
 } from 'lucide-react';
 import { poppins } from "@/lib/fonts";
+import { getProjectById } from "@/lib/projects";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 import SpotifyWidget from "@/components/SpotifyWidget";
 
-const WorksHeader = () => {
+const featuredProject = getProjectById('derkyu-hosting')!;
+
+const Aboutme = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   // Tecnologías que dominas
@@ -146,42 +149,40 @@ const WorksHeader = () => {
           <SpotifyWidget />
         </FadeInElement>
 
-        {/* Featured Project - Derkyu Hosting */}
+        {/* Featured Project */}
         <FadeInElement delay={0.85}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-[#212121] rounded-xl border border-white/10 transition-all duration-300 cursor-pointer group"
-            onClick={() => window.open('https://hosting.derkyu.lol', '_blank')}
+            onClick={() => window.open(featuredProject.liveUrl, '_blank')}
           >
             <div className="p-4">
               <div className="flex justify-between items-start mb-2">
                 <div>
                   <div className={`${poppins.className} text-xs text-gray-400 mb-0.5`}>Featured Project</div>
                   <h4 className={`${poppins.className} text-base font-semibold text-white transition-colors`}>
-                    Derkyu Hosting
+                    {featuredProject.title}
                   </h4>
                 </div>
                 <ExternalLink size={18} className="text-white opacity-70 group-hover:opacity-100 transition-opacity" strokeWidth={2.5} />
               </div>
 
               <p className={`${poppins.className} text-gray-300 text-xs leading-relaxed mb-3`}>
-                Specialized hosting platform offering optimized solutions for game servers, Discord bots, websites, VoIP servers, and custom software with intuitive management tools.
+                {featuredProject.longDescription}
               </p>
 
-              <div className="space-y-2">
-                <div>
-                  <h5 className={`${poppins.className} text-xs font-semibold text-white mb-1`}>Performance & Flexibility</h5>
-                  <p className={`${poppins.className} text-xs text-gray-400 leading-snug`}>
-                    Scalable plans with 99% SLA, strategic server locations across Europe and South America, and 24/7 technical support for seamless operations
-                  </p>
+              {featuredProject.details && (
+                <div className="space-y-2">
+                  {featuredProject.details.map((detail) => (
+                    <div key={detail.title}>
+                      <h5 className={`${poppins.className} text-xs font-semibold text-white mb-1`}>{detail.title}</h5>
+                      <p className={`${poppins.className} text-xs text-gray-400 leading-snug`}>
+                        {detail.text}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-                <div>
-                  <h5 className={`${poppins.className} text-xs font-semibold text-white mb-1`}>Advanced Features</h5>
-                  <p className={`${poppins.className} text-xs text-gray-400 leading-snug`}>
-                    Integrated code editor, SFTP file manager, automatic updates, real-time monitoring, and DDoS protection included in all plans
-                  </p>
-                </div>
-              </div>
+              )}
             </div>
           </motion.div>
         </FadeInElement>
@@ -292,7 +293,7 @@ const WorksHeader = () => {
             </FadeInElement>
           ))}
 
-          {/* Row 3: Featured Project (col-span-2) - Derkyu Hosting */}
+          {/* Row 3: Featured Project (col-span-2) */}
           <FadeInElement delay={0.95} className="col-span-2 relative">
             <motion.div
               className={`absolute bottom-0 left-0 right-0 ${expandedSection === 'featured' ? 'z-50' : 'z-10'}`}
@@ -313,19 +314,19 @@ const WorksHeader = () => {
                     <div>
                       <div className={`${poppins.className} text-xs text-gray-400 mb-0.5`}>Featured Project</div>
                       <h4 className={`${poppins.className} text-base font-semibold text-white transition-colors`}>
-                        Derkyu Hosting
+                        {featuredProject.title}
                       </h4>
                     </div>
                     <motion.a
                       whileHover={{ scale: 1.15 }}
                       whileTap={{ scale: 0.9 }}
                       initial={{ opacity: 0, rotate: 0 }}
-                      animate={{ 
+                      animate={{
                         opacity: expandedSection === 'featured' ? 1 : 0,
                         rotate: expandedSection === 'featured' ? -15 : 0
                       }}
                       transition={{ duration: 0.5, ease: "easeOut" }}
-                      href="https://hosting.derkyu.lol"
+                      href={featuredProject.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2"
@@ -335,35 +336,31 @@ const WorksHeader = () => {
                   </div>
 
                   <p className={`${poppins.className} text-gray-300 text-xs leading-relaxed mb-auto`}>
-                    Specialized hosting platform offering optimized solutions for game servers, Discord bots, websites, VoIP servers, and custom software with intuitive management tools.
+                    {featuredProject.longDescription}
                   </p>
 
                   <AnimatePresence>
-                    {expandedSection === 'featured' && (
+                    {expandedSection === 'featured' && featuredProject.details && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ 
-                          duration: 0.4, 
+                        transition={{
+                          duration: 0.4,
                           ease: "easeInOut",
                           opacity: { duration: 0.3 }
                         }}
                         className="overflow-hidden"
                       >
                         <div className="space-y-2.5 pt-2.5">
-                          <div>
-                            <h5 className={`${poppins.className} text-xs font-semibold text-white mb-1`}>Performance & Flexibility</h5>
-                            <p className={`${poppins.className} text-xs text-gray-400 leading-snug`}>
-                              Scalable plans with 99% SLA, strategic server locations across Europe and South America, and 24/7 technical support for seamless operations
-                            </p>
-                          </div>
-                          <div>
-                            <h5 className={`${poppins.className} text-xs font-semibold text-white mb-1`}>Advanced Features</h5>
-                            <p className={`${poppins.className} text-xs text-gray-400 leading-snug`}>
-                              Integrated code editor, SFTP file manager, automatic updates, real-time monitoring, and DDoS protection included in all plans
-                            </p>
-                          </div>
+                          {featuredProject.details.map((detail) => (
+                            <div key={detail.title}>
+                              <h5 className={`${poppins.className} text-xs font-semibold text-white mb-1`}>{detail.title}</h5>
+                              <p className={`${poppins.className} text-xs text-gray-400 leading-snug`}>
+                                {detail.text}
+                              </p>
+                            </div>
+                          ))}
                         </div>
                       </motion.div>
                     )}
@@ -379,4 +376,4 @@ const WorksHeader = () => {
   );
 };
 
-export default WorksHeader;
+export default Aboutme;

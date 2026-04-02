@@ -11,11 +11,7 @@ const WorksIntro = () => {
       <FadeInElement delay={0.5}>
         <div className="grid grid-cols-1">
           <div className="bg-[#212121] rounded-2xl p-6 md:p-16 relative overflow-hidden border border-white/10">
-            {/* Decorative lines */}
-            <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent"></div>
-            <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-white/3 to-transparent"></div>
-
-            <div className="relative z-10">
+            <div>
               <h2 className={`${poppins.className} text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4 md:mb-6`}>
                 My Works
               </h2>

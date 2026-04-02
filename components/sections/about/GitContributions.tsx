@@ -175,13 +175,13 @@ const GitHubContributions = () => {
                 />
                 <ReactTooltip
                   id="contributions-tooltip"
+                  border="1px solid rgba(255,255,255,0.1)"
                   style={{
                     backgroundColor: '#1a1a1a',
                     color: '#e5e7eb',
                     fontSize: '12px',
                     borderRadius: '8px',
                     padding: '8px 12px',
-                    border: '1px solid rgba(255,255,255,0.1)',
                     zIndex: 100,
                   }}
                 />
