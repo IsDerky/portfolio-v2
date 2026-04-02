@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";

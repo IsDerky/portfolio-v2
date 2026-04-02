@@ -1,11 +1,20 @@
 'use client';
 
-import React, { Suspense } from "react";
+import React from "react";
+import dynamic from "next/dynamic";
 import { reenieBeanie, poppins, permanentMarker } from "@/lib/fonts";
 import TextType from "@/components/TextType";
 import RotatingText from "@/components/RotatingText";
-import ModelViewer from "@/components/ModelViewer";
 import Section from "@/components/layout/Section";
+
+const ModelViewer = dynamic(() => import("@/components/ModelViewer"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="animate-spin rounded-full h-10 w-10 md:h-12 md:w-12 border-2 border-transparent border-t-gray-500 border-r-gray-500" style={{ animationDuration: '0.6s' }}></div>
+    </div>
+  ),
+});
 
 const ResponsiveShape = ({ className = "" }) => (
   <div className={className}>
@@ -39,12 +48,6 @@ const ResponsiveShape = ({ className = "" }) => (
   </div>
 );
 
-const ModelFallback = () => (
-  <div className="w-full h-full flex items-center justify-center">
-    <div className="animate-spin rounded-full h-6 w-6 md:h-8 md:w-8 border-b-2 border-gray-400"></div>
-  </div>
-);
-
 const Hero = () => {
   return (
     <Section className="pt-20 pb-8 md:pt-24">
@@ -70,7 +73,6 @@ const Hero = () => {
           </div>
 
           <div className="absolute top-[-8%] md:top-[-5%] right-[5%] md:right-[3%] w-[30%] md:w-[35%] h-[45%] md:h-[50%] min-w-[80px] md:min-w-[120px] min-h-[80px] md:min-h-[120px]">
-            <Suspense fallback={<ModelFallback />}>
               <ModelViewer
                 url="/models/shinchan.glb"
                 width="100%"
@@ -81,7 +83,6 @@ const Hero = () => {
                 autoRotate={true}
                 autoRotateSpeed={0.8}
               />
-            </Suspense>
           </div>
 
           <div className="absolute bottom-[18%] md:bottom-[15%] left-[5%] md:left-[3%] transform translate-y-1/2">

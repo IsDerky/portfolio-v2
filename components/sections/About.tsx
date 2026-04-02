@@ -1,10 +1,14 @@
 'use client';
 
 import React from "react";
+import dynamic from "next/dynamic";
 import { poppins } from "@/lib/fonts";
-import Particles from '@/components/Particles';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
+
+const Particles = dynamic(() => import('@/components/Particles'), {
+  ssr: false,
+});
 
 const About = () => {
   return (
