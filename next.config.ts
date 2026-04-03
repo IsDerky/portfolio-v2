@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
+import createMDX from '@next/mdx';
+
+const withMDX = createMDX({});
 
 const nextConfig: NextConfig = {
+  pageExtensions: ['ts', 'tsx', 'mdx'],
   // Transpila los paquetes de Three.js para evitar problemas de SSR
   transpilePackages: ['@react-three/fiber', '@react-three/drei', 'three'],
   
@@ -52,4 +56,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

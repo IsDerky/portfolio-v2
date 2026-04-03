@@ -2,25 +2,133 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Code2, Network, Wrench, Server, LayoutGrid } from 'lucide-react';
+import { useRouter } from "next/navigation";
+import { ExternalLink, Code2, Network, Wrench, Server, LayoutGrid, type LucideIcon } from 'lucide-react';
 import { poppins } from "@/lib/fonts";
-import { projects, type Project } from '@/lib/projects';
-import Section from "@/components/layout/Section";
-import { FadeInElement } from "@/components/animations/ContentAnimation";
+import { cn } from "@/lib/utils";
+import { projects } from '@/lib/projects';
 
-const categoryIcons = {
+const categoryIcons: Record<string, LucideIcon> = {
   all: LayoutGrid,
   web: Code2,
   service: Server,
   network: Network,
   tools: Wrench,
 };
+import Section from "@/components/layout/Section";
+import { FadeInElement } from "@/components/animations/ContentAnimation";
 
-interface AllProjectsProps {
-  onProjectClick: (project: Project) => void;
+
+interface ProjectCardProps {
+  project: (typeof projects)[number];
+  onCardClick: (id: string) => void;
 }
 
-const AllProjects = ({ onProjectClick }: AllProjectsProps) => {
+const ProjectCard = ({ project, onCardClick }: ProjectCardProps) => {
+  const CategoryIcon = categoryIcons[project.category] || LayoutGrid;
+  return (
+    <motion.div
+      key={project.id}
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="h-full"
+    >
+      <motion.div
+        whileHover={{ y: -4 }}
+        transition={{ duration: 0.15, ease: "easeOut" }}
+        onClick={() => onCardClick(project.id)}
+        className="bg-[#212121] rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all duration-150 h-full flex flex-col group relative overflow-hidden cursor-pointer"
+      >
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div className="flex items-start justify-between mb-3 relative z-10">
+          <div className="flex-1">
+            <h4 className={`${poppins.className} text-lg font-semibold text-white mb-2 group-hover:text-gray-100 transition-colors`}>
+              {project.title}
+            </h4>
+            <div className="flex items-center gap-2">
+              <span className={`${poppins.className} text-xs text-gray-500 uppercase tracking-wide`}>
+                {project.year}
+              </span>
+              <div className="flex items-center gap-1.5">
+                <CategoryIcon size={12} className="text-gray-500" />
+                <span className={`${poppins.className} text-xs text-gray-500 capitalize`}>
+                  {project.category}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p className={`${poppins.className} text-sm text-gray-400 leading-relaxed mb-4 flex-grow font-light relative z-10`}>
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-4 relative z-10">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className={`${poppins.className} text-xs px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-500 hover:bg-white/10 hover:text-gray-400 transition-all`}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex gap-2 mt-auto relative z-10">
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className={`${poppins.className} flex items-center gap-1.5 px-3 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-all text-xs text-gray-300 hover:text-white font-medium shadow-lg shadow-white/5`}
+              aria-label={`Visit ${project.title}`}
+            >
+              <ExternalLink size={14} aria-hidden="true" />
+              View
+            </a>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+interface CategoryFilterProps {
+  category: string;
+  isSelected: boolean;
+  onSelect: (category: string) => void;
+}
+
+const CategoryFilter = ({ category, isSelected, onSelect }: CategoryFilterProps) => {
+  const Icon = categoryIcons[category] || LayoutGrid;
+  return (
+    <button
+      onClick={() => onSelect(category)}
+      role="tab"
+      aria-selected={isSelected}
+      aria-controls="projects-grid"
+      aria-label={`Filter by ${category} projects`}
+      className={cn(
+        poppins.className,
+        'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap',
+        isSelected
+          ? 'bg-white/20 text-white border border-white/30 shadow-lg shadow-white/10'
+          : 'bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10 hover:border-white/20'
+      )}
+    >
+      <Icon size={14} aria-hidden="true" />
+      {category.charAt(0).toUpperCase() + category.slice(1)}
+    </button>
+  );
+};
+
+const AllProjects = () => {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = ['all', 'web', 'service', 'network', 'tools'];
@@ -41,109 +149,27 @@ const AllProjects = ({ onProjectClick }: AllProjectsProps) => {
           </div>
 
           <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide" role="tablist" aria-label="Filter projects by category">
-            {categories.map((category) => {
-              const Icon = categoryIcons[category as keyof typeof categoryIcons] || LayoutGrid;
-              return (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  role="tab"
-                  aria-selected={selectedCategory === category}
-                  aria-controls="projects-grid"
-                  aria-label={`Filter by ${category} projects`}
-                  className={`
-                    ${poppins.className}
-                    flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap
-                    ${selectedCategory === category
-                      ? 'bg-white/20 text-white border border-white/30 shadow-lg shadow-white/10'
-                      : 'bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10 hover:border-white/20'
-                    }
-                  `}
-                >
-                  <Icon size={14} aria-hidden="true" />
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </button>
-              );
-            })}
+            {categories.map((category) => (
+              <CategoryFilter
+                key={category}
+                category={category}
+                isSelected={selectedCategory === category}
+                onSelect={setSelectedCategory}
+              />
+            ))}
           </div>
         </div>
       </FadeInElement>
 
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr" id="projects-grid" role="tabpanel" aria-label="Project list">
         <AnimatePresence mode="sync">
-          {filteredProjects.map((project) => {
-            const CategoryIcon = categoryIcons[project.category as keyof typeof categoryIcons] || LayoutGrid;
-            return (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-                className="h-full"
-              >
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  onClick={() => onProjectClick(project)}
-                  className="bg-[#212121] rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col group relative overflow-hidden cursor-pointer"
-                >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                  <div className="flex items-start justify-between mb-3 relative z-10">
-                    <div className="flex-1">
-                      <h4 className={`${poppins.className} text-lg font-semibold text-white mb-2 group-hover:text-gray-100 transition-colors`}>
-                        {project.title}
-                      </h4>
-                      <div className="flex items-center gap-2">
-                        <span className={`${poppins.className} text-xs text-gray-500 uppercase tracking-wide`}>
-                          {project.year}
-                        </span>
-
-                        <div className="flex items-center gap-1.5">
-                          <CategoryIcon size={12} className="text-gray-500" />
-                          <span className={`${poppins.className} text-xs text-gray-500 capitalize`}>
-                            {project.category}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className={`${poppins.className} text-sm text-gray-400 leading-relaxed mb-4 flex-grow font-light relative z-10`}>
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4 relative z-10">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`${poppins.className} text-xs px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-500 hover:bg-white/10 hover:text-gray-400 transition-all`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-2 mt-auto relative z-10">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className={`${poppins.className} flex items-center gap-1.5 px-3 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-all text-xs text-gray-300 hover:text-white font-medium shadow-lg shadow-white/5`}
-                        aria-label={`Visit ${project.title}`}
-                      >
-                        <ExternalLink size={14} aria-hidden="true" />
-                        View
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              </motion.div>
-            );
-          })}
+          {filteredProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onCardClick={(id) => router.push(`/works/${id}`, { scroll: false })}
+            />
+          ))}
         </AnimatePresence>
       </motion.div>
 

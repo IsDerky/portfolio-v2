@@ -141,7 +141,6 @@ const ModelViewer: FC<ViewerProps> = ({
         <directionalLight position={[5, 5, 5]} intensity={1} />
         <directionalLight position={[-5, 2, 5]} intensity={0.5} />
 
-        {/* Controles de órbita con zoom personalizado */}
         <OrbitControls
           enablePan={false}
           minDistance={minZoomDistance}

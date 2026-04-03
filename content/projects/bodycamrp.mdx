@@ -1,0 +1,22 @@
+## Overview
+
+A free, browser-based body camera overlay tool for FiveM and GTA Roleplay streamers. Configure and deploy professional-looking bodycam overlays for OBS — no installation, no account, no setup beyond a browser source URL.
+
+## The Idea
+
+Bodycam-style streams are popular in the FiveM RP community but setting up a convincing overlay usually meant buying premium tools or piecing together multiple plugins. I wanted something that just works, for free, directly in the browser.
+
+## Features
+
+- **Real-time overlay configuration** — adjust opacity, shake intensity, vignette, and more
+- **Multiple bodycam presets** styled after real law enforcement cameras
+- **OBS browser source compatible** — paste a URL and you're done
+- **Zero friction** — no account, no install, no watermark
+
+## Tech Stack
+
+Built with **Next.js** and **React**, running entirely client-side as an OBS browser source. The overlay logic uses CSS animations and canvas compositing to simulate authentic camera artifacts like grain, blur edges, and timestamp overlays.
+
+## How It Works
+
+OBS supports browser sources — you give it a URL and it renders the page as a transparent overlay layer. The tool generates a unique configuration URL with all your settings encoded, so the overlay loads exactly how you set it up every time OBS starts.

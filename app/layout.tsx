@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AnimationProvider } from "@/components/providers/AnimationProvider";
+import { CommandPalette } from "@/components/CommandPalette";
 import { Analytics } from "@vercel/analytics/next";
 import { geistSans, geistMono } from "@/lib/fonts";
 import Header from "@/components/sections/Header";
@@ -22,6 +23,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black min-h-screen`}
       >
         <AnimationProvider>
+          <CommandPalette />
           <Header />
           <main>
             <Hero />

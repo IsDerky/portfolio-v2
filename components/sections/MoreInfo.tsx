@@ -4,8 +4,9 @@ import React from "react";
 import { poppins } from "@/lib/fonts";
 import {
   Keyboard, ChefHat, Car, Radio, Gamepad2, Tv, Music,
-  Icon, LucideProps, Mail, Heart
+  Icon, LucideProps, Mail
 } from 'lucide-react';
+import { HeartIcon } from 'lucide-animated';
 import { basketball } from '@lucide/lab';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
@@ -30,12 +31,32 @@ const hobbies: Hobby[] = [
   { name: 'Basketball', icon: basketball, isLab: true },
   { name: 'Cars', icon: Car, isLab: false },
   { name: 'Cooking', icon: ChefHat, isLab: false },
-  { name: 'Programming', icon: Keyboard, isLab: false },
+  { name: 'Coding', icon: Keyboard, isLab: false },
   { name: 'Streaming', icon: Radio, isLab: false },
   { name: 'Games', icon: Gamepad2, isLab: false },
   { name: 'Series', icon: Tv, isLab: false },
   { name: 'Music', icon: Music, isLab: false },
 ];
+
+interface TimelineItemProps {
+  item: { year: string; event: string };
+  isLast: boolean;
+}
+
+const TimelineItem = ({ item, isLast }: TimelineItemProps) => (
+  <div className="flex gap-3 group hover:drop-shadow-lg transition-all duration-300" role="listitem">
+    <div className={`${poppins.className} text-xs md:text-sm font-bold text-white min-w-[45px] md:min-w-[50px]`}>
+      {item.year}
+    </div>
+    <div className="flex flex-col items-center">
+      <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full mt-1.5 md:mt-2"></div>
+      {!isLast && <div className="w-0.5 bg-white/30 flex-1 mt-1 min-h-2"></div>}
+    </div>
+    <div className={`${poppins.className} text-gray-300 leading-relaxed flex-1 text-xs md:text-sm`}>
+      {item.event}
+    </div>
+  </div>
+);
 
 const HobbyIcon = ({ hobby }: { hobby: Hobby }) => {
   const iconClass = "text-white/30 transition-all duration-500 ease-out group-hover:scale-150 group-hover:translate-x-[-6px] group-hover:translate-y-[-6px] group-hover:rotate-12";
@@ -73,20 +94,7 @@ const MoreInfo = () => {
             </h3>
             <div className="space-y-3 md:space-y-4" role="list" aria-label="Timeline of personal milestones">
               {timelineEvents.map((item, index) => (
-                <div key={index} className="flex gap-3 group hover:drop-shadow-lg transition-all duration-300" role="listitem">
-                  <div className={`${poppins.className} text-xs md:text-sm font-bold text-white min-w-[45px] md:min-w-[50px]`}>
-                    {item.year}
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full mt-1.5 md:mt-2"></div>
-                    {index < timelineEvents.length - 1 && (
-                      <div className="w-0.5 bg-white/30 flex-1 mt-1"></div>
-                    )}
-                  </div>
-                  <div className={`${poppins.className} text-gray-300 leading-relaxed flex-1 text-xs md:text-sm`}>
-                    {item.event}
-                  </div>
-                </div>
+                <TimelineItem key={index} item={item} isLast={index === timelineEvents.length - 1} />
               ))}
             </div>
           </div>
@@ -94,7 +102,7 @@ const MoreInfo = () => {
           {/* I Love */}
           <div className="bg-[#212121] rounded-2xl p-6 md:p-8">
             <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-white flex items-center gap-2 mb-6 md:mb-8`}>
-              I <Heart size={20} className="md:w-6 md:h-6" />
+              I <HeartIcon size={22} className="md:w-6 md:h-6" />
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3" role="list" aria-label="Personal interests and hobbies">
               {hobbies.map((hobby, index) => (

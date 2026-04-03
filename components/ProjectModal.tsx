@@ -3,9 +3,16 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { X, ExternalLink, Github } from 'lucide-react';
+import { X, ExternalLink, Github, Code2, Server, Network, Wrench, type LucideIcon } from 'lucide-react';
 import { poppins } from '@/lib/fonts';
 import type { Project } from '@/lib/projects';
+
+const categoryIcons: Record<string, LucideIcon> = {
+  web: Code2,
+  service: Server,
+  network: Network,
+  tools: Wrench,
+};
 
 interface ProjectModalProps {
   project: Project | null;
@@ -13,6 +20,7 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const CategoryIcon = project ? categoryIcons[project.category] : null;
   useEffect(() => {
     if (!project) return;
     const handleKey = (e: KeyboardEvent) => {
@@ -88,6 +96,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   {project.year}
                 </span>
                 <span className="text-gray-600">·</span>
+                {CategoryIcon && <CategoryIcon size={12} className="text-gray-500" />}
                 <span className={`${poppins.className} text-xs text-gray-500 capitalize`}>
                   {project.category}
                 </span>

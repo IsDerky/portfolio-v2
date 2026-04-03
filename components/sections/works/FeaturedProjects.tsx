@@ -3,18 +3,16 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { ExternalLink, Github } from 'lucide-react';
 import { poppins } from '@/lib/fonts';
-import { getFeaturedProjects, type Project } from '@/lib/projects';
+import { getFeaturedProjects } from '@/lib/projects';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 
-interface FeaturedProjectsProps {
-  onProjectClick: (project: Project) => void;
-}
-
-const FeaturedProjects = ({ onProjectClick }: FeaturedProjectsProps) => {
+const FeaturedProjects = () => {
   const featuredProjects = getFeaturedProjects();
+  const router = useRouter();
 
   return (
     <Section className="py-6 md:py-8">
@@ -33,7 +31,7 @@ const FeaturedProjects = ({ onProjectClick }: FeaturedProjectsProps) => {
           <FadeInElement key={project.id} delay={0.8 + (index * 0.1)}>
             <motion.div
               whileHover={{ scale: 1.01, y: -4 }}
-              onClick={() => onProjectClick(project)}
+              onClick={() => router.push(`/works/${project.id}`, { scroll: false })}
               className="bg-[#212121] rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 group relative cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -46,9 +44,10 @@ const FeaturedProjects = ({ onProjectClick }: FeaturedProjectsProps) => {
                   {project.image ? (
                     <Image
                       src={project.image}
-                      alt={`${project.title} project preview`}
+                      alt={`${project.title} logo`}
                       fill
-                      className="object-contain transition-transform duration-500 group-hover:scale-105"
+                      priority={index === 0}
+                      className="object-contain"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   ) : (

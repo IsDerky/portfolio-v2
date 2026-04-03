@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@lucide/lab": "^0.1.2",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.2.2",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-three/drei": "^10.7.6",
     "@react-three/fiber": "^9.3.0",
@@ -19,6 +22,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.16",
     "gsap": "^3.13.0",
+    "lucide-animated": "^1.0.0",
     "lucide-react": "^0.544.0",
     "matter-js": "^0.20.0",
     "motion": "^12.23.16",

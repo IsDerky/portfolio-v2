@@ -1,0 +1,22 @@
+## Overview
+
+A community-built website for Ronin FC, the football club founded by Ibai Llanos. This is a fan-made project — not officially affiliated with or endorsed by Ibai Llanos or the Ronin FC organization.
+
+## Why I Built It
+
+Ronin FC blew up fast and the community had no central hub for news, rosters, or match results. I built this to fill that gap: a clean, fast website that pulls live data so fans always have up-to-date information without anyone manually updating it.
+
+## Features
+
+- **Club news and updates** aggregated from official sources
+- **Player roster** with stats and positions
+- **Match results and schedule** with live score integration
+- **API-driven data** — content updates automatically, no manual CMS edits needed
+
+## Tech Stack
+
+Built with **Next.js** and **TypeScript**, consuming external sports APIs to keep club data fresh. The focus was on performance: pages are statically generated where possible and revalidated on a short interval to stay current.
+
+## Challenges
+
+The main challenge was working around inconsistent third-party API responses — some endpoints returned partial data or had rate limits that required careful caching strategies. I ended up building a thin API layer to normalize and cache responses before they hit the frontend.

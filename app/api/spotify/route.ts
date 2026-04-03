@@ -85,8 +85,9 @@ export async function GET() {
           songUrl: item.external_urls?.spotify,
           progress: data.progress_ms,
           duration: item.duration_ms,
+          fetchedAt: Date.now(),
         }, {
-          headers: { 'Cache-Control': 'no-store, max-age=0' },
+          headers: { 'Cache-Control': 'public, max-age=10, stale-while-revalidate=30' },
         });
       }
     }
@@ -108,8 +109,9 @@ export async function GET() {
           songUrl: item.external_urls?.spotify,
           progress: 0,
           duration: item.duration_ms,
+          fetchedAt: Date.now(),
         }, {
-          headers: { 'Cache-Control': 'no-store, max-age=0' },
+          headers: { 'Cache-Control': 'public, max-age=10, stale-while-revalidate=30' },
         });
       }
     }

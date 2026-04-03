@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { poppins } from '@/lib/fonts';
+import { cn } from '@/lib/utils';
 
 interface SpotifyData {
   isPlaying: boolean;
@@ -94,10 +95,12 @@ export default function SpotifyWidget() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Fetch inicial y cada 5s
+  // Fetch inicial y cada 5s — pausar cuando la tab está en segundo plano
   useEffect(() => {
     fetchData();
-    const fetchInterval = setInterval(fetchData, 5000);
+    const fetchInterval = setInterval(() => {
+      if (document.visibilityState === 'visible') fetchData();
+    }, 5000);
     return () => clearInterval(fetchInterval);
   }, [fetchData]);
 
@@ -193,7 +196,7 @@ export default function SpotifyWidget() {
                   <p className={`${poppins.className} text-sm font-semibold text-white truncate leading-snug mb-0.5`}>
                     {data?.title ?? 'Not playing'}
                   </p>
-                  <p className={`${poppins.className} text-sm text-gray-300 truncate ${data?.isPlaying ? 'mb-4' : ''}`}>
+                  <p className={cn(poppins.className, 'text-sm text-gray-300 truncate', data?.isPlaying && 'mb-4')}>
                     {data?.artist ?? '—'}
                   </p>
 
