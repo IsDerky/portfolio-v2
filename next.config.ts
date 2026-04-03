@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
 
   // Configuración experimental para mejorar el rendimiento
   experimental: {
-    optimizePackageImports: ['three', '@react-three/fiber', '@react-three/drei'],
+    optimizePackageImports: ['three', '@react-three/fiber', '@react-three/drei', 'framer-motion', 'lucide-react'],
   },
 
   // Headers para permitir la carga de modelos 3D

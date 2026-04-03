@@ -1,13 +1,11 @@
-'use client';
-
 import React from "react";
 import { poppins } from "@/lib/fonts";
 import {
   Keyboard, ChefHat, Car, Radio, Gamepad2, Tv, Music,
   Icon, LucideProps, Mail
 } from 'lucide-react';
-import { HeartIcon } from 'lucide-animated';
 import { basketball } from '@lucide/lab';
+import AnimatedHeart from "@/components/AnimatedHeart";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 
@@ -102,7 +100,7 @@ const MoreInfo = () => {
           {/* I Love */}
           <div className="bg-[#212121] rounded-2xl p-6 md:p-8">
             <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-white flex items-center gap-2 mb-6 md:mb-8`}>
-              I <HeartIcon size={22} className="md:w-6 md:h-6" />
+              I <AnimatedHeart size={22} className="md:w-6 md:h-6" />
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3" role="list" aria-label="Personal interests and hobbies">
               {hobbies.map((hobby, index) => (

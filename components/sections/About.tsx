@@ -1,14 +1,8 @@
-'use client';
-
 import React from "react";
-import dynamic from "next/dynamic";
 import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
-
-const Particles = dynamic(() => import('@/components/Particles'), {
-  ssr: false,
-});
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 const About = () => {
   return (
@@ -20,16 +14,7 @@ const About = () => {
               className="absolute top-0 left-0 w-full pointer-events-none"
               style={{ height: 'clamp(300px, 50vw, 600px)' }}
             >
-              <Particles
-                particleColors={['#ffffff', '#ffffff']}
-                particleCount={300}
-                particleSpread={10}
-                speed={0.1}
-                particleBaseSize={100}
-                moveParticlesOnHover={false}
-                alphaParticles={true}
-                disableRotation={true}
-              />
+              <ParticlesBackground />
             </div>
 
             <p className={`

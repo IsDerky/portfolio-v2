@@ -1,7 +1,5 @@
-'use client';
-
 import React from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
@@ -35,10 +33,11 @@ const WorkExperience = () => {
               {/* Logo con línea vertical - igual que el timeline */}
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-lg flex items-center justify-center flex-shrink-0 p-2">
-                  <img 
-                    src={exp.logo} 
+                  <Image
+                    src={exp.logo}
                     alt={`${exp.company} logo`}
-                    className="w-full h-full object-contain"
+                    fill
+                    className="object-contain"
                   />
                 </div>
                 {index < experiences.length - 1 && (
