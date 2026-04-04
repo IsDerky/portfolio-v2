@@ -4,7 +4,7 @@ import { projects, getProjectById } from '@/lib/projects';
 import Footer from '@/components/sections/Footer';
 import Section from '@/components/layout/Section';
 import { poppins } from '@/lib/fonts';
-import Image from 'next/image';
+import ProjectImage from '@/components/ProjectImage';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Github, Code2, Server, Network, Wrench, type LucideIcon } from 'lucide-react';
 
@@ -62,12 +62,12 @@ export default async function ProjectPage({
   return (
     <>
       <Section className="py-6 md:py-8">
-        <div className="bg-[#212121] rounded-2xl p-6 md:p-10 border border-white/10 flex flex-col gap-8">
+        <div className="bg-surface-2 rounded-2xl p-6 md:p-10 border border-fg-primary/10 flex flex-col gap-8">
           {/* Top bar: back link + buttons */}
           <div className="flex items-center justify-between gap-4">
             <Link
               href="/works"
-              className={`${poppins.className} inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors`}
+              className={`${poppins.className} inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg-primary transition-colors`}
             >
               <ArrowLeft size={16} />
               Back to Works
@@ -79,7 +79,7 @@ export default async function ProjectPage({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${poppins.className} inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-all text-sm text-gray-200 font-medium`}
+                  className={`${poppins.className} inline-flex items-center gap-2 px-5 py-2.5 bg-fg-primary/10 hover:bg-fg-primary/20 border border-fg-primary/20 rounded-lg transition-all text-sm text-fg-secondary font-medium`}
                 >
                   <ExternalLink size={14} />
                   Visit
@@ -90,7 +90,7 @@ export default async function ProjectPage({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${poppins.className} inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all text-sm text-gray-400 hover:text-gray-300 font-medium`}
+                  className={`${poppins.className} inline-flex items-center gap-2 px-5 py-2.5 bg-fg-primary/5 hover:bg-fg-primary/10 border border-fg-primary/10 rounded-lg transition-all text-sm text-fg-muted hover:text-fg-secondary font-medium`}
                 >
                   <Github size={14} />
                   Source
@@ -102,10 +102,9 @@ export default async function ProjectPage({
           {/* Title + meta */}
           <div className="flex items-center gap-4">
             {project.image && (
-              <div className="w-14 h-14 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center shrink-0">
-                <Image
-                  src={project.image}
-                  alt={project.title}
+              <div className="w-14 h-14 rounded-xl overflow-hidden bg-fg-primary/5 flex items-center justify-center shrink-0">
+                <ProjectImage
+                  project={project}
                   width={56}
                   height={56}
                   className="object-contain p-1"
@@ -113,12 +112,12 @@ export default async function ProjectPage({
               </div>
             )}
             <div>
-              <h1 className={`${poppins.className} text-3xl md:text-4xl font-semibold text-white`}>
+              <h1 className={`${poppins.className} text-3xl md:text-4xl font-semibold text-fg-primary`}>
                 {project.title}
               </h1>
-              <span className={`${poppins.className} text-sm text-gray-400 flex items-center gap-1.5`}>
+              <span className={`${poppins.className} text-sm text-fg-muted flex items-center gap-1.5`}>
                 {project.year}
-                <span className="text-gray-600">·</span>
+                <span className="text-fg-faint">·</span>
                 {CategoryIcon && <CategoryIcon size={13} />}
                 <span className="capitalize">{project.category}</span>
               </span>
@@ -130,7 +129,7 @@ export default async function ProjectPage({
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className={`${poppins.className} text-xs px-3 py-1 rounded-full bg-white/10 text-gray-300`}
+                className={`${poppins.className} text-xs px-3 py-1 rounded-full bg-fg-primary/10 text-fg-secondary`}
               >
                 {tag}
               </span>
@@ -139,11 +138,11 @@ export default async function ProjectPage({
 
           {/* MDX content or fallback to longDescription */}
           {MDXContent ? (
-            <div className="prose-invert max-w-2xl">
+            <div className="max-w-2xl">
               <MDXContent />
             </div>
           ) : (
-            <p className={`${poppins.className} text-gray-300 text-base leading-relaxed max-w-2xl`}>
+            <p className={`${poppins.className} text-fg-secondary text-base leading-relaxed max-w-2xl`}>
               {project.longDescription}
             </p>
           )}
@@ -154,12 +153,12 @@ export default async function ProjectPage({
               {project.details.map((detail) => (
                 <div
                   key={detail.title}
-                  className="bg-[#1a1a1a] rounded-2xl p-6 border border-white/5"
+                  className="bg-surface-1 rounded-2xl p-6 border border-fg-primary/5"
                 >
-                  <h3 className={`${poppins.className} text-white font-medium mb-2`}>
+                  <h3 className={`${poppins.className} text-fg-primary font-medium mb-2`}>
                     {detail.title}
                   </h3>
-                  <p className={`${poppins.className} text-gray-400 text-sm leading-relaxed`}>
+                  <p className={`${poppins.className} text-fg-muted text-sm leading-relaxed`}>
                     {detail.text}
                   </p>
                 </div>

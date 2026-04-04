@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import ProjectImage from '@/components/ProjectImage';
 import { X, Maximize2, ExternalLink, Github, Code2, Server, Network, Wrench, type LucideIcon } from 'lucide-react';
 import { poppins } from '@/lib/fonts';
 import type { Project } from '@/lib/projects';
@@ -58,7 +58,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Modal */}
           <motion.div
-            className="relative w-full max-w-2xl max-h-[85vh] bg-[#1a1a1a] border border-white/10 rounded-2xl overflow-hidden flex flex-col"
+            className="relative w-full max-w-2xl max-h-[85vh] bg-surface-1 border border-fg-primary/10 rounded-2xl overflow-hidden flex flex-col"
             initial={{ scale: 0.95, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -67,15 +67,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           >
             {/* Header image */}
             {project.image && (
-              <div className="relative h-48 md:h-56 bg-[#212121] flex-shrink-0">
-                <Image
-                  src={project.image}
-                  alt={project.title}
+              <div className="relative h-48 md:h-56 bg-surface-2 flex-shrink-0">
+                <ProjectImage
+                  project={project}
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 672px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface-1 via-transparent to-transparent" />
               </div>
             )}
 
@@ -83,17 +82,17 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
               <a
                 href={`/works/${project.id}`}
-                className="p-2 rounded-full bg-black/50 border border-white/10 hover:bg-white/10 transition-colors"
+                className="p-2 rounded-full bg-black/50 border border-fg-primary/10 hover:bg-fg-primary/10 transition-colors"
                 aria-label="View full page"
               >
-                <Maximize2 size={16} className="text-white" />
+                <Maximize2 size={16} className="text-fg-primary" />
               </a>
               <button
                 onClick={onClose}
-                className="p-2 rounded-full bg-black/50 border border-white/10 hover:bg-white/10 transition-colors"
+                className="p-2 rounded-full bg-black/50 border border-fg-primary/10 hover:bg-fg-primary/10 transition-colors"
                 aria-label="Close modal"
               >
-                <X size={18} className="text-white" />
+                <X size={18} className="text-fg-primary" />
               </button>
             </div>
 
@@ -101,23 +100,23 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             <div className="flex-1 overflow-y-auto p-6 md:p-8">
               {/* Year + Category */}
               <div className="flex items-center gap-2 mb-3">
-                <span className={`${poppins.className} text-xs text-gray-500 uppercase tracking-wide`}>
+                <span className={`${poppins.className} text-xs text-fg-subtle uppercase tracking-wide`}>
                   {project.year}
                 </span>
-                <span className="text-gray-600">·</span>
-                {CategoryIcon && <CategoryIcon size={12} className="text-gray-500" />}
-                <span className={`${poppins.className} text-xs text-gray-500 capitalize`}>
+                <span className="text-fg-faint">·</span>
+                {CategoryIcon && <CategoryIcon size={12} className="text-fg-subtle" />}
+                <span className={`${poppins.className} text-xs text-fg-subtle capitalize`}>
                   {project.category}
                 </span>
               </div>
 
               {/* Title */}
-              <h2 className={`${poppins.className} text-2xl md:text-3xl font-semibold text-white mb-4`}>
+              <h2 className={`${poppins.className} text-2xl md:text-3xl font-semibold text-fg-primary mb-4`}>
                 {project.title}
               </h2>
 
               {/* Description */}
-              <p className={`${poppins.className} text-sm md:text-base text-gray-300 leading-relaxed mb-6 font-light`}>
+              <p className={`${poppins.className} text-sm md:text-base text-fg-secondary leading-relaxed mb-6 font-light`}>
                 {project.longDescription}
               </p>
 
@@ -126,10 +125,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <div className="space-y-4 mb-6">
                   {project.details.map((detail) => (
                     <div key={detail.title}>
-                      <h4 className={`${poppins.className} text-sm font-semibold text-white mb-1.5`}>
+                      <h4 className={`${poppins.className} text-sm font-semibold text-fg-primary mb-1.5`}>
                         {detail.title}
                       </h4>
-                      <p className={`${poppins.className} text-sm text-gray-400 leading-relaxed font-light`}>
+                      <p className={`${poppins.className} text-sm text-fg-muted leading-relaxed font-light`}>
                         {detail.text}
                       </p>
                     </div>
@@ -142,7 +141,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className={`${poppins.className} text-xs px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-gray-400`}
+                    className={`${poppins.className} text-xs px-3 py-1.5 bg-fg-primary/5 border border-fg-primary/10 rounded-full text-fg-muted`}
                   >
                     {tag}
                   </span>
@@ -156,7 +155,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-all text-sm text-gray-200 font-medium`}
+                    className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-fg-primary/10 hover:bg-fg-primary/20 border border-fg-primary/20 rounded-lg transition-all text-sm text-fg-secondary font-medium`}
                   >
                     <ExternalLink size={16} />
                     Visit
@@ -167,7 +166,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all text-sm text-gray-400 hover:text-gray-300 font-medium`}
+                    className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-fg-primary/5 hover:bg-fg-primary/10 border border-fg-primary/10 rounded-lg transition-all text-sm text-fg-muted hover:text-fg-secondary font-medium`}
                   >
                     <Github size={16} />
                     Source

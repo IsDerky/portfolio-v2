@@ -4,22 +4,19 @@ import { cn } from '@/lib/utils';
 interface SectionProps {
   children: React.ReactNode;
   className?: string;
-  backgroundColor?: string;
   as?: 'section' | 'footer' | 'header';
   includeContainer?: boolean;
 }
 
-const Section = ({ 
-  children, 
-  className = '', 
-  backgroundColor = '#121212',
+const Section = ({
+  children,
+  className = '',
   as: Component = 'section',
   includeContainer = true
 }: SectionProps) => {
   return (
-    <Component 
-      className={cn('w-full py-8 px-8', className)}
-      style={{ backgroundColor }}
+    <Component
+      className={cn('w-full py-8 px-8 bg-surface-0', className)}
     >
       {includeContainer ? (
         <div className="w-full max-w-4xl mx-auto">

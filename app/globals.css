@@ -41,6 +41,18 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Portfolio semantic tokens */
+  --color-surface-deep: var(--surface-deep);
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-fg-primary: var(--fg-primary);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-fg-faint: var(--fg-faint);
 }
 
 :root {
@@ -76,6 +88,18 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  /* Portfolio light theme */
+  --surface-deep: #c0b9af;
+  --surface-0: #f0e7db;
+  --surface-1: #fdfaf7;
+  --surface-2: #ffffff;
+  --surface-3: #f5f0eb;
+  --fg-primary: #09090b;
+  --fg-secondary: #52525b;
+  --fg-muted: #71717a;
+  --fg-subtle: #a1a1aa;
+  --fg-faint: #d4d4d8;
 }
 
 .dark {
@@ -110,6 +134,18 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+
+  /* Portfolio dark theme */
+  --surface-deep: #0f0f0f;
+  --surface-0: #121212;
+  --surface-1: #1a1a1a;
+  --surface-2: #212121;
+  --surface-3: #2a2a2a;
+  --fg-primary: #ffffff;
+  --fg-secondary: #d1d5db;
+  --fg-muted: #9ca3af;
+  --fg-subtle: #6b7280;
+  --fg-faint: #4b5563;
 }
 
 @layer base {

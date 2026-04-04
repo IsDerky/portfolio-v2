@@ -19,17 +19,15 @@ const featuredProject = getProjectById('derkyu-hosting')!;
 const Aboutme = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
-  // Tecnologías que dominas
   const masterTechnologies = [
-    { name: "TypeScript", level: 95, color: "bg-gray-400" },
-    { name: "Node.js", level: 90, color: "bg-gray-400" },
-    { name: "MongoDB", level: 75, color: "bg-gray-400" },
-    { name: "PHP", level: 50, color: "bg-gray-400" }
+    { name: "TypeScript", level: 95, color: "bg-fg-secondary" },
+    { name: "Node.js", level: 90, color: "bg-fg-secondary" },
+    { name: "MongoDB", level: 75, color: "bg-fg-secondary" },
+    { name: "PHP", level: 50, color: "bg-fg-secondary" }
   ];
 
-  // Proyectos pequeños
   const smallProjects = [
-    { 
+    {
       title: "Developer Stats",
       stats: [
         { label: "Lines of Code", value: "60K+", icon: "code" },
@@ -37,7 +35,7 @@ const Aboutme = () => {
       ],
       type: "dual-stat"
     },
-    { 
+    {
       title: "Now Playing",
       spotifyUser: "darkqwew",
       type: "spotify"
@@ -47,7 +45,7 @@ const Aboutme = () => {
   return (
     <Section className="py-6 md:py-8">
       <FadeInElement delay={0.5} className="mb-6 md:mb-8">
-        <h2 className={`${poppins.className} text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-3 md:mb-4`}>
+        <h2 className={`${poppins.className} text-2xl md:text-3xl lg:text-4xl font-semibold text-fg-primary mb-3 md:mb-4`}>
           About Me
         </h2>
       </FadeInElement>
@@ -58,10 +56,10 @@ const Aboutme = () => {
         <FadeInElement delay={0.6}>
           <motion.div
             whileHover={{ scale: 1.01 }}
-            className="bg-[#212121] rounded-xl p-4 border border-white/10 transition-all duration-300"
+            className="bg-surface-2 rounded-xl p-4 border border-fg-primary/10 transition-all duration-300"
           >
-            <div className={`${poppins.className} text-xs text-gray-400 mb-1.5`}>Specialization</div>
-            <h3 className={`${poppins.className} text-base font-semibold text-white`}>
+            <div className={`${poppins.className} text-xs text-fg-muted mb-1.5`}>Specialization</div>
+            <h3 className={`${poppins.className} text-base font-semibold text-fg-primary`}>
               Web developer & Networker
             </h3>
           </motion.div>
@@ -71,12 +69,12 @@ const Aboutme = () => {
         <FadeInElement delay={0.65}>
           <motion.div
             whileHover={{ scale: 1.01 }}
-            className="bg-[#212121] rounded-xl p-4 border border-white/10 transition-all duration-300"
+            className="bg-surface-2 rounded-xl p-4 border border-fg-primary/10 transition-all duration-300"
           >
-            <div className={`${poppins.className} text-xs text-gray-400 mb-2`}>Total Experience</div>
+            <div className={`${poppins.className} text-xs text-fg-muted mb-2`}>Total Experience</div>
             <div className="flex items-baseline gap-2">
-              <div className={`${poppins.className} text-3xl font-bold text-white`}>4+</div>
-              <div className={`${poppins.className} text-sm text-gray-300`}>Years</div>
+              <div className={`${poppins.className} text-3xl font-bold text-fg-primary`}>4+</div>
+              <div className={`${poppins.className} text-sm text-fg-secondary`}>Years</div>
             </div>
           </motion.div>
         </FadeInElement>
@@ -85,18 +83,18 @@ const Aboutme = () => {
         <FadeInElement delay={0.7}>
           <motion.div
             whileHover={{ scale: 1.01 }}
-            className="bg-[#212121] rounded-xl p-4 border border-white/10 transition-all duration-300"
+            className="bg-surface-2 rounded-xl p-4 border border-fg-primary/10 transition-all duration-300"
           >
-            <div className={`${poppins.className} text-xs text-gray-400 mb-3`}>Core Technologies</div>
+            <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>Core Technologies</div>
             <div className="space-y-3">
               {masterTechnologies.map((tech, index) => (
                 <div key={tech.name} className="space-y-1.5">
                   <div className="flex justify-between items-center">
-                    <span className={`${poppins.className} text-xs font-medium text-white`}>{tech.name}</span>
-                    <span className={`${poppins.className} text-xs text-gray-400`}>{tech.level}%</span>
+                    <span className={`${poppins.className} text-xs font-medium text-fg-primary`}>{tech.name}</span>
+                    <span className={`${poppins.className} text-xs text-fg-muted`}>{tech.level}%</span>
                   </div>
-                  <div className="w-full bg-white/10 rounded-full h-1.5">
-                    <motion.div 
+                  <div className="w-full bg-fg-primary/10 rounded-full h-1.5">
+                    <motion.div
                       className={`${tech.color} h-1.5 rounded-full`}
                       initial={{ width: 0 }}
                       animate={{ width: `${tech.level}%` }}
@@ -113,27 +111,27 @@ const Aboutme = () => {
         <FadeInElement delay={0.75}>
           <motion.div
             whileHover={{ scale: 1.01 }}
-            className="bg-[#212121] rounded-xl p-4 border border-white/10 transition-all duration-300"
+            className="bg-surface-2 rounded-xl p-4 border border-fg-primary/10 transition-all duration-300"
           >
-            <div className={`${poppins.className} text-xs text-gray-400 mb-3`}>Developer Stats</div>
+            <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>Developer Stats</div>
             <div className="space-y-3">
               {smallProjects[0]?.stats?.map((stat, idx) => (
                 <div key={idx} className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="flex-shrink-0">
                       {stat.icon === 'code' ? (
-                        <Code2 size={16} className="text-gray-300" />
+                        <Code2 size={16} className="text-fg-secondary" />
                       ) : (
-                        <Coffee size={16} className="text-gray-300" />
+                        <Coffee size={16} className="text-fg-secondary" />
                       )}
                     </div>
-                    <div className={`${poppins.className} text-sm text-gray-400`}>
+                    <div className={`${poppins.className} text-sm text-fg-muted`}>
                       {stat.label}
                     </div>
                   </div>
-                  <div className={`${poppins.className} text-lg font-bold text-white flex items-center`}>
+                  <div className={`${poppins.className} text-lg font-bold text-fg-primary flex items-center`}>
                     {stat.value === '∞' ? (
-                      <Infinity size={22} className="text-white" strokeWidth={2.5} />
+                      <Infinity size={22} className="text-fg-primary" strokeWidth={2.5} />
                     ) : (
                       stat.value
                     )}
@@ -153,21 +151,21 @@ const Aboutme = () => {
         <FadeInElement delay={0.85}>
           <motion.div
             whileHover={{ scale: 1.01 }}
-            className="bg-[#212121] rounded-xl border border-white/10 transition-all duration-300 cursor-pointer group"
+            className="bg-surface-2 rounded-xl border border-fg-primary/10 transition-all duration-300 cursor-pointer group"
             onClick={() => window.open(featuredProject.liveUrl, '_blank')}
           >
             <div className="p-4">
               <div className="flex justify-between items-start mb-2">
                 <div>
-                  <div className={`${poppins.className} text-xs text-gray-400 mb-0.5`}>Featured Project</div>
-                  <h4 className={`${poppins.className} text-base font-semibold text-white transition-colors`}>
+                  <div className={`${poppins.className} text-xs text-fg-muted mb-0.5`}>Featured Project</div>
+                  <h4 className={`${poppins.className} text-base font-semibold text-fg-primary transition-colors`}>
                     {featuredProject.title}
                   </h4>
                 </div>
-                <ExternalLink size={18} className="text-white opacity-70 group-hover:opacity-100 transition-opacity" strokeWidth={2.5} />
+                <ExternalLink size={18} className="text-fg-primary opacity-70 group-hover:opacity-100 transition-opacity" strokeWidth={2.5} />
               </div>
 
-              <p className={`${poppins.className} text-gray-300 text-xs leading-relaxed mb-3`}>
+              <p className={`${poppins.className} text-fg-secondary text-xs leading-relaxed mb-3`}>
                 {featuredProject.longDescription}
               </p>
 
@@ -175,8 +173,8 @@ const Aboutme = () => {
                 <div className="space-y-2">
                   {featuredProject.details.map((detail) => (
                     <div key={detail.title}>
-                      <h5 className={`${poppins.className} text-xs font-semibold text-white mb-1`}>{detail.title}</h5>
-                      <p className={`${poppins.className} text-xs text-gray-400 leading-snug`}>
+                      <h5 className={`${poppins.className} text-xs font-semibold text-fg-primary mb-1`}>{detail.title}</h5>
+                      <p className={`${poppins.className} text-xs text-fg-muted leading-snug`}>
                         {detail.text}
                       </p>
                     </div>
@@ -191,15 +189,15 @@ const Aboutme = () => {
       {/* Desktop Layout (>= md) - 3x3 Grid */}
       <div className="hidden md:block relative overflow-visible">
         <div className="grid grid-cols-3 grid-rows-3 gap-3 h-[400px]">
-          
+
           {/* Row 1: Specialization (col-span-2) + Total Experience (col-span-1) */}
           <FadeInElement delay={0.6} className="col-span-2">
             <motion.div
               whileHover={{ scale: 1.01 }}
-              className="bg-[#212121] rounded-xl p-5 border border-white/10 transition-all duration-300 h-full flex flex-col justify-start"
+              className="bg-surface-2 rounded-xl p-5 border border-fg-primary/10 transition-all duration-300 h-full flex flex-col justify-start"
             >
-              <div className={`${poppins.className} text-xs text-gray-400 mb-1.5`}>Specialization</div>
-              <h3 className={`${poppins.className} text-lg font-semibold text-white`}>
+              <div className={`${poppins.className} text-xs text-fg-muted mb-1.5`}>Specialization</div>
+              <h3 className={`${poppins.className} text-lg font-semibold text-fg-primary`}>
                 Web developer & Networker
               </h3>
             </motion.div>
@@ -208,11 +206,11 @@ const Aboutme = () => {
           <FadeInElement delay={0.65} className="col-span-1">
             <motion.div
               whileHover={{ scale: 1.01 }}
-              className="bg-[#212121] rounded-xl p-5 h-full border border-white/10 transition-all duration-300 flex flex-col justify-start items-start text-left"
+              className="bg-surface-2 rounded-xl p-5 h-full border border-fg-primary/10 transition-all duration-300 flex flex-col justify-start items-start text-left"
             >
-              <div className={`${poppins.className} text-xs text-gray-400 mb-2`}>Total Experience</div>
-              <div className={`${poppins.className} text-2xl font-bold text-white mb-1`}>4+</div>
-              <div className={`${poppins.className} text-xs text-gray-300`}>Years</div>
+              <div className={`${poppins.className} text-xs text-fg-muted mb-2`}>Total Experience</div>
+              <div className={`${poppins.className} text-2xl font-bold text-fg-primary mb-1`}>4+</div>
+              <div className={`${poppins.className} text-xs text-fg-secondary`}>Years</div>
             </motion.div>
           </FadeInElement>
 
@@ -223,19 +221,19 @@ const Aboutme = () => {
           >
             <motion.div
               whileHover={{ scale: 1.01 }}
-              className="bg-[#212121] rounded-xl p-5 h-full border border-white/10 transition-all duration-300 flex flex-col"
+              className="bg-surface-2 rounded-xl p-5 h-full border border-fg-primary/10 transition-all duration-300 flex flex-col"
             >
-              <div className={`${poppins.className} text-xs text-gray-400 mb-3`}>Core Technologies</div>
-              
+              <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>Core Technologies</div>
+
               <div className="space-y-3.5 flex-1 flex flex-col justify-center">
                 {masterTechnologies.map((tech, index) => (
                   <div key={tech.name} className="space-y-1.5">
                     <div className="flex justify-between items-center">
-                      <span className={`${poppins.className} text-xs font-medium text-white`}>{tech.name}</span>
-                      <span className={`${poppins.className} text-xs text-gray-400`}>{tech.level}%</span>
+                      <span className={`${poppins.className} text-xs font-medium text-fg-primary`}>{tech.name}</span>
+                      <span className={`${poppins.className} text-xs text-fg-muted`}>{tech.level}%</span>
                     </div>
-                    <div className="w-full bg-white/10 rounded-full h-1.5">
-                      <motion.div 
+                    <div className="w-full bg-fg-primary/10 rounded-full h-1.5">
+                      <motion.div
                         className={`${tech.color} h-1.5 rounded-full`}
                         initial={{ width: 0 }}
                         animate={{ width: `${tech.level}%` }}
@@ -257,9 +255,9 @@ const Aboutme = () => {
               {project.type === 'dual-stat' ? (
                 <motion.div
                   whileHover={{ scale: 1.01 }}
-                  className="bg-[#212121] rounded-xl p-4 h-full border border-white/10 transition-all duration-300 flex flex-col"
+                  className="bg-surface-2 rounded-xl p-4 h-full border border-fg-primary/10 transition-all duration-300 flex flex-col"
                 >
-                  <div className={`${poppins.className} text-xs text-gray-400 mb-3`}>Developer Stats</div>
+                  <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>Developer Stats</div>
 
                   <div className="space-y-3 flex-1 flex flex-col justify-center">
                     {project.stats?.map((stat, idx) => (
@@ -267,18 +265,18 @@ const Aboutme = () => {
                         <div className="flex items-center gap-2">
                           <div className="flex-shrink-0">
                             {stat.icon === 'code' ? (
-                              <Code2 size={14} className="text-gray-300" />
+                              <Code2 size={14} className="text-fg-secondary" />
                             ) : (
-                              <Coffee size={14} className="text-gray-300" />
+                              <Coffee size={14} className="text-fg-secondary" />
                             )}
                           </div>
-                          <div className={`${poppins.className} text-xs text-gray-400`}>
+                          <div className={`${poppins.className} text-xs text-fg-muted`}>
                             {stat.label}
                           </div>
                         </div>
-                        <div className={`${poppins.className} text-base font-bold text-white flex items-center`}>
+                        <div className={`${poppins.className} text-base font-bold text-fg-primary flex items-center`}>
                           {stat.value === '∞' ? (
-                            <Infinity size={20} className="text-white" strokeWidth={2.5} />
+                            <Infinity size={20} className="text-fg-primary" strokeWidth={2.5} />
                           ) : (
                             stat.value
                           )}
@@ -302,7 +300,7 @@ const Aboutme = () => {
               layout
             >
               <motion.div
-                className="bg-[#212121] rounded-xl border border-white/10 transition-all duration-300 cursor-pointer group overflow-hidden"
+                className="bg-surface-2 rounded-xl border border-fg-primary/10 transition-all duration-300 cursor-pointer group overflow-hidden"
                 whileHover={{ scale: 1.01 }}
                 animate={{
                   height: expandedSection === 'featured' ? '262px' : '125px',
@@ -312,8 +310,8 @@ const Aboutme = () => {
                 <div className="p-4 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <div className={`${poppins.className} text-xs text-gray-400 mb-0.5`}>Featured Project</div>
-                      <h4 className={`${poppins.className} text-base font-semibold text-white transition-colors`}>
+                      <div className={`${poppins.className} text-xs text-fg-muted mb-0.5`}>Featured Project</div>
+                      <h4 className={`${poppins.className} text-base font-semibold text-fg-primary transition-colors`}>
                         {featuredProject.title}
                       </h4>
                     </div>
@@ -331,11 +329,11 @@ const Aboutme = () => {
                       rel="noopener noreferrer"
                       className="p-2"
                     >
-                      <ExternalLink size={18} className="text-white" strokeWidth={2.5} />
+                      <ExternalLink size={18} className="text-fg-primary" strokeWidth={2.5} />
                     </motion.a>
                   </div>
 
-                  <p className={`${poppins.className} text-gray-300 text-xs leading-relaxed mb-auto`}>
+                  <p className={`${poppins.className} text-fg-secondary text-xs leading-relaxed mb-auto`}>
                     {featuredProject.longDescription}
                   </p>
 
@@ -355,8 +353,8 @@ const Aboutme = () => {
                         <div className="space-y-2.5 pt-2.5">
                           {featuredProject.details.map((detail) => (
                             <div key={detail.title}>
-                              <h5 className={`${poppins.className} text-xs font-semibold text-white mb-1`}>{detail.title}</h5>
-                              <p className={`${poppins.className} text-xs text-gray-400 leading-snug`}>
+                              <h5 className={`${poppins.className} text-xs font-semibold text-fg-primary mb-1`}>{detail.title}</h5>
+                              <p className={`${poppins.className} text-xs text-fg-muted leading-snug`}>
                                 {detail.text}
                               </p>
                             </div>

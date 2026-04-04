@@ -5,6 +5,8 @@ export interface Project {
   description: string;
   longDescription: string;
   image?: string;
+  lightImage?: string;
+  darkBackground?: boolean;
   tags: string[];
   category: 'web' | 'service' | 'network' | 'tools';
   liveUrl?: string;
@@ -24,6 +26,7 @@ export const projects: Project[] = [
     description: 'Specialized hosting platform for game servers, Discord bots, and custom software.',
     longDescription: 'A comprehensive hosting solution offering optimized performance, intuitive management tools, and 24/7 support with strategic server locations across Europe and South America.',
     image: '/logos/derkyu-hosting.png',
+    darkBackground: true,
     tags: ['Shadcn', 'Next.js', 'TypeScript', 'PNPM'],
     category: 'service',
     liveUrl: 'https://hosting.derkyu.lol',
@@ -46,6 +49,7 @@ export const projects: Project[] = [
     description: 'Community-built website for Ronin FC, the football club founded by Ibai Llanos.',
     longDescription: 'Community-built website for Ronin FC football club. This is a fan-made project and is not officially affiliated with or endorsed by Ibai Llanos or Ronin FC organization.',
     image: '/logos/ronin-logo.png',
+    darkBackground: true,
     tags: ['Next.js', 'TypeScript', 'PNPM', 'API'],
     category: 'web',
     liveUrl: 'https://roninfc.digital',

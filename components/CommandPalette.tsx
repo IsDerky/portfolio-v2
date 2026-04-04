@@ -164,7 +164,7 @@ export function CommandPalette() {
 
           {/* Palette panel */}
           <motion.div
-            className="relative w-full max-w-lg bg-[#1a1a1a] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/60"
+            className="relative w-full max-w-lg bg-surface-1 border border-fg-primary/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/60"
             initial={{ scale: 0.97, opacity: 0, y: -10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.97, opacity: 0, y: -10 }}
@@ -172,8 +172,8 @@ export function CommandPalette() {
             onKeyDown={handleKeyDown}
           >
             {/* Search bar */}
-            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10">
-              <Search size={15} className="text-gray-500 shrink-0" />
+            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-fg-primary/10">
+              <Search size={15} className="text-fg-subtle shrink-0" />
               <input
                 ref={inputRef}
                 value={query}
@@ -181,12 +181,12 @@ export function CommandPalette() {
                 placeholder="Search pages, projects..."
                 className={cn(
                   poppins.className,
-                  'flex-1 bg-transparent text-sm text-white placeholder:text-gray-500 outline-none'
+                  'flex-1 bg-transparent text-sm text-fg-primary placeholder:text-fg-subtle outline-none'
                 )}
               />
               <button
                 onClick={close}
-                className="text-gray-600 hover:text-gray-400 transition-colors p-0.5"
+                className="text-fg-faint hover:text-fg-muted transition-colors p-0.5"
                 aria-label="Close"
               >
                 <X size={13} />
@@ -196,7 +196,7 @@ export function CommandPalette() {
             {/* Results */}
             <div className="max-h-[55vh] overflow-y-auto py-1.5">
               {flatFiltered.length === 0 ? (
-                <p className={cn(poppins.className, 'text-center text-sm text-gray-500 py-8')}>
+                <p className={cn(poppins.className, 'text-center text-sm text-fg-subtle py-8')}>
                   No results for &ldquo;{query}&rdquo;
                 </p>
               ) : (
@@ -204,7 +204,7 @@ export function CommandPalette() {
                   const groupOffset = flatFiltered.indexOf(items[0]);
                   return (
                     <div key={group}>
-                      <p className={cn(poppins.className, 'text-[10px] uppercase tracking-widest text-gray-600 px-4 pt-3 pb-1.5 font-medium')}>
+                      <p className={cn(poppins.className, 'text-[10px] uppercase tracking-widest text-fg-faint px-4 pt-3 pb-1.5 font-medium')}>
                         {group}
                       </p>
                       {items.map((item, localIdx) => {
@@ -217,24 +217,24 @@ export function CommandPalette() {
                             onMouseEnter={() => setSelectedIndex(globalIdx)}
                             className={cn(
                               'w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors duration-100',
-                              isSelected ? 'bg-white/[0.07]' : 'hover:bg-white/[0.04]'
+                              isSelected ? 'bg-fg-primary/[0.07]' : 'hover:bg-fg-primary/[0.04]'
                             )}
                           >
-                            <span className={cn('shrink-0 transition-colors', isSelected ? 'text-white' : 'text-gray-500')}>
+                            <span className={cn('shrink-0 transition-colors', isSelected ? 'text-fg-primary' : 'text-fg-subtle')}>
                               {item.icon}
                             </span>
                             <div className="flex-1 min-w-0">
-                              <p className={cn(poppins.className, 'text-sm font-medium truncate transition-colors', isSelected ? 'text-white' : 'text-gray-300')}>
+                              <p className={cn(poppins.className, 'text-sm font-medium truncate transition-colors', isSelected ? 'text-fg-primary' : 'text-fg-secondary')}>
                                 {item.label}
                               </p>
                               {item.sublabel && (
-                                <p className={cn(poppins.className, 'text-xs truncate text-gray-500 mt-0.5')}>
+                                <p className={cn(poppins.className, 'text-xs truncate text-fg-subtle mt-0.5')}>
                                   {item.sublabel}
                                 </p>
                               )}
                             </div>
                             {isSelected && (
-                              <span className="text-gray-600 text-xs shrink-0">↵</span>
+                              <span className="text-fg-faint text-xs shrink-0">↵</span>
                             )}
                           </button>
                         );
@@ -246,7 +246,7 @@ export function CommandPalette() {
             </div>
 
             {/* Footer */}
-            <div className={cn(poppins.className, 'flex items-center gap-4 px-4 py-2.5 border-t border-white/[0.06] text-[10px] text-gray-600')}>
+            <div className={cn(poppins.className, 'flex items-center gap-4 px-4 py-2.5 border-t border-fg-primary/[0.06] text-[10px] text-fg-faint')}>
               <span>↑↓ navigate</span>
               <span>↵ select</span>
               <span>esc close</span>

@@ -9,44 +9,43 @@ const Footer = () => {
   return (
     <Section
       as="footer"
-      backgroundColor="#0f0f0f"
-      className="py-8 md:py-12 border-t border-gray-800/50"
+      className="!bg-surface-deep py-8 md:py-12 border-t border-fg-primary/10"
     >
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6 md:mb-8"></div>
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-fg-muted/40 to-transparent mb-6 md:mb-8"></div>
 
       <FadeInElement delay={1.5}>
         {/* Mobile */}
         <div className="block md:hidden space-y-6 text-center">
           <div>
-            <h4 className={`${poppins.className} text-xl font-medium text-white`}>Derkyu</h4>
-            <p className={`${poppins.className} text-sm text-gray-400 font-light mt-1`}>
+            <h4 className={`${poppins.className} text-xl font-medium text-fg-primary`}>Derkyu</h4>
+            <p className={`${poppins.className} text-sm text-fg-muted font-light mt-1`}>
               Developer & Network Technician
             </p>
           </div>
           <div>
-            <p className={`${poppins.className} text-sm text-gray-400 font-light`}>Barcelona, Spain</p>
-            <p className={`${poppins.className} text-xs text-gray-500 font-light mt-1`}>Available for work</p>
+            <p className={`${poppins.className} text-sm text-fg-muted font-light`}>Barcelona, Spain</p>
+            <p className={`${poppins.className} text-xs text-fg-subtle font-light mt-1`}>Available for work</p>
           </div>
         </div>
 
         {/* Desktop */}
         <div className="hidden md:flex flex-row justify-between items-center">
           <div>
-            <h4 className={`${poppins.className} text-xl font-medium text-white`}>Derkyu</h4>
-            <p className={`${poppins.className} text-sm text-gray-400 font-light mt-1`}>
+            <h4 className={`${poppins.className} text-xl font-medium text-fg-primary`}>Derkyu</h4>
+            <p className={`${poppins.className} text-sm text-fg-muted font-light mt-1`}>
               Developer & Network Technician
             </p>
           </div>
           <div className="text-right">
-            <p className={`${poppins.className} text-sm text-gray-400 font-light`}>Spain, Barcelona</p>
-            <p className={`${poppins.className} text-xs text-gray-500 font-light mt-1`}>Available for work</p>
+            <p className={`${poppins.className} text-sm text-fg-muted font-light`}>Spain, Barcelona</p>
+            <p className={`${poppins.className} text-xs text-fg-subtle font-light mt-1`}>Available for work</p>
           </div>
         </div>
 
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent my-6 md:my-8"></div>
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-fg-muted/30 to-transparent my-6 md:my-8"></div>
 
         <div className="text-center md:text-left">
-          <p className={`${poppins.className} text-xs text-gray-500 font-light`}>
+          <p className={`${poppins.className} text-xs text-fg-subtle font-light`}>
             © {currentYear} Derkyu. All Rights Reserved.
           </p>
         </div>

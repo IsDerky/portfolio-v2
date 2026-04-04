@@ -124,9 +124,9 @@ export default function SpotifyWidget() {
         rel="noopener noreferrer"
         whileHover={{ scale: 1.01 }}
         style={{ flex: 1 }}
-        className="bg-[#212121] rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer h-full overflow-hidden flex flex-col no-underline"
+        className="bg-surface-2 rounded-xl border border-fg-primary/10 hover:border-fg-primary/20 transition-all duration-300 cursor-pointer h-full overflow-hidden flex flex-col no-underline"
       >
-        <div className={`${poppins.className} text-xs text-gray-400 px-4 pt-4 pb-3`}>
+        <div className={`${poppins.className} text-xs text-fg-muted px-4 pt-4 pb-3`}>
           <AnimatePresence mode="wait">
             {!loading && (
               <motion.span
@@ -178,7 +178,7 @@ export default function SpotifyWidget() {
                   />
                 ) : (
                   <div
-                    className="w-16 h-16 bg-white/10 flex-shrink-0 flex items-center justify-center"
+                    className="w-16 h-16 bg-fg-primary/10 flex-shrink-0 flex items-center justify-center"
                     style={{ borderRadius: '6px 1px 1px 6px' }}
                   >
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="#1db954">
@@ -189,14 +189,14 @@ export default function SpotifyWidget() {
 
                 <div className="flex-1 min-w-0">
                   {!data?.isPlaying && data?.title && (
-                    <p className={`${poppins.className} text-[10px] text-gray-500 mb-1`}>
+                    <p className={`${poppins.className} text-[10px] text-fg-subtle mb-1`}>
                       Recently listened
                     </p>
                   )}
-                  <p className={`${poppins.className} text-sm font-semibold text-white truncate leading-snug mb-0.5`}>
+                  <p className={`${poppins.className} text-sm font-semibold text-fg-primary truncate leading-snug mb-0.5`}>
                     {data?.title ?? 'Not playing'}
                   </p>
-                  <p className={cn(poppins.className, 'text-sm text-gray-300 truncate', data?.isPlaying && 'mb-4')}>
+                  <p className={cn(poppins.className, 'text-sm text-fg-secondary truncate', data?.isPlaying && 'mb-4')}>
                     {data?.artist ?? '—'}
                   </p>
 

@@ -12,11 +12,11 @@ const FeaturedProjects = () => {
     <Section className="py-6 md:py-8">
       <FadeInElement delay={0.7} className="mb-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-          <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-white`}>
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-fg-primary/20 to-transparent"></div>
+          <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary`}>
             Featured Projects
           </h3>
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-fg-primary/20 to-transparent"></div>
         </div>
       </FadeInElement>
 

@@ -11,7 +11,7 @@ const ModelViewer = dynamic(() => import("@/components/ModelViewer"), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full flex items-center justify-center">
-      <div className="animate-spin rounded-full h-10 w-10 md:h-12 md:w-12 border-2 border-transparent border-t-gray-500 border-r-gray-500" style={{ animationDuration: '0.6s' }}></div>
+      <div className="animate-spin rounded-full h-10 w-10 md:h-12 md:w-12 border-2 border-transparent border-t-fg-subtle border-r-fg-subtle" style={{ animationDuration: '0.6s' }}></div>
     </div>
   ),
 });
@@ -27,9 +27,9 @@ const ResponsiveShape = ({ className = "" }) => (
     >
       <path
         d="M 0 24 C 0 10.745 10.745 0 24 0 L 696 0 C 709.255 0 720 10.745 720 24 L 720 120 C 720 133.255 709.255 144 696 144 L 392 144 C 378.745 144 368 154.745 368 168 L 368 256 C 368 269.255 357.255 280 344 280 L 24 280 C 10.745 280 0 269.255 0 256 Z"
-        fill="#212121"
+        className="fill-surface-2"
       />
-      <rect x="392" y="168" width="328" height="112" rx="24" ry="24" fill="#212121" />
+      <rect x="392" y="168" width="328" height="112" rx="24" ry="24" className="fill-surface-2" />
     </svg>
 
     {/* Desktop */}
@@ -41,9 +41,9 @@ const ResponsiveShape = ({ className = "" }) => (
     >
       <path
         d="M 0 24 C 0 10.745 10.745 0 24 0 L 696 0 C 709.255 0 720 10.745 720 24 L 720 83.5 C 720 96.755 709.255 107.5 696 107.5 L 392 107.5 C 378.745 107.5 368 118.245 368 131.5 L 368 191 C 368 204.255 357.255 215 344 215 L 24 215 C 10.745 215 0 204.255 0 191 Z"
-        fill="#212121"
+        className="fill-surface-2"
       />
-      <rect x="392" y="131.5" width="328" height="83.5" rx="24" ry="24" fill="#212121" />
+      <rect x="392" y="131.5" width="328" height="83.5" rx="24" ry="24" className="fill-surface-2" />
     </svg>
   </div>
 );
@@ -55,7 +55,7 @@ const Hero = () => {
           <ResponsiveShape />
 
           <div className="absolute top-[18%] md:top-[15%] left-[8%] md:left-[7%] transform -translate-y-1/2">
-            <div className="text-xs md:text-base lg:text-lg text-gray-400">
+            <div className="text-xs md:text-base lg:text-lg text-fg-primary">
               Hey! I&apos;m
             </div>
           </div>
@@ -68,7 +68,7 @@ const Hero = () => {
               showCursor={true}
               cursorCharacter="|"
               loop={false}
-              className={`text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-300 ${reenieBeanie.className}`}
+              className={`text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-fg-primary ${reenieBeanie.className}`}
             />
           </div>
 
@@ -86,10 +86,10 @@ const Hero = () => {
           </div>
 
           <div className="absolute bottom-[18%] md:bottom-[15%] left-[5%] md:left-[3%] transform translate-y-1/2">
-            <div className={`${poppins.className} text-xs md:text-sm font-light text-gray-300`}>
+            <div className={`${poppins.className} text-xs md:text-sm font-light text-fg-secondary`}>
               Digital Enjoyer
             </div>
-            <div className={`${poppins.className} text-xs font-light text-gray-400 mt-1`}>
+            <div className={`${poppins.className} text-xs font-light text-fg-muted mt-1`}>
               Spain, Barcelona.
             </div>
           </div>
@@ -97,7 +97,7 @@ const Hero = () => {
           <div className="absolute bottom-[22%] md:bottom-[20%] left-[77%] md:left-auto md:right-[23%] transform -translate-x-1/2 md:translate-x-1/2 translate-y-1/2">
             <RotatingText
               texts={['Developer', 'Gamer', 'Chatter']}
-              mainClassName={`${permanentMarker.className} text-gray-300 text-center`}
+              mainClassName={`${permanentMarker.className} text-fg-secondary text-center`}
               staggerFrom="first"
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}

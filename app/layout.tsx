@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AnimationProvider } from "@/components/providers/AnimationProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { CommandPalette } from "@/components/CommandPalette";
 import { Analytics } from "@vercel/analytics/next";
 import { geistSans, geistMono } from "@/lib/fonts";
@@ -18,18 +19,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface-deep min-h-screen`}
       >
-        <AnimationProvider>
-          <CommandPalette />
-          <Header />
-          <main>
-            <Hero />
-            {children}
-          </main>
-        </AnimationProvider>
+        <ThemeProvider>
+          <AnimationProvider>
+            <CommandPalette />
+            <Header />
+            <main>
+              <Hero />
+              {children}
+            </main>
+          </AnimationProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
