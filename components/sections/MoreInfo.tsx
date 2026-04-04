@@ -4,7 +4,7 @@ import {
   Keyboard, ChefHat, Car, Radio, Gamepad2, Tv, Music,
   Icon, LucideProps, Mail
 } from 'lucide-react';
-import { basketball } from '@lucide/lab';
+import { basketball, motorRacingHelmet } from '@lucide/lab';
 import AnimatedHeart from "@/components/AnimatedHeart";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
@@ -34,6 +34,7 @@ const hobbies: Hobby[] = [
   { name: 'Games', icon: Gamepad2, isLab: false },
   { name: 'Series', icon: Tv, isLab: false },
   { name: 'Music', icon: Music, isLab: false },
+  { name: 'Bikes', icon: motorRacingHelmet, isLab: true },
 ];
 
 interface TimelineItemProps {
