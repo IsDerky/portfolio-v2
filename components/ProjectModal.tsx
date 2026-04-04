@@ -67,13 +67,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           >
             {/* Header image */}
             {project.image && (
-              <div className="relative h-48 md:h-56 bg-surface-2 flex-shrink-0">
-                <ProjectImage
-                  project={project}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 672px"
-                />
+              <div className="relative h-48 md:h-56 bg-surface-2 flex-shrink-0 p-4">
+                <div className="relative w-full h-full">
+                  <ProjectImage
+                    project={project}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 672px"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-surface-1 via-transparent to-transparent" />
               </div>
             )}
