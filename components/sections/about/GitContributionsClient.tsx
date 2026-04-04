@@ -6,6 +6,7 @@ import { poppins } from "@/lib/fonts";
 import { Github } from 'lucide-react';
 import { ActivityCalendar } from 'react-activity-calendar';
 import { Tooltip as ReactTooltip } from 'react-tooltip';
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 import 'react-tooltip/dist/react-tooltip.css';
 
@@ -20,6 +21,12 @@ interface Props {
   totalContributions: number;
   githubUsername: string;
 }
+
+const localeMap: Record<string, string> = {
+  en: 'en-US',
+  es: 'es-ES',
+  fr: 'fr-FR',
+};
 
 const AnimatedCounter = ({ value }: { value: number }) => {
   const count = useMotionValue(0);
@@ -88,34 +95,37 @@ const explicitTheme = {
 };
 
 export default function GitContributionsClient({ data, totalContributions, githubUsername }: Props) {
+  const { locale, t } = useLanguage();
   const { blockSize, blockMargin, fontSize } = useResponsiveBlockSize();
+  const gc = t.gitContributions;
+  const dateLocale = localeMap[locale] ?? 'en-US';
 
   const renderBlock = useCallback((block: React.ReactElement, activity: { date: string; count: number; level: number }) => {
     const date = new Date(activity.date + 'T00:00:00');
-    const formatted = date.toLocaleDateString('en-US', {
+    const formatted = date.toLocaleDateString(dateLocale, {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     });
     const label = activity.count === 0
-      ? `No contributions on ${formatted}`
-      : `${activity.count} contribution${activity.count !== 1 ? 's' : ''} on ${formatted}`;
+      ? `${gc.noContributionsOn} ${formatted}`
+      : `${activity.count} ${activity.count !== 1 ? gc.contributions : gc.contribution} ${gc.on} ${formatted}`;
 
     return React.cloneElement(block, {
       'data-tooltip-id': 'contributions-tooltip',
       'data-tooltip-content': label,
     } as Record<string, string>);
-  }, []);
+  }, [dateLocale, gc]);
+
+  const contributionsParts = gc.contributionsLastYear.split('{n}');
 
   return (
-    <div
-      className="bg-surface-2 rounded-2xl p-6 border border-fg-primary/10 hover:border-fg-primary/20 transition-all duration-300"
-    >
+    <div className="bg-surface-2 rounded-2xl p-6 border border-fg-primary/10 hover:border-fg-primary/20 transition-all duration-300">
       <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
         <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary flex items-center gap-2`}>
           <Github size={24} className="text-fg-primary" />
-          Contribution Graph
+          {gc.title}
         </h3>
 
         <a
@@ -125,7 +135,7 @@ export default function GitContributionsClient({ data, totalContributions, githu
           className={`${poppins.className} flex items-center gap-2 px-4 py-2 bg-fg-primary/10 hover:bg-fg-primary/20 rounded-lg transition-colors text-sm text-fg-secondary font-medium`}
         >
           <Github size={16} />
-          View Profile
+          {gc.viewProfile}
         </a>
       </div>
 
@@ -143,6 +153,10 @@ export default function GitContributionsClient({ data, totalContributions, githu
               hideTotalCount={true}
               maxLevel={4}
               renderBlock={renderBlock}
+              labels={{
+                months: gc.months,
+                legend: { less: gc.less, more: gc.more },
+              }}
               style={{
                 color: '#9ca3af',
                 minWidth: 'fit-content',
@@ -163,17 +177,18 @@ export default function GitContributionsClient({ data, totalContributions, githu
           </div>
         ) : (
           <div className={`${poppins.className} text-fg-muted text-center py-8`}>
-            No contributions data available
+            {gc.noData}
           </div>
         )}
       </div>
 
       {data.length > 0 && (
         <p className={`${poppins.className} text-sm text-fg-muted`}>
+          {contributionsParts[0]}
           <span className="text-fg-primary font-semibold">
             <AnimatedCounter value={totalContributions} />
           </span>
-          {' '}contributions in the last year
+          {contributionsParts[1]}
         </p>
       )}
     </div>

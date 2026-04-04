@@ -7,6 +7,7 @@ import { ExternalLink, Code2, Network, Wrench, Server, LayoutGrid, type LucideIc
 import { poppins } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { projects } from '@/lib/projects';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 const categoryIcons: Record<string, LucideIcon> = {
   all: LayoutGrid,
@@ -25,6 +26,8 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, onCardClick }: ProjectCardProps) => {
+  const { t } = useLanguage();
+  const description = t.projects[project.id]?.description ?? project.description;
   const CategoryIcon = categoryIcons[project.category] || LayoutGrid;
   return (
     <motion.div
@@ -64,7 +67,7 @@ const ProjectCard = ({ project, onCardClick }: ProjectCardProps) => {
         </div>
 
         <p className={`${poppins.className} text-sm text-fg-muted leading-relaxed mb-4 flex-grow font-light relative z-10`}>
-          {project.description}
+          {description}
         </p>
 
         <div className="flex flex-wrap gap-2 mb-4 relative z-10">

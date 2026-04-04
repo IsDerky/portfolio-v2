@@ -6,6 +6,7 @@ import ProjectImage from '@/components/ProjectImage';
 import { X, Maximize2, ExternalLink, Github, Code2, Server, Network, Wrench, type LucideIcon } from 'lucide-react';
 import { poppins } from '@/lib/fonts';
 import type { Project } from '@/lib/projects';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 const categoryIcons: Record<string, LucideIcon> = {
   web: Code2,
@@ -20,7 +21,12 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const { t } = useLanguage();
   const CategoryIcon = project ? categoryIcons[project.category] : null;
+  const tp = project ? t.projects[project.id] : undefined;
+  const longDescription = tp?.longDescription ?? project?.longDescription;
+  const details = tp?.details ?? project?.details;
+
   useEffect(() => {
     if (!project) return;
     const handleKey = (e: KeyboardEvent) => {
@@ -119,13 +125,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
               {/* Description */}
               <p className={`${poppins.className} text-sm md:text-base text-fg-secondary leading-relaxed mb-6 font-light`}>
-                {project.longDescription}
+                {longDescription}
               </p>
 
               {/* Details sections */}
-              {project.details && project.details.length > 0 && (
+              {details && details.length > 0 && (
                 <div className="space-y-4 mb-6">
-                  {project.details.map((detail) => (
+                  {details.map((detail) => (
                     <div key={detail.title}>
                       <h4 className={`${poppins.className} text-sm font-semibold text-fg-primary mb-1.5`}>
                         {detail.title}

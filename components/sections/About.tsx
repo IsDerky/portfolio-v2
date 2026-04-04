@@ -1,10 +1,15 @@
+'use client';
+
 import React from "react";
 import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const About = () => {
+  const { t } = useLanguage();
+
   return (
     <Section className="py-6 md:py-8">
       <FadeInElement delay={0.5}>
@@ -23,7 +28,7 @@ const About = () => {
               text-fg-secondary leading-relaxed font-light
               relative z-10 max-w-none md:max-w-4xl
             `}>
-              Developer and network technician from Barcelona, Spain. I started my programming journey in 2019 as a self-taught developer, and later expanded my knowledge by studying network systems and infrastructure.
+              {t.about.bio}
             </p>
           </div>
         </div>
