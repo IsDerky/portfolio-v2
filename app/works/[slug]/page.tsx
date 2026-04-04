@@ -102,7 +102,7 @@ export default async function ProjectPage({
           {/* Title + meta */}
           <div className="flex items-center gap-4">
             {project.image && (
-              <div className="w-14 h-14 rounded-2xl overflow-hidden bg-black/80 flex items-center justify-center shrink-0">
+              <div className="w-14 h-14 rounded-2xl overflow-hidden bg-[#2c2c2c] flex items-center justify-center shrink-0">
                 <ProjectImage
                   project={project}
                   width={56}
