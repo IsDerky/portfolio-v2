@@ -55,8 +55,8 @@ export const projects: Project[] = [
   {
     id: 'bodycamrp',
     title: 'Bodycam RP',
-    description: 'Free browser-based body camera overlay tool for FiveM and GTA Roleplay streamers.',
-    longDescription: 'Configure professional bodycam overlays for OBS — no installation required. Built for the FiveM and GTA Roleplay streaming community.',
+    description: 'Browser-based bodycam overlay configurator for FiveM and GTA Roleplay streamers.',
+    longDescription: 'Customize your bodycam overlay with your name, rank, badge number, one of 5 designs, font, logo, and screen position — then launch it directly as an OBS browser source. No installation or account required.',
     tags: ['Next.js', 'React', 'OBS'],
     category: 'tools',
     liveUrl: 'https://bodycamrp.org',

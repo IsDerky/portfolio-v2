@@ -1,22 +1,30 @@
 ## Overview
 
-A free, browser-based body camera overlay tool for FiveM and GTA Roleplay streamers. Configure and deploy professional-looking bodycam overlays for OBS — no installation, no account, no setup beyond a browser source URL.
+A free, browser-based body camera overlay tool for FiveM and GTA Roleplay streamers. Customize your overlay and launch it directly as an OBS browser source — no installation, no account, no plugins required.
 
-## The Idea
+## What You Can Customize
 
-Bodycam-style streams are popular in the FiveM RP community but setting up a convincing overlay usually meant buying premium tools or piecing together multiple plugins. I wanted something that just works, for free, directly in the browser.
+The configurator lets you personalize every detail of your overlay:
 
-## Features
-
-- **Real-time overlay configuration** — adjust opacity, shake intensity, vignette, and more
-- **Multiple bodycam presets** styled after real law enforcement cameras
-- **OBS browser source compatible** — paste a URL and you're done
-- **Zero friction** — no account, no install, no watermark
-
-## Tech Stack
-
-Built with **Next.js** and **React**, running entirely client-side as an OBS browser source. The overlay logic uses CSS animations and canvas compositing to simulate authentic camera artifacts like grain, blur edges, and timestamp overlays.
+- **Officer data** — name, rank, and badge number
+- **Overlay design** — 5 presets: Classic, Minimal, Tactical, Modern, and AXON (replica of the real AXON Body 2)
+- **Screen position** — any corner of the screen
+- **Scale** — 100%, 125%, or 150%
+- **Logo** — none, the built-in AXON logo, or a custom image (e.g. your department's badge)
+- **Typography** — 6 fonts: IBM Plex Mono, Share Tech Mono, Roboto Mono, Orbitron, Rajdhani, and Boxed Round
 
 ## How It Works
 
-OBS supports browser sources — you give it a URL and it renders the page as a transparent overlay layer. The tool generates a unique configuration URL with all your settings encoded, so the overlay loads exactly how you set it up every time OBS starts.
+Configure your overlay, copy the generated URL, and paste it into OBS as a Browser Source. The overlay loads exactly as you set it up every time OBS starts — transparent background, no chroma key needed.
+
+## Dashboard
+
+Sign in with Discord to access a personal dashboard where you can create, save, and share presets. Each overlay gets its own public URL you can distribute to your community.
+
+## Custom Department Overlays
+
+Servers can request a fully custom overlay with their department's identity — colors, logo, and unique style — at no cost.
+
+## Tech Stack
+
+Built with **Next.js** and **React**, running entirely client-side. Optimized for 1080p and 1440p stream resolutions.

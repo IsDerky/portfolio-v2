@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { X, ExternalLink, Github, Code2, Server, Network, Wrench, type LucideIcon } from 'lucide-react';
+import { X, Maximize2, ExternalLink, Github, Code2, Server, Network, Wrench, type LucideIcon } from 'lucide-react';
 import { poppins } from '@/lib/fonts';
 import type { Project } from '@/lib/projects';
 
@@ -79,14 +79,23 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
             )}
 
-            {/* Close button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full bg-black/50 border border-white/10 hover:bg-white/10 transition-colors z-10"
-              aria-label="Close modal"
-            >
-              <X size={18} className="text-white" />
-            </button>
+            {/* Top-right actions */}
+            <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+              <a
+                href={`/works/${project.id}`}
+                className="p-2 rounded-full bg-black/50 border border-white/10 hover:bg-white/10 transition-colors"
+                aria-label="View full page"
+              >
+                <Maximize2 size={16} className="text-white" />
+              </a>
+              <button
+                onClick={onClose}
+                className="p-2 rounded-full bg-black/50 border border-white/10 hover:bg-white/10 transition-colors"
+                aria-label="Close modal"
+              >
+                <X size={18} className="text-white" />
+              </button>
+            </div>
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto p-6 md:p-8">
