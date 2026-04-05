@@ -166,7 +166,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-fg-primary/10 hover:bg-fg-primary/20 border border-fg-primary/20 rounded-lg transition-all text-sm text-fg-secondary font-medium`}
                   >
                     <ExternalLink size={16} />
-                    Visit
+                    {t.works.visit}
                   </a>
                 )}
                 {project.githubUrl && (
@@ -177,7 +177,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-fg-primary/5 hover:bg-fg-primary/10 border border-fg-primary/10 rounded-lg transition-all text-sm text-fg-muted hover:text-fg-secondary font-medium`}
                   >
                     <Github size={16} />
-                    Source
+                    {t.works.source}
                   </a>
                 )}
               </div>

@@ -32,11 +32,11 @@ const AnimatedCounter = ({ value }: { value: number }) => {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const [display, setDisplay] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const hasAnimated = React.useRef(false);
   const ref = React.useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (!ref.current || hasAnimated) return;
+    if (!ref.current || hasAnimated.current) return;
 
     let animationControls: ReturnType<typeof animate> | null = null;
     let unsubscribe: (() => void) | null = null;
@@ -44,7 +44,7 @@ const AnimatedCounter = ({ value }: { value: number }) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setHasAnimated(true);
+          hasAnimated.current = true;
           animationControls = animate(count, value, {
             duration: 2,
             ease: "easeOut",
@@ -62,7 +62,7 @@ const AnimatedCounter = ({ value }: { value: number }) => {
       animationControls?.stop();
       unsubscribe?.();
     };
-  }, [value, count, rounded, hasAnimated]);
+  }, [value, count, rounded]);
 
   return <span ref={ref}>{display}</span>;
 };

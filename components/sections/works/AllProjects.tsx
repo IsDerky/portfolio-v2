@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { memo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ExternalLink, Code2, Network, Wrench, Server, LayoutGrid, type LucideIcon } from 'lucide-react';
@@ -8,6 +8,8 @@ import { poppins } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { projects } from '@/lib/projects';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import Section from "@/components/layout/Section";
+import { FadeInElement } from "@/components/animations/ContentAnimation";
 
 const categoryIcons: Record<string, LucideIcon> = {
   all: LayoutGrid,
@@ -16,16 +18,13 @@ const categoryIcons: Record<string, LucideIcon> = {
   network: Network,
   tools: Wrench,
 };
-import Section from "@/components/layout/Section";
-import { FadeInElement } from "@/components/animations/ContentAnimation";
-
 
 interface ProjectCardProps {
   project: (typeof projects)[number];
   onCardClick: (id: string) => void;
 }
 
-const ProjectCard = ({ project, onCardClick }: ProjectCardProps) => {
+const ProjectCard = memo(({ project, onCardClick }: ProjectCardProps) => {
   const { t } = useLanguage();
   const description = t.projects[project.id]?.description ?? project.description;
   const CategoryIcon = categoryIcons[project.category] || LayoutGrid;
@@ -92,14 +91,16 @@ const ProjectCard = ({ project, onCardClick }: ProjectCardProps) => {
               aria-label={`Visit ${project.title}`}
             >
               <ExternalLink size={14} aria-hidden="true" />
-              View
+              {t.works.visit}
             </a>
           )}
         </div>
       </motion.div>
     </motion.div>
   );
-};
+});
+
+ProjectCard.displayName = 'ProjectCard';
 
 interface CategoryFilterProps {
   category: string;
@@ -132,6 +133,7 @@ const CategoryFilter = ({ category, isSelected, onSelect }: CategoryFilterProps)
 
 const AllProjects = () => {
   const router = useRouter();
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = ['all', 'web', 'service', 'network', 'tools'];
@@ -140,6 +142,10 @@ const AllProjects = () => {
     ? projects
     : projects.filter(p => p.category === selectedCategory);
 
+  const handleCardClick = useCallback((id: string) => {
+    router.push(`/works/${id}`, { scroll: false });
+  }, [router]);
+
   return (
     <Section className="py-6 md:py-8">
       <FadeInElement delay={0.5} className="mb-6">
@@ -147,7 +153,7 @@ const AllProjects = () => {
           <div className="flex items-center gap-3">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-fg-primary/20"></div>
             <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary`}>
-              All Projects
+              {t.works.allProjects}
             </h3>
           </div>
 
@@ -170,7 +176,7 @@ const AllProjects = () => {
             <ProjectCard
               key={project.id}
               project={project}
-              onCardClick={(id) => router.push(`/works/${id}`, { scroll: false })}
+              onCardClick={handleCardClick}
             />
           ))}
         </AnimatePresence>
@@ -185,7 +191,7 @@ const AllProjects = () => {
               </div>
             </div>
             <p className={`${poppins.className} text-fg-muted font-light`}>
-              No projects found in this category.
+              {t.works.noProjectsFound}
             </p>
           </div>
         </FadeInElement>

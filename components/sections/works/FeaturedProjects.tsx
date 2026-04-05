@@ -1,11 +1,15 @@
+'use client';
+
 import React from "react";
 import { poppins } from '@/lib/fonts';
 import { getFeaturedProjects } from '@/lib/projects';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 import ProjectCard from "./ProjectCard";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const FeaturedProjects = () => {
+  const { t } = useLanguage();
   const featuredProjects = getFeaturedProjects();
 
   return (
@@ -14,7 +18,7 @@ const FeaturedProjects = () => {
         <div className="flex items-center gap-3 mb-6">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-fg-primary/20 to-transparent"></div>
           <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary`}>
-            Featured Projects
+            {t.works.featuredProjects}
           </h3>
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-fg-primary/20 to-transparent"></div>
         </div>

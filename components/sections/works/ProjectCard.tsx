@@ -91,7 +91,7 @@ const ProjectCard = ({ project, index, priority }: ProjectCardProps) => {
                 aria-label={`Visit ${project.title}`}
               >
                 <ExternalLink size={16} className="group-hover/link:rotate-12 transition-transform" aria-hidden="true" />
-                Visit
+                {t.works.visit}
               </a>
             )}
             {project.githubUrl && (
@@ -104,7 +104,7 @@ const ProjectCard = ({ project, index, priority }: ProjectCardProps) => {
                 aria-label={`View source code for ${project.title} on GitHub`}
               >
                 <Github size={16} aria-hidden="true" />
-                Source
+                {t.works.source}
               </a>
             )}
           </div>

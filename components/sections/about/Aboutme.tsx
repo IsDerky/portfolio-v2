@@ -35,7 +35,6 @@ const Aboutme = () => {
 
   const smallProjects = [
     {
-      title: t.aboutMe.devStats,
       stats: [
         { label: t.aboutMe.linesOfCode, value: "60K+", icon: "code" },
         { label: t.aboutMe.coffeeCups, value: "∞", icon: "coffee" }
@@ -43,8 +42,6 @@ const Aboutme = () => {
       type: "dual-stat"
     },
     {
-      title: "Now Playing",
-      spotifyUser: "darkqwew",
       type: "spotify"
     }
   ];
@@ -79,10 +76,8 @@ const Aboutme = () => {
             className="bg-surface-2 rounded-xl p-4 border border-fg-primary/10 transition-all duration-300"
           >
             <div className={`${poppins.className} text-xs text-fg-muted mb-2`}>{t.aboutMe.totalExperience}</div>
-            <div className="flex items-baseline gap-2">
-              <div className={`${poppins.className} text-3xl font-bold text-fg-primary`}>4+</div>
-              <div className={`${poppins.className} text-sm text-fg-secondary`}>{t.aboutMe.years}</div>
-            </div>
+            <div className={`${poppins.className} text-3xl font-bold text-fg-primary`}>4+</div>
+            <div className={`${poppins.className} text-sm text-fg-secondary`}>{t.aboutMe.years}</div>
           </motion.div>
         </FadeInElement>
 
