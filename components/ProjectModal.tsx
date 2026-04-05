@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectImage from '@/components/ProjectImage';
 import { X, Maximize2, ExternalLink, Github, Code2, Server, Network, Wrench, type LucideIcon } from 'lucide-react';

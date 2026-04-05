@@ -1,6 +1,5 @@
 'use client';
 
-import React from "react";
 import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";

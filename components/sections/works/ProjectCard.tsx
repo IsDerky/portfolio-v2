@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ExternalLink, Github } from 'lucide-react';
@@ -15,7 +15,7 @@ interface ProjectCardProps {
   priority?: boolean;
 }
 
-const ProjectCard = ({ project, index, priority }: ProjectCardProps) => {
+const ProjectCard = memo(({ project, index, priority }: ProjectCardProps) => {
   const router = useRouter();
   const { t } = useLanguage();
   const tp = t.projects[project.id];
@@ -112,6 +112,8 @@ const ProjectCard = ({ project, index, priority }: ProjectCardProps) => {
       </div>
     </motion.div>
   );
-};
+});
+
+ProjectCard.displayName = 'ProjectCard';
 
 export default ProjectCard;

@@ -1,4 +1,3 @@
-import React from "react";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 import GitContributionsClient from "./GitContributionsClient";

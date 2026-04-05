@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";

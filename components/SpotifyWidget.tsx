@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { poppins } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
@@ -95,7 +95,6 @@ export default function SpotifyWidget() {
     } finally {
       setLoading(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Fetch inicial y cada 5s — pausar cuando la tab está en segundo plano
@@ -116,7 +115,6 @@ export default function SpotifyWidget() {
       if (percent >= 100) fetchData();
     }, 1000);
     return () => clearInterval(ticker);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.isPlaying, fetchData]);
 
   return (

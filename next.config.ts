@@ -24,10 +24,11 @@ const nextConfig: NextConfig = {
 
   // Optimizaciones de imágenes y recursos estáticos
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'i.scdn.co',
       },
     ],
   },

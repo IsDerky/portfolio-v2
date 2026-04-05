@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { poppins } from '@/lib/fonts';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 

@@ -1,6 +1,5 @@
 'use client';
 
-import React from "react";
 import { poppins } from '@/lib/fonts';
 import { getFeaturedProjects } from '@/lib/projects';
 import Section from "@/components/layout/Section";

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { memo, useState, useCallback } from "react";
+import React, { memo, useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ExternalLink, Code2, Network, Wrench, Server, LayoutGrid, type LucideIcon } from 'lucide-react';
@@ -108,7 +108,7 @@ interface CategoryFilterProps {
   onSelect: (category: string) => void;
 }
 
-const CategoryFilter = ({ category, isSelected, onSelect }: CategoryFilterProps) => {
+const CategoryFilter = memo(({ category, isSelected, onSelect }: CategoryFilterProps) => {
   const Icon = categoryIcons[category] || LayoutGrid;
   return (
     <button
@@ -129,7 +129,9 @@ const CategoryFilter = ({ category, isSelected, onSelect }: CategoryFilterProps)
       {category.charAt(0).toUpperCase() + category.slice(1)}
     </button>
   );
-};
+});
+
+CategoryFilter.displayName = 'CategoryFilter';
 
 const AllProjects = () => {
   const router = useRouter();
@@ -138,9 +140,12 @@ const AllProjects = () => {
 
   const categories = ['all', 'web', 'service', 'network', 'tools'];
 
-  const filteredProjects = selectedCategory === 'all'
-    ? projects
-    : projects.filter(p => p.category === selectedCategory);
+  const filteredProjects = useMemo(
+    () => selectedCategory === 'all'
+      ? projects
+      : projects.filter(p => p.category === selectedCategory),
+    [selectedCategory]
+  );
 
   const handleCardClick = useCallback((id: string) => {
     router.push(`/works/${id}`, { scroll: false });
