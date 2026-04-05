@@ -119,7 +119,7 @@ export const translations: Record<Locale, Translations> = {
       coreTechnologies: 'Core Technologies',
       devStats: 'Developer Stats',
       linesOfCode: 'Lines of Code',
-      coffeeCups: 'Coffee Cups',
+      coffeeCups: 'Coffee Sips',
       featuredProject: 'Featured Project',
     },
     footer: {
@@ -307,7 +307,7 @@ export const translations: Record<Locale, Translations> = {
       coreTechnologies: 'Tecnologías Principales',
       devStats: 'Estadísticas Dev',
       linesOfCode: 'Líneas de Código',
-      coffeeCups: 'Cafés',
+      coffeeCups: 'Sorbos de Café',
       featuredProject: 'Proyecto Destacado',
     },
     footer: {
@@ -495,7 +495,7 @@ export const translations: Record<Locale, Translations> = {
       coreTechnologies: 'Technologies Principales',
       devStats: 'Stats Dev',
       linesOfCode: 'Lignes de Code',
-      coffeeCups: 'Tasses de Café',
+      coffeeCups: 'Gorgées de Café',
       featuredProject: 'Projet Vedette',
     },
     footer: {
