@@ -98,12 +98,12 @@ export default function SpotifyWidget() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Fetch inicial y cada 10s — pausar cuando la tab está en segundo plano
+  // Fetch inicial y cada 5s — pausar cuando la tab está en segundo plano
   useEffect(() => {
     fetchData();
     const fetchInterval = setInterval(() => {
       if (document.visibilityState === 'visible') fetchData();
-    }, 10000);
+    }, 5000);
     return () => clearInterval(fetchInterval);
   }, [fetchData]);
 
