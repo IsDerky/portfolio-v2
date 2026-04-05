@@ -23,7 +23,7 @@ const FeaturedProjects = () => {
       <div className="space-y-6">
         {featuredProjects.map((project, index) => (
           <FadeInElement key={project.id} delay={0.8 + (index * 0.1)}>
-            <ProjectCard project={project} index={index} />
+            <ProjectCard project={project} index={index} priority={true} />
           </FadeInElement>
         ))}
       </div>

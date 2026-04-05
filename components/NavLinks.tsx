@@ -97,7 +97,7 @@ export function DesktopNav() {
         {menuItems.map((item, index) => {
           const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
           return (
-            <li key={index}>
+            <li key={index} className="flex items-center">
               <Link
                 href={item.href}
                 className={`

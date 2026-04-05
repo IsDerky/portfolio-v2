@@ -38,27 +38,30 @@ const AnimatedCounter = ({ value }: { value: number }) => {
   useEffect(() => {
     if (!ref.current || hasAnimated) return;
 
+    let animationControls: ReturnType<typeof animate> | null = null;
+    let unsubscribe: (() => void) | null = null;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setHasAnimated(true);
-          const controls = animate(count, value, {
+          animationControls = animate(count, value, {
             duration: 2,
             ease: "easeOut",
           });
-          const unsubscribe = rounded.on("change", (v) => setDisplay(v));
+          unsubscribe = rounded.on("change", (v) => setDisplay(v));
           observer.disconnect();
-          return () => {
-            controls.stop();
-            unsubscribe();
-          };
         }
       },
       { threshold: 0.5 }
     );
 
     observer.observe(ref.current);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      animationControls?.stop();
+      unsubscribe?.();
+    };
   }, [value, count, rounded, hasAnimated]);
 
   return <span ref={ref}>{display}</span>;

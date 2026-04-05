@@ -12,9 +12,10 @@ import { useLanguage } from '@/components/providers/LanguageProvider';
 interface ProjectCardProps {
   project: Project;
   index: number;
+  priority?: boolean;
 }
 
-const ProjectCard = ({ project, index }: ProjectCardProps) => {
+const ProjectCard = ({ project, index, priority }: ProjectCardProps) => {
   const router = useRouter();
   const { t } = useLanguage();
   const tp = t.projects[project.id];
@@ -38,7 +39,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             <ProjectImage
               project={project}
               fill
-              priority={index === 0}
+              priority={priority ?? index === 0}
               className="object-contain"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
