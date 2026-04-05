@@ -103,7 +103,7 @@ export function DesktopNav() {
                 className={`
                   ${poppins.className}
                   relative font-medium text-sm transition-colors duration-300
-                  py-2 px-3 group
+                  py-2 px-3 group whitespace-nowrap
                   ${isActive ? 'text-fg-primary' : 'text-fg-secondary hover:text-fg-primary'}
                 `}
                 aria-label={`Navigate to ${item.name}`}
