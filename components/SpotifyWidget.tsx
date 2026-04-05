@@ -29,11 +29,11 @@ const SoundBars = ({ progressPercent }: { progressPercent: number }) => (
         return (
           <div
             key={i}
+            className="bg-fg-primary"
             style={{
               flex: 1,
               minWidth: 0,
               height: 3,
-              backgroundColor: '#ffffff',
               opacity: isActive ? 1 : 0.18,
               animation: isActive
                 ? `natemoo-sound ${BAR_DURATIONS[i]}ms -800ms linear infinite alternate`
