@@ -7,14 +7,20 @@ import { ExternalLink, Github } from 'lucide-react';
 import { poppins } from '@/lib/fonts';
 import type { Project } from '@/lib/projects';
 import ProjectImage from '@/components/ProjectImage';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 interface ProjectCardProps {
   project: Project;
   index: number;
+  priority?: boolean;
 }
 
-const ProjectCard = ({ project, index }: ProjectCardProps) => {
+const ProjectCard = ({ project, index, priority }: ProjectCardProps) => {
   const router = useRouter();
+  const { t } = useLanguage();
+  const tp = t.projects[project.id];
+  const description = tp?.description ?? project.description;
+  const longDescription = tp?.longDescription ?? project.longDescription;
 
   return (
     <motion.div
@@ -33,7 +39,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             <ProjectImage
               project={project}
               fill
-              priority={index === 0}
+              priority={priority ?? index === 0}
               className="object-contain"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
@@ -55,11 +61,11 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             </h4>
 
             <p className={`${poppins.className} text-sm md:text-base text-fg-secondary mb-3 font-light leading-relaxed`}>
-              {project.description}
+              {description}
             </p>
 
             <p className={`${poppins.className} text-xs md:text-sm text-fg-muted leading-relaxed mb-6 font-light`}>
-              {project.longDescription}
+              {longDescription}
             </p>
 
             <div className="flex flex-wrap gap-2 mb-4">
@@ -85,7 +91,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 aria-label={`Visit ${project.title}`}
               >
                 <ExternalLink size={16} className="group-hover/link:rotate-12 transition-transform" aria-hidden="true" />
-                Visit
+                {t.works.visit}
               </a>
             )}
             {project.githubUrl && (
@@ -98,7 +104,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 aria-label={`View source code for ${project.title} on GitHub`}
               >
                 <Github size={16} aria-hidden="true" />
-                Source
+                {t.works.source}
               </a>
             )}
           </div>

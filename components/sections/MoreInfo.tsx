@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 import { poppins } from "@/lib/fonts";
 import {
@@ -8,6 +10,7 @@ import { basketball, motorRacingHelmet } from '@lucide/lab';
 import AnimatedHeart from "@/components/AnimatedHeart";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 type RegularIcon = React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
 type LabIcon = typeof basketball;
@@ -18,23 +21,16 @@ interface Hobby {
   isLab: boolean;
 }
 
-const timelineEvents = [
-  { year: "2005", event: "Born in Barcelona, Spain." },
-  { year: "2019", event: "Started in the development world as a self-taught learner." },
-  { year: "2021", event: "Entered a networking and systems vocational program to explore other areas of computer science." },
-  { year: "2025", event: "Currently working and focused on an active project called Derkyu Panel." },
-];
-
-const hobbies: Hobby[] = [
-  { name: 'Basketball', icon: basketball, isLab: true },
-  { name: 'Cars', icon: Car, isLab: false },
-  { name: 'Cooking', icon: ChefHat, isLab: false },
-  { name: 'Coding', icon: Keyboard, isLab: false },
-  { name: 'Streaming', icon: Radio, isLab: false },
-  { name: 'Games', icon: Gamepad2, isLab: false },
-  { name: 'Series', icon: Tv, isLab: false },
-  { name: 'Music', icon: Music, isLab: false },
-  { name: 'Bikes', icon: motorRacingHelmet, isLab: true },
+const hobbyIcons: { icon: RegularIcon | LabIcon; isLab: boolean }[] = [
+  { icon: basketball, isLab: true },
+  { icon: Car, isLab: false },
+  { icon: ChefHat, isLab: false },
+  { icon: Keyboard, isLab: false },
+  { icon: Radio, isLab: false },
+  { icon: Gamepad2, isLab: false },
+  { icon: Tv, isLab: false },
+  { icon: Music, isLab: false },
+  { icon: motorRacingHelmet, isLab: true },
 ];
 
 interface TimelineItemProps {
@@ -82,6 +78,14 @@ const HobbyCard = ({ hobby }: { hobby: Hobby }) => (
 );
 
 const MoreInfo = () => {
+  const { t } = useLanguage();
+
+  const hobbies: Hobby[] = t.moreInfo.hobbies.map((name, i) => ({
+    name,
+    icon: hobbyIcons[i].icon,
+    isLab: hobbyIcons[i].isLab,
+  }));
+
   return (
     <Section className="py-6 md:py-8">
       <FadeInElement delay={0.9}>
@@ -89,11 +93,11 @@ const MoreInfo = () => {
           {/* Bio Timeline */}
           <div className="bg-surface-2 rounded-2xl p-6 md:p-8">
             <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary mb-6 md:mb-8`}>
-              Bio
+              {t.moreInfo.bioTitle}
             </h3>
             <div className="space-y-3 md:space-y-4" role="list" aria-label="Timeline of personal milestones">
-              {timelineEvents.map((item, index) => (
-                <TimelineItem key={index} item={item} isLast={index === timelineEvents.length - 1} />
+              {t.moreInfo.timeline.map((item, index) => (
+                <TimelineItem key={index} item={item} isLast={index === t.moreInfo.timeline.length - 1} />
               ))}
             </div>
           </div>
@@ -101,7 +105,7 @@ const MoreInfo = () => {
           {/* I Love */}
           <div className="bg-surface-2 rounded-2xl p-6 md:p-8">
             <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary flex items-center gap-2 mb-6 md:mb-8`}>
-              I <AnimatedHeart size={22} className="md:w-6 md:h-6" />
+              {t.moreInfo.iLove} <AnimatedHeart size={22} className="md:w-6 md:h-6" />
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3" role="list" aria-label="Personal interests and hobbies">
               {hobbies.map((hobby, index) => (
@@ -118,7 +122,7 @@ const MoreInfo = () => {
           <div className="relative block bg-surface-2 rounded-2xl p-4 md:p-6 border border-fg-primary/20 hover:shadow-lg hover:shadow-black/30 transition-all duration-300 overflow-visible">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <span className={`${poppins.className} text-lg md:text-xl font-medium text-fg-primary`}>
-                Get in Touch
+                {t.moreInfo.getInTouch}
               </span>
               <a
                 href="mailto:contact@derkyu.lol"
@@ -127,7 +131,7 @@ const MoreInfo = () => {
               >
                 <div className="flex items-center justify-center gap-2 px-4 py-2 border border-fg-primary/40 rounded-lg bg-transparent min-w-[140px] md:min-w-[180px]">
                   <Mail size={20} className="text-fg-primary/70" />
-                  <span className={`${poppins.className} text-sm font-medium text-fg-primary`}>Mail me</span>
+                  <span className={`${poppins.className} text-sm font-medium text-fg-primary`}>{t.moreInfo.mailMe}</span>
                 </div>
                 <div className="hidden md:flex absolute inset-0 items-center justify-center gap-2 px-4 py-2 border border-fg-primary/60 rounded-lg bg-surface-3 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-8px] group-hover:translate-x-[-8px] transition-all duration-300 shadow-lg min-w-[180px]">
                   <Mail size={20} className="text-fg-primary" />

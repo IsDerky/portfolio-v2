@@ -14,6 +14,17 @@ function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
+const graphemeSegmenter = typeof Intl !== 'undefined' && Intl.Segmenter
+  ? new Intl.Segmenter('en', { granularity: 'grapheme' })
+  : null;
+
+function splitIntoCharacters(text: string): string[] {
+  if (graphemeSegmenter) {
+    return Array.from(graphemeSegmenter.segment(text), segment => segment.segment);
+  }
+  return Array.from(text);
+}
+
 export interface RotatingTextRef {
   next: () => void;
   previous: () => void;
@@ -70,13 +81,6 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>((props, ref)
 
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
 
-  const splitIntoCharacters = (text: string): string[] => {
-    if (typeof Intl !== 'undefined' && Intl.Segmenter) {
-      const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
-      return Array.from(segmenter.segment(text), segment => segment.segment);
-    }
-    return Array.from(text);
-  };
 
   const elements = useMemo(() => {
     const currentText: string = texts[currentTextIndex];

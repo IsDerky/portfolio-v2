@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AnimationProvider } from "@/components/providers/AnimationProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { CommandPalette } from "@/components/CommandPalette";
 import { Analytics } from "@vercel/analytics/next";
 import { geistSans, geistMono } from "@/lib/fonts";
@@ -23,17 +24,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface-deep min-h-screen`}
       >
-        <ThemeProvider>
-          <AnimationProvider>
-            <CommandPalette />
-            <Header />
-            <main>
-              <Hero />
-              {children}
-            </main>
-          </AnimationProvider>
-        </ThemeProvider>
-        <Analytics />
+        <LanguageProvider>
+          <ThemeProvider>
+            <AnimationProvider>
+              <CommandPalette />
+              <Header />
+              <main>
+                <Hero />
+                {children}
+              </main>
+            </AnimationProvider>
+          </ThemeProvider>
+          <Analytics />
+        </LanguageProvider>
       </body>
     </html>
   );
