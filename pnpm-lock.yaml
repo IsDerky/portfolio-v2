@@ -44,9 +44,6 @@ importers:
       framer-motion:
         specifier: ^12.23.16
         version: 12.23.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      gsap:
-        specifier: ^3.13.0
-        version: 3.13.0
       lucide-animated:
         specifier: ^1.0.0
         version: 1.0.0(motion@12.23.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
@@ -56,9 +53,6 @@ importers:
       matter-js:
         specifier: ^0.20.0
         version: 0.20.0
-      motion:
-        specifier: ^12.23.16
-        version: 12.23.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       next:
         specifier: 15.5.9
         version: 15.5.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -68,9 +62,6 @@ importers:
       ogl:
         specifier: ^1.0.11
         version: 1.0.11
-      postprocessing:
-        specifier: ^6.37.8
-        version: 6.37.8(three@0.180.0)
       react:
         specifier: 19.1.0
         version: 19.1.0
@@ -1504,9 +1495,6 @@ packages:
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
 
-  gsap@3.13.0:
-    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
-
   has-bigints@1.1.0:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==}
     engines: {node: '>= 0.4'}
@@ -2170,11 +2158,6 @@ packages:
   postcss@8.5.6:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
-
-  postprocessing@6.37.8:
-    resolution: {integrity: sha512-qTFUKS51z/fuw2U+irz4/TiKJ/0oI70cNtvQG1WxlPKvBdJUfS1CcFswJd5ATY3slotWfvkDDZAsj1X0fU8BOQ==}
-    peerDependencies:
-      three: '>= 0.157.0 < 0.181.0'
 
   potpack@1.0.2:
     resolution: {integrity: sha512-choctRBIV9EMT9WGAZHn3V7t0Z2pMQyl0EZE6pFc/6ml3ssw7Dlf/oAOvFwjm1HVsqfQN8GfeFyJ+d8tRzqueQ==}
@@ -4160,8 +4143,6 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  gsap@3.13.0: {}
-
   has-bigints@1.1.0: {}
 
   has-flag@4.0.0: {}
@@ -5017,10 +4998,6 @@ snapshots:
       nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
-
-  postprocessing@6.37.8(three@0.180.0):
-    dependencies:
-      three: 0.180.0
 
   potpack@1.0.2: {}
 
