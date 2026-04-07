@@ -1,0 +1,187 @@
+{
+  "nav": {
+    "home": "Home",
+    "works": "Works",
+    "about": "About"
+  },
+  "about": {
+    "bio": "Developer and network technician from Barcelona, Spain. I started my programming journey in 2019 as a self-taught developer, and later expanded my knowledge by studying network systems and infrastructure."
+  },
+  "moreInfo": {
+    "bioTitle": "Bio",
+    "iLove": "I",
+    "getInTouch": "Get in Touch",
+    "mailMe": "Mail me",
+    "timeline": [
+      { "year": "2005", "event": "Born in Barcelona, Spain." },
+      { "year": "2019", "event": "Started in the development world as a self-taught learner." },
+      { "year": "2021", "event": "Entered a networking and systems vocational program to explore other areas of computer science." },
+      { "year": "2025", "event": "Currently working and focused on an active project called Derkyu Panel." }
+    ],
+    "hobbies": ["Basketball", "Cars", "Cooking", "Coding", "Streaming", "Games", "Series", "Music", "Bikes"]
+  },
+  "worksIntro": {
+    "title": "My Works",
+    "description": "A collection of projects I've worked on. Each project represents a unique challenge and learning opportunity in my development journey."
+  },
+  "aboutMe": {
+    "title": "About Me",
+    "specialization": "Specialization",
+    "specializationValue": "Web developer & Networker",
+    "totalExperience": "Total Experience",
+    "years": "Years",
+    "coreTechnologies": "Core Technologies",
+    "devStats": "Developer Stats",
+    "linesOfCode": "Lines of Code",
+    "coffeeCups": "Coffee Sips",
+    "featuredProject": "Featured Project"
+  },
+  "footer": {
+    "role": "Developer & Network Technician",
+    "availability": "Available for work",
+    "rights": "All Rights Reserved.",
+    "location": "Spain, Barcelona"
+  },
+  "gitContributions": {
+    "title": "Contribution Graph",
+    "viewProfile": "View Profile",
+    "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "less": "Less",
+    "more": "More",
+    "contributionsLastYear": "{n} contributions in the last year",
+    "noData": "No contributions data available",
+    "noContributionsOn": "No contributions on",
+    "contribution": "contribution",
+    "contributions": "contributions",
+    "on": "on"
+  },
+  "spotify": {
+    "currentlyListening": "Currently Listening",
+    "currentlyOffline": "Currently Offline",
+    "recentlyListened": "Recently listened",
+    "notPlaying": "Not playing"
+  },
+  "works": {
+    "allProjects": "All Projects",
+    "featuredProjects": "Featured Projects",
+    "noProjectsFound": "No projects found in this category.",
+    "view": "View",
+    "backToWorks": "Back to Works",
+    "visit": "Visit",
+    "source": "Source"
+  },
+  "projects": {
+    "derkyu-hosting": {
+      "description": "Specialized hosting platform for game servers, Discord bots, and custom software.",
+      "longDescription": "A comprehensive hosting solution offering optimized performance, intuitive management tools, and 24/7 support with strategic server locations across Europe and South America.",
+      "details": [
+        {
+          "title": "Performance & Flexibility",
+          "text": "Scalable plans with 99% SLA, strategic server locations across Europe and South America, and 24/7 technical support for seamless operations."
+        },
+        {
+          "title": "Advanced Features",
+          "text": "Integrated code editor, SFTP file manager, automatic updates, real-time monitoring, and DDoS protection included in all plans."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": "A comprehensive hosting solution built for the gaming and developer community — offering game servers, Discord bot hosting, and custom software deployment. The goal was to eliminate the complexity of self-hosting while keeping full control over infrastructure."
+        },
+        {
+          "heading": "The Problem",
+          "body": "I used to pay for hosting to run the typical friend group servers, and over time I decided to put my own knowledge to use and build my own infrastructure instead of relying on third parties. From there, I scaled it up and started renting it out to others."
+        },
+        {
+          "heading": "Features",
+          "items": [
+            "Scalable plans with 99% SLA and transparent pricing",
+            "Strategic server locations across Europe and South America for low latency",
+            "24/7 technical support with fast response times",
+            "Integrated code editor and SFTP file manager — no SSH required for basic tasks",
+            "Automatic updates and real-time monitoring dashboards",
+            "DDoS protection included on all plans"
+          ]
+        },
+        {
+          "heading": "Tech Stack",
+          "body": "Built with Next.js, TypeScript, and shadcn/ui for the control panel frontend, deployed on a custom infrastructure stack optimized for low-latency game server workloads."
+        },
+        {
+          "heading": "What I Learned",
+          "body": "Managing infrastructure at scale surfaced challenges around resource isolation, billing logic, and real-time monitoring that pushed me to build tooling I hadn't originally planned. The project is ongoing and actively used by clients."
+        }
+      ]
+    },
+    "ronin-fc": {
+      "description": "Community-built website for Ronin FC, the football club founded by Ibai Llanos.",
+      "longDescription": "Community-built website for Ronin FC football club. This is a fan-made project and is not officially affiliated with or endorsed by Ibai Llanos or Ronin FC organization.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": "A community-built website for Ronin FC, the football club founded by Ibai Llanos. This is a fan-made project — not officially affiliated with or endorsed by Ibai Llanos or the Ronin FC organization."
+        },
+        {
+          "heading": "Why I Built It",
+          "body": "Ronin FC blew up fast and the community had no central hub for news, rosters, or match results. I built this to fill that gap: a clean, fast website that pulls live data so fans always have up-to-date information without anyone manually updating it."
+        },
+        {
+          "heading": "Features",
+          "items": [
+            "Club news and updates aggregated from official sources",
+            "Player roster with stats and positions",
+            "Match results and schedule with live score integration",
+            "API-driven data — content updates automatically, no manual CMS edits needed"
+          ]
+        },
+        {
+          "heading": "Tech Stack",
+          "body": "Built with Next.js and TypeScript, consuming external sports APIs to keep club data fresh. The focus was on performance: pages are statically generated where possible and revalidated on a short interval to stay current."
+        },
+        {
+          "heading": "Challenges",
+          "body": "The main challenge was working around inconsistent third-party API responses — some endpoints returned partial data or had rate limits that required careful caching strategies. I ended up building a thin API layer to normalize and cache responses before they hit the frontend."
+        }
+      ]
+    },
+    "bodycamrp": {
+      "description": "Browser-based bodycam overlay configurator for FiveM and GTA Roleplay streamers.",
+      "longDescription": "Customize your bodycam overlay with your name, rank, badge number, one of 5 designs, font, logo, and screen position — then launch it directly as an OBS browser source. No installation or account required.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": "A free, browser-based body camera overlay tool for FiveM and GTA Roleplay streamers. Customize your overlay and launch it directly as an OBS browser source — no installation, no account, no plugins required."
+        },
+        {
+          "heading": "What You Can Customize",
+          "body": "The configurator lets you personalize every detail of your overlay:",
+          "items": [
+            "Officer data — name, rank, and badge number",
+            "Overlay design — 5 presets: Classic, Minimal, Tactical, Modern, and AXON (replica of the real AXON Body 2)",
+            "Screen position — any corner of the screen",
+            "Scale — 100%, 125%, or 150%",
+            "Logo — none, the built-in AXON logo, or a custom image (e.g. your department's badge)",
+            "Typography — 6 fonts: IBM Plex Mono, Share Tech Mono, Roboto Mono, Orbitron, Rajdhani, and Boxed Round"
+          ]
+        },
+        {
+          "heading": "How It Works",
+          "body": "Configure your overlay, copy the generated URL, and paste it into OBS as a Browser Source. The overlay loads exactly as you set it up every time OBS starts — transparent background, no chroma key needed."
+        },
+        {
+          "heading": "Dashboard",
+          "body": "Sign in with Discord to access a personal dashboard where you can create, save, and share presets. Each overlay gets its own public URL you can distribute to your community."
+        },
+        {
+          "heading": "Custom Department Overlays",
+          "body": "Servers can request a fully custom overlay with their department's identity — colors, logo, and unique style — at no cost."
+        },
+        {
+          "heading": "Tech Stack",
+          "body": "Built with Next.js and React, running entirely client-side. Optimized for 1080p and 1440p stream resolutions."
+        }
+      ]
+    }
+  }
+}

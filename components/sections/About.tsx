@@ -4,10 +4,10 @@ import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 import ParticlesBackground from "@/components/ParticlesBackground";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useTranslations } from 'next-intl';
 
 const About = () => {
-  const { t } = useLanguage();
+  const t = useTranslations('about');
 
   return (
     <Section className="py-6 md:py-8">
@@ -27,7 +27,7 @@ const About = () => {
               text-fg-secondary leading-relaxed font-light
               relative z-10 max-w-none md:max-w-4xl
             `}>
-              {t.about.bio}
+              {t('bio')}
             </p>
           </div>
         </div>

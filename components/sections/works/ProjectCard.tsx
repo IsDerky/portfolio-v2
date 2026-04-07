@@ -7,7 +7,7 @@ import { ExternalLink, Github } from 'lucide-react';
 import { poppins } from '@/lib/fonts';
 import type { Project } from '@/lib/projects';
 import ProjectImage from '@/components/ProjectImage';
-import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useTranslations } from 'next-intl';
 
 interface ProjectCardProps {
   project: Project;
@@ -17,8 +17,9 @@ interface ProjectCardProps {
 
 const ProjectCard = memo(({ project, index, priority }: ProjectCardProps) => {
   const router = useRouter();
-  const { t } = useLanguage();
-  const tp = t.projects[project.id];
+  const tWorks = useTranslations('works');
+  const tProjects = useTranslations('projects');
+  const tp = tProjects.raw(project.id) as { description?: string; longDescription?: string } | undefined;
   const description = tp?.description ?? project.description;
   const longDescription = tp?.longDescription ?? project.longDescription;
 
@@ -91,7 +92,7 @@ const ProjectCard = memo(({ project, index, priority }: ProjectCardProps) => {
                 aria-label={`Visit ${project.title}`}
               >
                 <ExternalLink size={16} className="group-hover/link:rotate-12 transition-transform" aria-hidden="true" />
-                {t.works.visit}
+                {tWorks('visit')}
               </a>
             )}
             {project.githubUrl && (
@@ -104,7 +105,7 @@ const ProjectCard = memo(({ project, index, priority }: ProjectCardProps) => {
                 aria-label={`View source code for ${project.title} on GitHub`}
               >
                 <Github size={16} aria-hidden="true" />
-                {t.works.source}
+                {tWorks('source')}
               </a>
             )}
           </div>

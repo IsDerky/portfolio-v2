@@ -2,29 +2,33 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AnimationProvider } from "@/components/providers/AnimationProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { CommandPalette } from "@/components/CommandPalette";
 import { Analytics } from "@vercel/analytics/next";
 import { geistSans, geistMono } from "@/lib/fonts";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: "Derkyu - Portfolio",
   description: "Full-stack developer specializing in web applications, network solutions, and developer tools.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface-deep min-h-screen`}
       >
-        <LanguageProvider>
+        <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <AnimationProvider>
               <CommandPalette />
@@ -36,7 +40,7 @@ export default function RootLayout({
             </AnimationProvider>
           </ThemeProvider>
           <Analytics />
-        </LanguageProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

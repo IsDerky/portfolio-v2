@@ -3,10 +3,10 @@
 import { poppins } from "@/lib/fonts";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useTranslations } from 'next-intl';
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const t = useTranslations('footer');
   const currentYear = new Date().getFullYear();
 
   return (
@@ -22,12 +22,12 @@ const Footer = () => {
           <div>
             <h4 className={`${poppins.className} text-xl font-medium text-fg-primary`}>Derkyu</h4>
             <p className={`${poppins.className} text-sm text-fg-muted font-light mt-1`}>
-              {t.footer.role}
+              {t('role')}
             </p>
           </div>
           <div>
-            <p className={`${poppins.className} text-sm text-fg-muted font-light`}>{t.footer.location}</p>
-            <p className={`${poppins.className} text-xs text-fg-subtle font-light mt-1`}>{t.footer.availability}</p>
+            <p className={`${poppins.className} text-sm text-fg-muted font-light`}>{t('location')}</p>
+            <p className={`${poppins.className} text-xs text-fg-subtle font-light mt-1`}>{t('availability')}</p>
           </div>
         </div>
 
@@ -36,12 +36,12 @@ const Footer = () => {
           <div>
             <h4 className={`${poppins.className} text-xl font-medium text-fg-primary`}>Derkyu</h4>
             <p className={`${poppins.className} text-sm text-fg-muted font-light mt-1`}>
-              {t.footer.role}
+              {t('role')}
             </p>
           </div>
           <div className="text-right">
-            <p className={`${poppins.className} text-sm text-fg-muted font-light`}>{t.footer.location}</p>
-            <p className={`${poppins.className} text-xs text-fg-subtle font-light mt-1`}>{t.footer.availability}</p>
+            <p className={`${poppins.className} text-sm text-fg-muted font-light`}>{t('location')}</p>
+            <p className={`${poppins.className} text-xs text-fg-subtle font-light mt-1`}>{t('availability')}</p>
           </div>
         </div>
 
@@ -49,7 +49,7 @@ const Footer = () => {
 
         <div className="text-center md:text-left">
           <p className={`${poppins.className} text-xs text-fg-subtle font-light`}>
-            © {currentYear} Derkyu. {t.footer.rights}
+            © {currentYear} Derkyu. {t('rights')}
           </p>
         </div>
       </FadeInElement>

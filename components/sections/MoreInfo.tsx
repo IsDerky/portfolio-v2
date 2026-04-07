@@ -10,7 +10,7 @@ import { basketball, motorRacingHelmet } from '@lucide/lab';
 import AnimatedHeart from "@/components/AnimatedHeart";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useTranslations } from 'next-intl';
 
 type RegularIcon = React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
 type LabIcon = typeof basketball;
@@ -78,9 +78,12 @@ const HobbyCard = ({ hobby }: { hobby: Hobby }) => (
 );
 
 const MoreInfo = () => {
-  const { t } = useLanguage();
+  const t = useTranslations('moreInfo');
 
-  const hobbies: Hobby[] = t.moreInfo.hobbies.map((name, i) => ({
+  const timeline = t.raw('timeline') as { year: string; event: string }[];
+  const hobbiesRaw = t.raw('hobbies') as string[];
+
+  const hobbies: Hobby[] = hobbiesRaw.map((name, i) => ({
     name,
     icon: hobbyIcons[i].icon,
     isLab: hobbyIcons[i].isLab,
@@ -93,11 +96,11 @@ const MoreInfo = () => {
           {/* Bio Timeline */}
           <div className="bg-surface-2 rounded-2xl p-6 md:p-8">
             <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary mb-6 md:mb-8`}>
-              {t.moreInfo.bioTitle}
+              {t('bioTitle')}
             </h3>
             <div className="space-y-3 md:space-y-4" role="list" aria-label="Timeline of personal milestones">
-              {t.moreInfo.timeline.map((item, index) => (
-                <TimelineItem key={index} item={item} isLast={index === t.moreInfo.timeline.length - 1} />
+              {timeline.map((item, index) => (
+                <TimelineItem key={index} item={item} isLast={index === timeline.length - 1} />
               ))}
             </div>
           </div>
@@ -105,7 +108,7 @@ const MoreInfo = () => {
           {/* I Love */}
           <div className="bg-surface-2 rounded-2xl p-6 md:p-8">
             <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary flex items-center gap-2 mb-6 md:mb-8`}>
-              {t.moreInfo.iLove} <AnimatedHeart size={22} className="md:w-6 md:h-6" />
+              {t('iLove')} <AnimatedHeart size={22} className="md:w-6 md:h-6" />
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3" role="list" aria-label="Personal interests and hobbies">
               {hobbies.map((hobby, index) => (
@@ -122,7 +125,7 @@ const MoreInfo = () => {
           <div className="relative block bg-surface-2 rounded-2xl p-4 md:p-6 border border-fg-primary/20 hover:shadow-lg hover:shadow-black/30 transition-all duration-300 overflow-visible">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <span className={`${poppins.className} text-lg md:text-xl font-medium text-fg-primary`}>
-                {t.moreInfo.getInTouch}
+                {t('getInTouch')}
               </span>
               <a
                 href="mailto:contact@derkyu.lol"
@@ -131,7 +134,7 @@ const MoreInfo = () => {
               >
                 <div className="flex items-center justify-center gap-2 px-4 py-2 border border-fg-primary/40 rounded-lg bg-transparent min-w-[140px] md:min-w-[180px]">
                   <Mail size={20} className="text-fg-primary/70" />
-                  <span className={`${poppins.className} text-sm font-medium text-fg-primary`}>{t.moreInfo.mailMe}</span>
+                  <span className={`${poppins.className} text-sm font-medium text-fg-primary`}>{t('mailMe')}</span>
                 </div>
                 <div className="hidden md:flex absolute inset-0 items-center justify-center gap-2 px-4 py-2 border border-fg-primary/60 rounded-lg bg-surface-3 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-8px] group-hover:translate-x-[-8px] transition-all duration-300 shadow-lg min-w-[180px]">
                   <Mail size={20} className="text-fg-primary" />

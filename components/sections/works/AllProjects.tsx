@@ -7,7 +7,7 @@ import { ExternalLink, Code2, Network, Wrench, Server, LayoutGrid, type LucideIc
 import { poppins } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { projects } from '@/lib/projects';
-import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useTranslations } from 'next-intl';
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 
@@ -25,8 +25,10 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = memo(({ project, onCardClick }: ProjectCardProps) => {
-  const { t } = useLanguage();
-  const description = t.projects[project.id]?.description ?? project.description;
+  const tProjects = useTranslations('projects');
+  const tWorks = useTranslations('works');
+  const projectData = tProjects.raw(project.id) as { description?: string } | undefined;
+  const description = projectData?.description ?? project.description;
   const CategoryIcon = categoryIcons[project.category] || LayoutGrid;
   return (
     <motion.div
@@ -91,7 +93,7 @@ const ProjectCard = memo(({ project, onCardClick }: ProjectCardProps) => {
               aria-label={`Visit ${project.title}`}
             >
               <ExternalLink size={14} aria-hidden="true" />
-              {t.works.visit}
+              {tWorks('visit')}
             </a>
           )}
         </div>
@@ -135,7 +137,7 @@ CategoryFilter.displayName = 'CategoryFilter';
 
 const AllProjects = () => {
   const router = useRouter();
-  const { t } = useLanguage();
+  const t = useTranslations('works');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = ['all', 'web', 'service', 'network', 'tools'];
@@ -158,7 +160,7 @@ const AllProjects = () => {
           <div className="flex items-center gap-3">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-fg-primary/20"></div>
             <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary`}>
-              {t.works.allProjects}
+              {t('allProjects')}
             </h3>
           </div>
 
@@ -196,7 +198,7 @@ const AllProjects = () => {
               </div>
             </div>
             <p className={`${poppins.className} text-fg-muted font-light`}>
-              {t.works.noProjectsFound}
+              {t('noProjectsFound')}
             </p>
           </div>
         </FadeInElement>

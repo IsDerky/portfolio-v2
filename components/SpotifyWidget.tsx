@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { poppins } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
-import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useTranslations } from 'next-intl';
 
 interface SpotifyData {
   isPlaying: boolean;
@@ -47,8 +47,7 @@ const SoundBars = ({ progressPercent }: { progressPercent: number }) => (
 );
 
 export default function SpotifyWidget() {
-  const { t } = useLanguage();
-  const sp = t.spotify;
+  const sp = useTranslations('spotify');
   const [data, setData] = useState<SpotifyData | null>(null);
   const [loading, setLoading] = useState(true);
   const [progressPercent, setProgressPercent] = useState(0);
@@ -137,7 +136,7 @@ export default function SpotifyWidget() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                {data?.isPlaying ? sp.currentlyListening : sp.currentlyOffline}
+                {data?.isPlaying ? sp('currentlyListening') : sp('currentlyOffline')}
               </motion.span>
             )}
           </AnimatePresence>
@@ -191,11 +190,11 @@ export default function SpotifyWidget() {
                 <div className="flex-1 min-w-0">
                   {!data?.isPlaying && data?.title && (
                     <p className={`${poppins.className} text-[10px] text-fg-subtle mb-1`}>
-                      {sp.recentlyListened}
+                      {sp('recentlyListened')}
                     </p>
                   )}
                   <p className={`${poppins.className} text-sm font-semibold text-fg-primary truncate leading-snug mb-0.5`}>
-                    {data?.title ?? sp.notPlaying}
+                    {data?.title ?? sp('notPlaying')}
                   </p>
                   <p className={cn(poppins.className, 'text-sm text-fg-secondary truncate', data?.isPlaying && 'mb-4')}>
                     {data?.artist ?? '—'}

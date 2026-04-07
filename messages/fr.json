@@ -1,0 +1,187 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "works": "Projets",
+    "about": "À propos"
+  },
+  "about": {
+    "bio": "Développeur et technicien réseau originaire de Barcelone, Espagne. J'ai commencé ma carrière en programmation en 2019 en tant qu'autodidacte, puis j'ai approfondi mes connaissances en étudiant les systèmes et les réseaux informatiques."
+  },
+  "moreInfo": {
+    "bioTitle": "Bio",
+    "iLove": "I",
+    "getInTouch": "Me contacter",
+    "mailMe": "M'écrire",
+    "timeline": [
+      { "year": "2005", "event": "Né à Barcelone, Espagne." },
+      { "year": "2019", "event": "Début dans le monde du développement en autodidacte." },
+      { "year": "2021", "event": "Intégration d'un programme de formation en réseaux et systèmes pour explorer d'autres domaines de l'informatique." },
+      { "year": "2025", "event": "Actuellement en train de travailler sur un projet actif appelé Derkyu Panel." }
+    ],
+    "hobbies": ["Basketball", "Voitures", "Cuisine", "Programmation", "Streaming", "Jeux", "Séries", "Musique", "Motos"]
+  },
+  "worksIntro": {
+    "title": "Mes Projets",
+    "description": "Une collection de projets sur lesquels j'ai travaillé. Chaque projet représente un défi unique et une opportunité d'apprentissage dans mon parcours de développeur."
+  },
+  "aboutMe": {
+    "title": "À Propos de Moi",
+    "specialization": "Spécialisation",
+    "specializationValue": "Développeur web & Networker",
+    "totalExperience": "Expérience Totale",
+    "years": "Ans",
+    "coreTechnologies": "Technologies Principales",
+    "devStats": "Stats Dev",
+    "linesOfCode": "Lignes de Code",
+    "coffeeCups": "Gorgées de Café",
+    "featuredProject": "Projet Vedette"
+  },
+  "footer": {
+    "role": "Développeur & Technicien Réseau",
+    "availability": "Disponible pour travailler",
+    "rights": "Tous droits réservés.",
+    "location": "Espagne, Barcelone"
+  },
+  "gitContributions": {
+    "title": "Graphique de Contributions",
+    "viewProfile": "Voir le Profil",
+    "months": ["Jan", "Fév", "Mar", "Avr", "Mai", "Jun", "Jul", "Aoû", "Sep", "Oct", "Nov", "Déc"],
+    "less": "Moins",
+    "more": "Plus",
+    "contributionsLastYear": "{n} contributions cette dernière année",
+    "noData": "Aucune donnée de contribution disponible",
+    "noContributionsOn": "Aucune contribution le",
+    "contribution": "contribution",
+    "contributions": "contributions",
+    "on": "le"
+  },
+  "spotify": {
+    "currentlyListening": "En cours d'écoute",
+    "currentlyOffline": "Hors ligne",
+    "recentlyListened": "Écouté récemment",
+    "notPlaying": "Rien en lecture"
+  },
+  "works": {
+    "allProjects": "Tous les Projets",
+    "featuredProjects": "Projets en Vedette",
+    "noProjectsFound": "Aucun projet trouvé dans cette catégorie.",
+    "view": "Voir",
+    "backToWorks": "Retour aux Projets",
+    "visit": "Visiter",
+    "source": "Code"
+  },
+  "projects": {
+    "derkyu-hosting": {
+      "description": "Plateforme d'hébergement spécialisée pour les serveurs de jeux, les bots Discord et les logiciels personnalisés.",
+      "longDescription": "Une solution d'hébergement complète offrant des performances optimisées, des outils de gestion intuitifs et un support 24h/24 avec des emplacements de serveurs stratégiques en Europe et en Amérique du Sud.",
+      "details": [
+        {
+          "title": "Performance & Flexibilité",
+          "text": "Plans évolutifs avec SLA à 99%, emplacements de serveurs stratégiques en Europe et en Amérique du Sud, et support technique 24h/24 pour des opérations sans interruption."
+        },
+        {
+          "title": "Fonctionnalités Avancées",
+          "text": "Éditeur de code intégré, gestionnaire de fichiers SFTP, mises à jour automatiques, surveillance en temps réel et protection DDoS inclus dans tous les plans."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Aperçu",
+          "body": "Une solution d'hébergement complète créée pour la communauté gaming et développeurs — offrant des serveurs de jeux, l'hébergement de bots Discord et le déploiement de logiciels personnalisés. L'objectif était d'éliminer la complexité de l'auto-hébergement tout en gardant un contrôle total sur l'infrastructure."
+        },
+        {
+          "heading": "Le Problème",
+          "body": "Je payais autrefois pour de l'hébergement pour faire tourner les serveurs classiques entre amis, et avec le temps j'ai décidé de mettre mes connaissances à profit et de construire ma propre infrastructure plutôt que de dépendre de tiers. À partir de là, je l'ai fait évoluer et j'ai commencé à le louer à d'autres."
+        },
+        {
+          "heading": "Fonctionnalités",
+          "items": [
+            "Plans évolutifs avec SLA à 99% et tarification transparente",
+            "Emplacements de serveurs stratégiques en Europe et en Amérique du Sud pour une faible latence",
+            "Support technique 24h/24 avec des temps de réponse rapides",
+            "Éditeur de code intégré et gestionnaire de fichiers SFTP — pas de SSH requis pour les tâches de base",
+            "Mises à jour automatiques et tableaux de bord de surveillance en temps réel",
+            "Protection DDoS incluse dans tous les plans"
+          ]
+        },
+        {
+          "heading": "Stack Technique",
+          "body": "Construit avec Next.js, TypeScript et shadcn/ui pour le frontend du panneau de contrôle, déployé sur une infrastructure personnalisée optimisée pour les charges de travail de serveurs de jeux à faible latence."
+        },
+        {
+          "heading": "Ce que j'ai Appris",
+          "body": "Gérer une infrastructure à grande échelle a révélé des défis autour de l'isolation des ressources, de la logique de facturation et de la surveillance en temps réel qui m'ont poussé à créer des outils que je n'avais pas prévus à l'origine. Le projet est en cours et activement utilisé par des clients."
+        }
+      ]
+    },
+    "ronin-fc": {
+      "description": "Site web créé par la communauté pour le Ronin FC, le club de football fondé par Ibai Llanos.",
+      "longDescription": "Site web créé par la communauté pour le club de football Ronin FC. Il s'agit d'un projet de fans non officiellement affilié ni approuvé par Ibai Llanos ou l'organisation du Ronin FC.",
+      "sections": [
+        {
+          "heading": "Aperçu",
+          "body": "Un site web créé par la communauté pour le Ronin FC, le club de football fondé par Ibai Llanos. Il s'agit d'un projet de fans — non officiellement affilié ni approuvé par Ibai Llanos ou l'organisation du Ronin FC."
+        },
+        {
+          "heading": "Pourquoi je l'ai Construit",
+          "body": "Le Ronin FC a explosé rapidement et la communauté n'avait pas de hub central pour les actualités, les effectifs ou les résultats. Je l'ai construit pour combler ce manque : un site web propre et rapide qui récupère des données en direct pour que les fans aient toujours des informations à jour sans que personne n'ait à les mettre à jour manuellement."
+        },
+        {
+          "heading": "Fonctionnalités",
+          "items": [
+            "Actualités et mises à jour du club agrégées depuis les sources officielles",
+            "Effectif des joueurs avec statistiques et positions",
+            "Résultats et calendrier avec intégration des scores en direct",
+            "Données pilotées par API — le contenu se met à jour automatiquement, sans éditions manuelles de CMS"
+          ]
+        },
+        {
+          "heading": "Stack Technique",
+          "body": "Construit avec Next.js et TypeScript, consommant des APIs sportives externes pour maintenir les données du club à jour. L'accent a été mis sur les performances : les pages sont générées statiquement autant que possible et revalidées à intervalles courts."
+        },
+        {
+          "heading": "Défis",
+          "body": "Le principal défi consistait à gérer les réponses incohérentes des APIs tierces — certains endpoints renvoyaient des données partielles ou avaient des limites de débit nécessitant des stratégies de mise en cache soigneuses. J'ai fini par construire une couche API légère pour normaliser et mettre en cache les réponses avant qu'elles n'atteignent le frontend."
+        }
+      ]
+    },
+    "bodycamrp": {
+      "description": "Configurateur d'overlay bodycam basé sur navigateur pour les streamers FiveM et GTA Roleplay.",
+      "longDescription": "Personnalisez votre overlay bodycam avec votre nom, grade, numéro de badge, l'un des 5 designs, la police, le logo et la position à l'écran — puis lancez-le directement comme source navigateur dans OBS. Aucune installation ni compte requis.",
+      "sections": [
+        {
+          "heading": "Aperçu",
+          "body": "Un outil gratuit d'overlay de caméra corporelle basé sur navigateur pour les streamers FiveM et GTA Roleplay. Personnalisez votre overlay et lancez-le directement comme source navigateur dans OBS — aucune installation, aucun compte, aucun plugin requis."
+        },
+        {
+          "heading": "Ce que vous pouvez Personnaliser",
+          "body": "Le configurateur vous permet de personnaliser chaque détail de votre overlay :",
+          "items": [
+            "Données de l'agent — nom, grade et numéro de badge",
+            "Design de l'overlay — 5 préréglages : Classic, Minimal, Tactical, Modern et AXON (réplique du vrai AXON Body 2)",
+            "Position à l'écran — n'importe quel coin de l'écran",
+            "Échelle — 100%, 125% ou 150%",
+            "Logo — aucun, le logo AXON intégré ou une image personnalisée (ex. l'insigne de votre département)",
+            "Typographie — 6 polices : IBM Plex Mono, Share Tech Mono, Roboto Mono, Orbitron, Rajdhani et Boxed Round"
+          ]
+        },
+        {
+          "heading": "Comment ça Fonctionne",
+          "body": "Configurez votre overlay, copiez l'URL générée et collez-la dans OBS comme Source Navigateur. L'overlay se charge exactement comme vous l'avez configuré à chaque démarrage d'OBS — fond transparent, pas de chroma key nécessaire."
+        },
+        {
+          "heading": "Tableau de Bord",
+          "body": "Connectez-vous avec Discord pour accéder à un tableau de bord personnel où vous pouvez créer, sauvegarder et partager des préréglages. Chaque overlay obtient sa propre URL publique que vous pouvez distribuer à votre communauté."
+        },
+        {
+          "heading": "Overlays de Département Personnalisés",
+          "body": "Les serveurs peuvent demander un overlay entièrement personnalisé avec l'identité de leur département — couleurs, logo et style unique — sans frais."
+        },
+        {
+          "heading": "Stack Technique",
+          "body": "Construit avec Next.js et React, fonctionnant entièrement côté client. Optimisé pour les résolutions de stream 1080p et 1440p."
+        }
+      ]
+    }
+  }
+}

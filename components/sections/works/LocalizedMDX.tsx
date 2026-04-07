@@ -1,15 +1,23 @@
 'use client';
 
 import { poppins } from '@/lib/fonts';
-import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useTranslations } from 'next-intl';
 
 interface ProjectContentProps {
   projectId: string;
 }
 
+type ProjectSection = { heading: string; body?: string; items?: string[] };
+type ProjectDetail = { title: string; text: string };
+type ProjectTranslation = {
+  longDescription?: string;
+  details?: ProjectDetail[];
+  sections?: ProjectSection[];
+};
+
 export default function ProjectContent({ projectId }: ProjectContentProps) {
-  const { t } = useLanguage();
-  const tp = t.projects[projectId];
+  const tProjects = useTranslations('projects');
+  const tp = tProjects.raw(projectId) as ProjectTranslation | undefined;
   if (!tp) return null;
 
   if (tp.sections && tp.sections.length > 0) {

@@ -1,0 +1,187 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "works": "Proyectos",
+    "about": "Sobre mí"
+  },
+  "about": {
+    "bio": "Desarrollador y técnico de redes de Barcelona, España. Comencé mi camino en la programación en 2019 como autodidacta, y más tarde amplié mis conocimientos estudiando sistemas y redes informáticas."
+  },
+  "moreInfo": {
+    "bioTitle": "Bio",
+    "iLove": "I",
+    "getInTouch": "Contáctame",
+    "mailMe": "Enviar correo",
+    "timeline": [
+      { "year": "2005", "event": "Nacido en Barcelona, España." },
+      { "year": "2019", "event": "Empecé en el mundo del desarrollo como autodidacta." },
+      { "year": "2021", "event": "Ingresé a un ciclo formativo de redes y sistemas para explorar otras áreas de la informática." },
+      { "year": "2025", "event": "Actualmente trabajando y enfocado en un proyecto activo llamado Derkyu Panel." }
+    ],
+    "hobbies": ["Baloncesto", "Coches", "Cocina", "Código", "Streaming", "Juegos", "Series", "Música", "Motos"]
+  },
+  "worksIntro": {
+    "title": "Mis Proyectos",
+    "description": "Una colección de proyectos en los que he trabajado. Cada proyecto representa un desafío único y una oportunidad de aprendizaje en mi camino como desarrollador."
+  },
+  "aboutMe": {
+    "title": "Sobre Mí",
+    "specialization": "Especialización",
+    "specializationValue": "Desarrollador web y Networker",
+    "totalExperience": "Experiencia Total",
+    "years": "Años",
+    "coreTechnologies": "Tecnologías Principales",
+    "devStats": "Estadísticas Dev",
+    "linesOfCode": "Líneas de Código",
+    "coffeeCups": "Sorbos de Café",
+    "featuredProject": "Proyecto Destacado"
+  },
+  "footer": {
+    "role": "Desarrollador y Técnico de Redes",
+    "availability": "Disponible para trabajar",
+    "rights": "Todos los derechos reservados.",
+    "location": "España, Barcelona"
+  },
+  "gitContributions": {
+    "title": "Gráfico de Contribuciones",
+    "viewProfile": "Ver Perfil",
+    "months": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+    "less": "Menos",
+    "more": "Más",
+    "contributionsLastYear": "{n} contribuciones en el último año",
+    "noData": "No hay datos de contribuciones disponibles",
+    "noContributionsOn": "Sin contribuciones el",
+    "contribution": "contribución",
+    "contributions": "contribuciones",
+    "on": "el"
+  },
+  "spotify": {
+    "currentlyListening": "Escuchando ahora",
+    "currentlyOffline": "Sin conexión",
+    "recentlyListened": "Escuchado recientemente",
+    "notPlaying": "Sin reproducción"
+  },
+  "works": {
+    "allProjects": "Todos los Proyectos",
+    "featuredProjects": "Proyectos Destacados",
+    "noProjectsFound": "No se encontraron proyectos en esta categoría.",
+    "view": "Ver",
+    "backToWorks": "Volver a Proyectos",
+    "visit": "Visitar",
+    "source": "Código"
+  },
+  "projects": {
+    "derkyu-hosting": {
+      "description": "Plataforma de hosting especializada para servidores de juegos, bots de Discord y software personalizado.",
+      "longDescription": "Una solución de hosting completa que ofrece rendimiento optimizado, herramientas de gestión intuitivas y soporte 24/7 con ubicaciones de servidor estratégicas en Europa y Sudamérica.",
+      "details": [
+        {
+          "title": "Rendimiento y Flexibilidad",
+          "text": "Planes escalables con SLA del 99%, ubicaciones de servidor estratégicas en Europa y Sudamérica, y soporte técnico 24/7 para operaciones sin interrupciones."
+        },
+        {
+          "title": "Funciones Avanzadas",
+          "text": "Editor de código integrado, gestor de archivos SFTP, actualizaciones automáticas, monitorización en tiempo real y protección DDoS incluidos en todos los planes."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Descripción General",
+          "body": "Una solución de hosting completa creada para la comunidad de gaming y desarrolladores — ofreciendo servidores de juegos, hosting de bots de Discord y despliegue de software personalizado. El objetivo era eliminar la complejidad del autohosting manteniendo el control total sobre la infraestructura."
+        },
+        {
+          "heading": "El Problema",
+          "body": "Antes pagaba por hosting para los servidores típicos de grupo de amigos, y con el tiempo decidí poner mis conocimientos en práctica y construir mi propia infraestructura en lugar de depender de terceros. A partir de ahí lo escalé y empecé a alquilarlo a otros."
+        },
+        {
+          "heading": "Características",
+          "items": [
+            "Planes escalables con SLA del 99% y precios transparentes",
+            "Ubicaciones de servidor estratégicas en Europa y Sudamérica para baja latencia",
+            "Soporte técnico 24/7 con tiempos de respuesta rápidos",
+            "Editor de código integrado y gestor de archivos SFTP — sin necesidad de SSH para tareas básicas",
+            "Actualizaciones automáticas y paneles de monitorización en tiempo real",
+            "Protección DDoS incluida en todos los planes"
+          ]
+        },
+        {
+          "heading": "Stack Tecnológico",
+          "body": "Construido con Next.js, TypeScript y shadcn/ui para el frontend del panel de control, desplegado en una infraestructura personalizada optimizada para cargas de trabajo de servidores de juegos con baja latencia."
+        },
+        {
+          "heading": "Qué Aprendí",
+          "body": "Gestionar infraestructura a escala sacó a la luz desafíos en torno al aislamiento de recursos, la lógica de facturación y la monitorización en tiempo real que me llevaron a construir herramientas que no había planeado originalmente. El proyecto está en curso y es utilizado activamente por clientes."
+        }
+      ]
+    },
+    "ronin-fc": {
+      "description": "Sitio web creado por la comunidad para el Ronin FC, el club de fútbol fundado por Ibai Llanos.",
+      "longDescription": "Sitio web creado por la comunidad para el club de fútbol Ronin FC. Este es un proyecto de fans y no está oficialmente afiliado ni respaldado por Ibai Llanos ni por la organización del Ronin FC.",
+      "sections": [
+        {
+          "heading": "Descripción General",
+          "body": "Un sitio web creado por la comunidad para el Ronin FC, el club de fútbol fundado por Ibai Llanos. Este es un proyecto de fans — no está oficialmente afiliado ni respaldado por Ibai Llanos ni por la organización del Ronin FC."
+        },
+        {
+          "heading": "Por Qué Lo Construí",
+          "body": "El Ronin FC creció muy rápido y la comunidad no tenía un hub central para noticias, plantillas o resultados. Lo construí para llenar ese vacío: un sitio web limpio y rápido que obtiene datos en vivo para que los fans siempre tengan información actualizada sin que nadie tenga que actualizarla manualmente."
+        },
+        {
+          "heading": "Características",
+          "items": [
+            "Noticias y actualizaciones del club agregadas de fuentes oficiales",
+            "Plantilla de jugadores con estadísticas y posiciones",
+            "Resultados y calendario con integración de marcadores en vivo",
+            "Datos impulsados por API — el contenido se actualiza automáticamente, sin ediciones manuales de CMS"
+          ]
+        },
+        {
+          "heading": "Stack Tecnológico",
+          "body": "Construido con Next.js y TypeScript, consumiendo APIs deportivas externas para mantener los datos del club actualizados. El enfoque fue el rendimiento: las páginas se generan estáticamente donde es posible y se revalidan en intervalos cortos."
+        },
+        {
+          "heading": "Desafíos",
+          "body": "El principal desafío fue trabajar con respuestas inconsistentes de APIs de terceros — algunos endpoints devolvían datos parciales o tenían límites de velocidad que requerían estrategias de caché cuidadosas. Terminé construyendo una capa de API ligera para normalizar y almacenar en caché las respuestas antes de que llegaran al frontend."
+        }
+      ]
+    },
+    "bodycamrp": {
+      "description": "Configurador de overlay de bodycam basado en navegador para streamers de FiveM y GTA Roleplay.",
+      "longDescription": "Personaliza tu overlay de bodycam con tu nombre, rango, número de placa, uno de 5 diseños, fuente, logo y posición en pantalla — y lánzalo directamente como fuente de navegador en OBS. Sin instalación ni cuenta requerida.",
+      "sections": [
+        {
+          "heading": "Descripción General",
+          "body": "Una herramienta gratuita de overlay de cámara corporal basada en navegador para streamers de FiveM y GTA Roleplay. Personaliza tu overlay y lánzalo directamente como fuente de navegador en OBS — sin instalación, sin cuenta, sin plugins."
+        },
+        {
+          "heading": "Qué Puedes Personalizar",
+          "body": "El configurador te permite personalizar cada detalle de tu overlay:",
+          "items": [
+            "Datos del agente — nombre, rango y número de placa",
+            "Diseño del overlay — 5 presets: Classic, Minimal, Tactical, Modern y AXON (réplica del AXON Body 2 real)",
+            "Posición en pantalla — cualquier esquina de la pantalla",
+            "Escala — 100%, 125% o 150%",
+            "Logo — ninguno, el logo AXON integrado o una imagen personalizada (p.ej. el emblema de tu departamento)",
+            "Tipografía — 6 fuentes: IBM Plex Mono, Share Tech Mono, Roboto Mono, Orbitron, Rajdhani y Boxed Round"
+          ]
+        },
+        {
+          "heading": "Cómo Funciona",
+          "body": "Configura tu overlay, copia la URL generada y pégala en OBS como Fuente de Navegador. El overlay carga exactamente como lo configuraste cada vez que OBS arranca — fondo transparente, sin necesidad de chroma key."
+        },
+        {
+          "heading": "Dashboard",
+          "body": "Inicia sesión con Discord para acceder a un panel personal donde puedes crear, guardar y compartir presets. Cada overlay tiene su propia URL pública que puedes distribuir a tu comunidad."
+        },
+        {
+          "heading": "Overlays de Departamento Personalizados",
+          "body": "Los servidores pueden solicitar un overlay totalmente personalizado con la identidad de su departamento — colores, logo y estilo único — sin coste alguno."
+        },
+        {
+          "heading": "Stack Tecnológico",
+          "body": "Construido con Next.js y React, funcionando completamente del lado del cliente. Optimizado para resoluciones de stream de 1080p y 1440p."
+        }
+      ]
+    }
+  }
+}

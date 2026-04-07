@@ -6,7 +6,7 @@ import ProjectImage from '@/components/ProjectImage';
 import { X, Maximize2, ExternalLink, Github, Code2, Server, Network, Wrench, type LucideIcon } from 'lucide-react';
 import { poppins } from '@/lib/fonts';
 import type { Project } from '@/lib/projects';
-import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useTranslations } from 'next-intl';
 
 const categoryIcons: Record<string, LucideIcon> = {
   web: Code2,
@@ -21,9 +21,12 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
-  const { t } = useLanguage();
+  const tWorks = useTranslations('works');
+  const tProjects = useTranslations('projects');
   const CategoryIcon = project ? categoryIcons[project.category] : null;
-  const tp = project ? t.projects[project.id] : undefined;
+
+  type ProjectDetail = { title: string; text: string };
+  const tp = project ? tProjects.raw(project.id) as { longDescription?: string; details?: ProjectDetail[] } | undefined : undefined;
   const longDescription = tp?.longDescription ?? project?.longDescription;
   const details = tp?.details ?? project?.details;
 
@@ -166,7 +169,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-fg-primary/10 hover:bg-fg-primary/20 border border-fg-primary/20 rounded-lg transition-all text-sm text-fg-secondary font-medium`}
                   >
                     <ExternalLink size={16} />
-                    {t.works.visit}
+                    {tWorks('visit')}
                   </a>
                 )}
                 {project.githubUrl && (
@@ -177,7 +180,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     className={`${poppins.className} flex items-center gap-2 px-5 py-2.5 bg-fg-primary/5 hover:bg-fg-primary/10 border border-fg-primary/10 rounded-lg transition-all text-sm text-fg-muted hover:text-fg-secondary font-medium`}
                   >
                     <Github size={16} />
-                    {t.works.source}
+                    {tWorks('source')}
                   </a>
                 )}
               </div>

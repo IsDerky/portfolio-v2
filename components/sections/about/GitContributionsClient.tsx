@@ -6,7 +6,7 @@ import { poppins } from "@/lib/fonts";
 import { Github } from 'lucide-react';
 import { ActivityCalendar } from 'react-activity-calendar';
 import { Tooltip as ReactTooltip } from 'react-tooltip';
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useTranslations, useLocale } from 'next-intl';
 
 import 'react-tooltip/dist/react-tooltip.css';
 
@@ -98,9 +98,9 @@ const explicitTheme = {
 };
 
 export default function GitContributionsClient({ data, totalContributions, githubUsername }: Props) {
-  const { locale, t } = useLanguage();
+  const locale = useLocale();
+  const gc = useTranslations('gitContributions');
   const { blockSize, blockMargin, fontSize } = useResponsiveBlockSize();
-  const gc = t.gitContributions;
   const dateLocale = localeMap[locale] ?? 'en-US';
 
   const renderBlock = useCallback((block: React.ReactElement, activity: { date: string; count: number; level: number }) => {
@@ -112,8 +112,8 @@ export default function GitContributionsClient({ data, totalContributions, githu
       day: 'numeric',
     });
     const label = activity.count === 0
-      ? `${gc.noContributionsOn} ${formatted}`
-      : `${activity.count} ${activity.count !== 1 ? gc.contributions : gc.contribution} ${gc.on} ${formatted}`;
+      ? `${gc("noContributionsOn")} ${formatted}`
+      : `${activity.count} ${activity.count !== 1 ? gc("contributions") : gc("contribution")} ${gc("on")} ${formatted}`;
 
     return React.cloneElement(block, {
       'data-tooltip-id': 'contributions-tooltip',
@@ -121,14 +121,14 @@ export default function GitContributionsClient({ data, totalContributions, githu
     } as Record<string, string>);
   }, [dateLocale, gc]);
 
-  const contributionsParts = gc.contributionsLastYear.split('{n}');
+  const contributionsParts = (gc.raw('contributionsLastYear') as string).split('{n}');
 
   return (
     <div className="bg-surface-2 rounded-2xl p-6 border border-fg-primary/10 hover:border-fg-primary/20 transition-all duration-300">
       <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
         <h3 className={`${poppins.className} text-xl md:text-2xl font-semibold text-fg-primary flex items-center gap-2`}>
           <Github size={24} className="text-fg-primary" />
-          {gc.title}
+          {gc("title")}
         </h3>
 
         <a
@@ -138,7 +138,7 @@ export default function GitContributionsClient({ data, totalContributions, githu
           className={`${poppins.className} flex items-center gap-2 px-4 py-2 bg-fg-primary/10 hover:bg-fg-primary/20 rounded-lg transition-colors text-sm text-fg-secondary font-medium`}
         >
           <Github size={16} />
-          {gc.viewProfile}
+          {gc("viewProfile")}
         </a>
       </div>
 
@@ -157,8 +157,8 @@ export default function GitContributionsClient({ data, totalContributions, githu
               maxLevel={4}
               renderBlock={renderBlock}
               labels={{
-                months: gc.months,
-                legend: { less: gc.less, more: gc.more },
+                months: gc.raw("months") as string[],
+                legend: { less: gc("less"), more: gc("more") },
               }}
               style={{
                 color: '#9ca3af',
@@ -180,7 +180,7 @@ export default function GitContributionsClient({ data, totalContributions, githu
           </div>
         ) : (
           <div className={`${poppins.className} text-fg-muted text-center py-8`}>
-            {gc.noData}
+            {gc("noData")}
           </div>
         )}
       </div>

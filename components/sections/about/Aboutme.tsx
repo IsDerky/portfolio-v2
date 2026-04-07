@@ -13,18 +13,24 @@ import { getProjectById } from "@/lib/projects";
 import Section from "@/components/layout/Section";
 import { FadeInElement } from "@/components/animations/ContentAnimation";
 import SpotifyWidget from "@/components/SpotifyWidget";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useTranslations } from 'next-intl';
 
 const featuredProjectBase = getProjectById('derkyu-hosting')!;
 
+type ProjectTranslation = {
+  description?: string;
+  longDescription?: string;
+  details?: { title: string; text: string }[];
+  sections?: { heading: string; body?: string; items?: string[] }[];
+};
+
 const Aboutme = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
-  const { t } = useLanguage();
+  const t = useTranslations('aboutMe');
+  const tProjects = useTranslations('projects');
 
-  const featuredProject = {
-    ...featuredProjectBase,
-    ...(t.projects['derkyu-hosting'] ?? {}),
-  };
+  const projectTp = tProjects.raw('derkyu-hosting') as ProjectTranslation;
+  const featuredProject = { ...featuredProjectBase, ...projectTp };
 
   const masterTechnologies = [
     { name: "TypeScript", level: 95, color: "bg-fg-secondary" },
@@ -36,8 +42,8 @@ const Aboutme = () => {
   const smallProjects = [
     {
       stats: [
-        { label: t.aboutMe.linesOfCode, value: "60K+", icon: "code" },
-        { label: t.aboutMe.coffeeCups, value: "∞", icon: "coffee" }
+        { label: t('linesOfCode'), value: "60K+", icon: "code" },
+        { label: t('coffeeCups'), value: "∞", icon: "coffee" }
       ],
       type: "dual-stat"
     },
@@ -50,44 +56,44 @@ const Aboutme = () => {
     <Section className="py-6 md:py-8">
       <FadeInElement delay={0.5} className="mb-6 md:mb-8">
         <h2 className={`${poppins.className} text-2xl md:text-3xl lg:text-4xl font-semibold text-fg-primary mb-3 md:mb-4`}>
-          {t.aboutMe.title}
+          {t('title')}
         </h2>
       </FadeInElement>
 
       {/* Mobile Layout (< md) - Single Column */}
       <div className="md:hidden space-y-3">
-        {/* {t.aboutMe.specialization} */}
+        {/* {t('specialization')} */}
         <FadeInElement delay={0.6}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-surface-2 rounded-xl p-4 border border-fg-primary/10 transition-all duration-300"
           >
-            <div className={`${poppins.className} text-xs text-fg-muted mb-1.5`}>{t.aboutMe.specialization}</div>
+            <div className={`${poppins.className} text-xs text-fg-muted mb-1.5`}>{t('specialization')}</div>
             <h3 className={`${poppins.className} text-base font-semibold text-fg-primary`}>
-              {t.aboutMe.specializationValue}
+              {t('specializationValue')}
             </h3>
           </motion.div>
         </FadeInElement>
 
-        {/* {t.aboutMe.totalExperience} */}
+        {/* {t('totalExperience')} */}
         <FadeInElement delay={0.65}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-surface-2 rounded-xl p-4 border border-fg-primary/10 transition-all duration-300"
           >
-            <div className={`${poppins.className} text-xs text-fg-muted mb-2`}>{t.aboutMe.totalExperience}</div>
+            <div className={`${poppins.className} text-xs text-fg-muted mb-2`}>{t('totalExperience')}</div>
             <div className={`${poppins.className} text-3xl font-bold text-fg-primary`}>4+</div>
-            <div className={`${poppins.className} text-sm text-fg-secondary`}>{t.aboutMe.years}</div>
+            <div className={`${poppins.className} text-sm text-fg-secondary`}>{t("years")}</div>
           </motion.div>
         </FadeInElement>
 
-        {/* {t.aboutMe.coreTechnologies} */}
+        {/* {t("coreTechnologies")} */}
         <FadeInElement delay={0.7}>
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-surface-2 rounded-xl p-4 border border-fg-primary/10 transition-all duration-300"
           >
-            <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>{t.aboutMe.coreTechnologies}</div>
+            <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>{t("coreTechnologies")}</div>
             <div className="space-y-3">
               {masterTechnologies.map((tech, index) => (
                 <div key={tech.name} className="space-y-1.5">
@@ -115,7 +121,7 @@ const Aboutme = () => {
             whileHover={{ scale: 1.01 }}
             className="bg-surface-2 rounded-xl p-4 border border-fg-primary/10 transition-all duration-300"
           >
-            <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>{t.aboutMe.devStats}</div>
+            <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>{t("devStats")}</div>
             <div className="space-y-3">
               {smallProjects[0]?.stats?.map((stat, idx) => (
                 <div key={idx} className="flex items-center justify-between">
@@ -149,7 +155,7 @@ const Aboutme = () => {
           <SpotifyWidget />
         </FadeInElement>
 
-        {/* {t.aboutMe.featuredProject} */}
+        {/* {t("featuredProject")} */}
         <FadeInElement delay={0.85}>
           <motion.div
             whileHover={{ scale: 1.01 }}
@@ -159,7 +165,7 @@ const Aboutme = () => {
             <div className="p-4">
               <div className="flex justify-between items-start mb-2">
                 <div>
-                  <div className={`${poppins.className} text-xs text-fg-muted mb-0.5`}>{t.aboutMe.featuredProject}</div>
+                  <div className={`${poppins.className} text-xs text-fg-muted mb-0.5`}>{t("featuredProject")}</div>
                   <h4 className={`${poppins.className} text-base font-semibold text-fg-primary transition-colors`}>
                     {featuredProject.title}
                   </h4>
@@ -192,15 +198,15 @@ const Aboutme = () => {
       <div className="hidden md:block relative overflow-visible">
         <div className="grid grid-cols-3 grid-rows-3 gap-3 h-[400px]">
 
-          {/* Row 1: {t.aboutMe.specialization} (col-span-2) + {t.aboutMe.totalExperience} (col-span-1) */}
+          {/* Row 1: {t('specialization')} (col-span-2) + {t('totalExperience')} (col-span-1) */}
           <FadeInElement delay={0.6} className="col-span-2">
             <motion.div
               whileHover={{ scale: 1.01 }}
               className="bg-surface-2 rounded-xl p-5 border border-fg-primary/10 transition-all duration-300 h-full flex flex-col justify-start"
             >
-              <div className={`${poppins.className} text-xs text-fg-muted mb-1.5`}>{t.aboutMe.specialization}</div>
+              <div className={`${poppins.className} text-xs text-fg-muted mb-1.5`}>{t('specialization')}</div>
               <h3 className={`${poppins.className} text-lg font-semibold text-fg-primary`}>
-                {t.aboutMe.specializationValue}
+                {t('specializationValue')}
               </h3>
             </motion.div>
           </FadeInElement>
@@ -210,13 +216,13 @@ const Aboutme = () => {
               whileHover={{ scale: 1.01 }}
               className="bg-surface-2 rounded-xl p-5 h-full border border-fg-primary/10 transition-all duration-300 flex flex-col justify-start items-start text-left"
             >
-              <div className={`${poppins.className} text-xs text-fg-muted mb-2`}>{t.aboutMe.totalExperience}</div>
+              <div className={`${poppins.className} text-xs text-fg-muted mb-2`}>{t('totalExperience')}</div>
               <div className={`${poppins.className} text-2xl font-bold text-fg-primary mb-1`}>4+</div>
-              <div className={`${poppins.className} text-xs text-fg-secondary`}>{t.aboutMe.years}</div>
+              <div className={`${poppins.className} text-xs text-fg-secondary`}>{t("years")}</div>
             </motion.div>
           </FadeInElement>
 
-          {/* Row 2: {t.aboutMe.coreTechnologies} (row-span-2) + Two small projects */}
+          {/* Row 2: {t("coreTechnologies")} (row-span-2) + Two small projects */}
           <FadeInElement
             delay={0.7}
             className={`col-span-1 row-span-2 transition-opacity duration-300 ${expandedSection && expandedSection !== 'technologies' ? 'opacity-30' : 'opacity-100'}`}
@@ -225,7 +231,7 @@ const Aboutme = () => {
               whileHover={{ scale: 1.01 }}
               className="bg-surface-2 rounded-xl p-5 h-full border border-fg-primary/10 transition-all duration-300 flex flex-col"
             >
-              <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>{t.aboutMe.coreTechnologies}</div>
+              <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>{t("coreTechnologies")}</div>
 
               <div className="space-y-3.5 flex-1 flex flex-col justify-center">
                 {masterTechnologies.map((tech, index) => (
@@ -259,7 +265,7 @@ const Aboutme = () => {
                   whileHover={{ scale: 1.01 }}
                   className="bg-surface-2 rounded-xl p-4 h-full border border-fg-primary/10 transition-all duration-300 flex flex-col"
                 >
-                  <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>{t.aboutMe.devStats}</div>
+                  <div className={`${poppins.className} text-xs text-fg-muted mb-3`}>{t("devStats")}</div>
 
                   <div className="space-y-3 flex-1 flex flex-col justify-center">
                     {project.stats?.map((stat, idx) => (
@@ -293,7 +299,7 @@ const Aboutme = () => {
             </FadeInElement>
           ))}
 
-          {/* Row 3: {t.aboutMe.featuredProject} (col-span-2) */}
+          {/* Row 3: {t("featuredProject")} (col-span-2) */}
           <FadeInElement delay={0.95} className="col-span-2 relative">
             <motion.div
               className={`absolute bottom-0 left-0 right-0 ${expandedSection === 'featured' ? 'z-50' : 'z-10'}`}
@@ -312,7 +318,7 @@ const Aboutme = () => {
                 <div className="p-4 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-1">
                     <div>
-                      <div className={`${poppins.className} text-xs text-fg-muted mb-0.5`}>{t.aboutMe.featuredProject}</div>
+                      <div className={`${poppins.className} text-xs text-fg-muted mb-0.5`}>{t("featuredProject")}</div>
                       <h4 className={`${poppins.className} text-base font-semibold text-fg-primary transition-colors`}>
                         {featuredProject.title}
                       </h4>

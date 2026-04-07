@@ -1,15 +1,17 @@
 'use client';
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useTransition } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Home, User, Briefcase, Sun, Moon } from 'lucide-react';
 import { CircleFlag } from 'react-circle-flags';
 import { poppins } from "@/lib/fonts";
 import SimpleDock from "@/components/SimpleDock";
-import { useLanguage } from "@/components/providers/LanguageProvider";
-import type { Locale } from "@/lib/i18n/translations";
+import { useTranslations, useLocale } from 'next-intl';
+import { setLocale } from '@/app/actions/locale';
+
+type Locale = 'en' | 'es' | 'fr';
 
 const languages: { code: Locale; label: string; flagCode: string }[] = [
   { code: 'en', label: 'English', flagCode: 'gb' },
@@ -18,7 +20,9 @@ const languages: { code: Locale; label: string; flagCode: string }[] = [
 ];
 
 function LanguageSwitcher() {
-  const { locale, setLocale } = useLanguage();
+  const locale = useLocale() as Locale;
+  const router = useRouter();
+  const [, startTransition] = useTransition();
   const [open, setOpen] = React.useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -31,6 +35,12 @@ function LanguageSwitcher() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  async function handleSelect(code: Locale) {
+    await setLocale(code);
+    setOpen(false);
+    startTransition(() => router.refresh());
+  }
 
   const selected = languages.find(l => l.code === locale)!;
 
@@ -49,7 +59,7 @@ function LanguageSwitcher() {
           {languages.map(lang => (
             <button
               key={lang.code}
-              onClick={() => { setLocale(lang.code); setOpen(false); }}
+              onClick={() => handleSelect(lang.code)}
               className={`${poppins.className} w-full flex items-center gap-2.5 px-3 py-2 text-xs transition-colors duration-150 hover:bg-fg-primary/10
                 ${locale === lang.code ? 'text-fg-primary font-medium' : 'text-fg-muted'}`}
             >
@@ -78,12 +88,12 @@ function ThemeToggle() {
 
 export function DesktopNav() {
   const pathname = usePathname();
-  const { t } = useLanguage();
+  const t = useTranslations('nav');
 
   const menuItems = [
-    { name: t.nav.home, href: '/', icon: Home },
-    { name: t.nav.works, href: '/works', icon: Briefcase },
-    { name: t.nav.about, href: '/about', icon: User },
+    { name: t('home'), href: '/', icon: Home },
+    { name: t('works'), href: '/works', icon: Briefcase },
+    { name: t('about'), href: '/about', icon: User },
   ];
 
   return (
@@ -127,12 +137,12 @@ export function DesktopNav() {
 
 export function MobileDock() {
   const pathname = usePathname();
-  const { t } = useLanguage();
+  const t = useTranslations('nav');
 
   const menuItems = [
-    { name: t.nav.home, href: '/', icon: Home },
-    { name: t.nav.works, href: '/works', icon: Briefcase },
-    { name: t.nav.about, href: '/about', icon: User },
+    { name: t('home'), href: '/', icon: Home },
+    { name: t('works'), href: '/works', icon: Briefcase },
+    { name: t('about'), href: '/about', icon: User },
   ];
 
   const dockItems = menuItems.map(item => {
